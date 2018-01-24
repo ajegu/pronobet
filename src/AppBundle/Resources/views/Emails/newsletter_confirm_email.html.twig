@@ -1,0 +1,9 @@
+<h3>{{ 'title.newsletter_subscription'|trans }}</h3>
+
+<p>{{ 'text.newsletter_subscription'|trans }}</p>
+
+<p>{{ 'text.newsletter_email_confirm'|trans }}</p>
+
+<a href="{{ url('subscriber_confirm_email', {'id': subscriber.id, 'email': subscriber.email}) }}">
+    {{ url('subscriber_confirm_email', {'id': subscriber.id, 'email': subscriber.email}) }}
+</a>

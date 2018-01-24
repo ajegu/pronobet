@@ -1,0 +1,257 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@FakeBundle/Resources/config/services.yml" }
+    - { resource: "@ForecastBundle/Resources/config/services.yml" }
+    - { resource: "@ApiBundle/Resources/config/services.yml" }
+    - { resource: "@BackgroundJobBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
+    cache:
+        default_redis_provider: "%redis_dns%"
+        pools:
+            app.cache.tipster:
+                adapter: cache.adapter.redis
+                public: true
+                default_lifetime: 86400
+            app.cache.comment:
+                adapter: cache.adapter.redis
+                public: true
+                default_lifetime: 86400
+            app.cache.subscription:
+                adapter: cache.adapter.redis
+                public: true
+                default_lifetime: 86400
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        app_name: "%app_name%"
+        medias_url: "%aws_s3.medias_url%"
+        ga_id: "%ga_id%"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/../var/data/data.sqlite"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    port:      "%mailer_port%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+    sender_address: "%mailer_sender_address%"
+    encryption: "%mailer_encryption%"
+
+#knp_gaufrette:
+#    stream_wrapper: ~
+#
+#    adapters:
+#        tipster_picture:
+#            local:
+#                directory:  '%kernel.root_dir%/../web/medias/images/tipsters/pictures'
+#
+#        tipster_cover:
+#            local:
+#                directory:  '%kernel.root_dir%/../web/medias/images/tipsters/covers'
+#
+#        sport_icon:
+#            local:
+#                directory:  '%kernel.root_dir%/../web/medias/images/sports/icons'
+#        sportforecast_ticket:
+#            local:
+#                directory:  '%kernel.root_dir%/../web/medias/images/sport_forecasts/tickets'
+#        bookmaker_logo:
+#            local:
+#                directory:  '%kernel.root_dir%/../web/medias/images/bookmaker/logo'
+#
+#    filesystems:
+#        tipster_picture_filesystem:
+#            adapter: tipster_picture
+#        tipster_cover_filesystem:
+#            adapter: tipster_cover
+#        sport_icon_filesystem:
+#            adapter: sport_icon
+#        sportforecast_ticket_filesystem:
+#            adapter: sportforecast_ticket
+#        bookmaker_logo_filesystem:
+#            adapter: bookmaker_logo
+
+knp_gaufrette:
+    stream_wrapper: ~
+    adapters:
+        s3:
+            aws_s3:
+                service_id: aws_s3.client
+                bucket_name: 'pronobet-medias'
+                options:
+                    acl: 'public-read'
+
+    filesystems:
+        s3_fs:
+            adapter: s3
+
+vich_uploader:
+    db_driver: orm
+    storage: gaufrette
+
+    mappings:
+        s3_medias:
+            uri_prefix: ~
+            upload_destination: s3_fs
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+liip_imagine:
+
+    loaders:
+        s3_cache:
+            stream:
+                wrapper: gaufrette://s3_fs/
+
+    resolvers:
+        cache_s3:
+            aws_s3:
+                client_config:
+                    credentials:
+                        key: "%aws_key%"
+                        secret: "%aws_secret%"
+                    region: "%aws_region%"
+                    version: latest
+                bucket: "%aws_s3.bucket_cache%"
+                get_options:
+                    Scheme: https
+                put_options:
+                    CacheControl: "max-age=86400"
+                    ACL: public-read
+
+    cache: cache_s3
+
+    data_loader: s3_cache
+
+    filter_sets:
+        cache: ~
+
+        thumb150:
+            quality: 100
+            filters:
+                thumbnail: { size: [150, 150], mode: inset, allow_upscale: false }
+                background: { size: [150, 150], position: center, color: '#FFFFFF' }
+
+        thumb250:
+            quality: 100
+            filters:
+                thumbnail: { size: [250, 250], mode: inset, allow_upscale: false }
+                background: { size: [250, 250], position: center, color: '##BBBDBF' }
+
+        thumb300:
+            quality: 100
+            filters:
+                thumbnail: { size: [300, 300], mode: inset, allow_upscale: false }
+                background: { size: [300, 300], position: center, color: '#FFFFFF' }
+
+        thumb400:
+            quality: 100
+            filters:
+                thumbnail: { size: [400, 400], mode: inset, allow_upscale: false }
+                background: { size: [400, 400], position: center, color: '#FFFFFF' }
+
+
+        thumb500:
+            quality: 100
+            filters:
+                thumbnail: { size: [500, 500], mode: inset, allow_upscale: false }
+                background: { size: [500, 500], position: center, color: '#FFFFFF' }
+
+        thumb32:
+            quality: 100
+            filters:
+                thumbnail: { size: [32, 32], mode: inset, allow_upscale: false }
+                background: { size: [32, 32], position: center, color: '#FFFFFF' }
+
+        thumb50:
+            quality: 100
+            filters:
+                thumbnail: { size: [50, 50], mode: inset, allow_upscale: false }
+                background: { size: [50, 50], position: center, color: '##BBBDBF' }
+
+        tipsterCover:
+            cache: cache_s3
+            quality: 100
+            filters:
+                thumbnail: { size: [1130, 360], mode: inset, allow_upscale: false }
+                background: { size: [1130, 360], position: center, color: '#FFFFFF' }
+
+hwi_oauth:
+    firewall_names: [main]
+    resource_owners:
+        facebook:
+            type: facebook
+            client_id: "%facebook_app_id%"
+            client_secret: "%facebook_key_secret%"
+            scope: "email"
+            path:
+                email: email
+
+white_october_breadcrumbs:
+    separator:          '>'
+    listClass: 'ui breadcrumb'
+    itemClass: 'section'
+    separatorClass: 'right angle icon divider'

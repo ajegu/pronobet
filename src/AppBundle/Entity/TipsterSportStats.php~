@@ -1,0 +1,162 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TipsterSportStats
+ *
+ * @ORM\Table(name="tipster_sport_stats")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\TipsterSportStatsRepository")
+ */
+class TipsterSportStats
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="win_rate", type="float")
+     */
+    private $winRate;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var Tipster
+     * @ORM\ManyToOne(targetEntity="Tipster", inversedBy="tipsterSportStats")
+     * @ORM\JoinColumn(name="tipster_id", referencedColumnName="id")
+     */
+    private $tipster;
+
+    /**
+     * @var Sport
+     * @ORM\ManyToOne(targetEntity="Sport", inversedBy="tipsterSportStats")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     */
+    private $sport;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set winRate
+     *
+     * @param integer $winRate
+     *
+     * @return TipsterSportStats
+     */
+    public function setWinRate($winRate)
+    {
+        $this->winRate = $winRate;
+
+        return $this;
+    }
+
+    /**
+     * Get winRate
+     *
+     * @return int
+     */
+    public function getWinRate()
+    {
+        return $this->winRate;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return TipsterSportStats
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set tipster
+     *
+     * @param \AppBundle\Entity\Tipster $tipster
+     *
+     * @return TipsterSportStats
+     */
+    public function setTipster(\AppBundle\Entity\Tipster $tipster = null)
+    {
+        $this->tipster = $tipster;
+
+        return $this;
+    }
+
+    /**
+     * Get tipster
+     *
+     * @return \AppBundle\Entity\Tipster
+     */
+    public function getTipster()
+    {
+        return $this->tipster;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param \AppBundle\Entity\Sport $sport
+     *
+     * @return TipsterSportStats
+     */
+    public function setSport(\AppBundle\Entity\Sport $sport = null)
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return \AppBundle\Entity\Sport
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+}

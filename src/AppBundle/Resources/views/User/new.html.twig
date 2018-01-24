@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+    <style>
+        .column {
+            max-width: 450px;
+        }
+        .negative ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <div class="ui container">
+
+        <h1 class="ui header">{{ 'title.new_user'|trans }}</h1>
+
+        <div class="ui text container">
+
+            <div class="ui center aligned segment">
+                <a href="{{ path('facebook_connect') }}" class="ui button primary">
+                    <i class="facebook square large icon"></i>
+                    {{ 'button.login_with'|trans }} Facebook</a>
+            </div>
+
+            <div class="ui horizontal divider">{{ 'label.or'|trans }}</div>
+
+            <form class="ui segment form" action="{{ path('user_new') }}" method="post" novalidate>
+                {{ form_widget(form._token) }}
+
+                <div class="field required {{ form_errors(form.email) ? 'error' : '' }}">
+                    {{ form_label(form.email) }}
+                    <div class="ui left icon input">
+                        <i class="at icon"></i>
+                        {{ form_widget(form.email) }}
+                    </div>
+                </div>
+                {% if form_errors(form.email) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.email) }}
+                    </div>
+                {% endif %}
+                <div class="field {{ form_errors(form.nickname) ? 'error' : '' }}">
+                    {{ form_label(form.nickname) }}
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        {{ form_widget(form.nickname) }}
+                    </div>
+                </div>
+                {% if form_errors(form.nickname) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.nickname) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.plainPassword) ? 'error' : '' }}">
+                    {{ form_label(form.plainPassword) }}
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        {{ form_widget(form.plainPassword) }}
+                    </div>
+                </div>
+                {% if form_errors(form.plainPassword) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.plainPassword) }}
+                    </div>
+                {% endif %}
+
+                <div class="ui divider"></div>
+
+                <div class="field {{ form_errors(form.confirm) ? 'error' : '' }}">
+                    <div class="ui checkbox">
+                        {{ form_widget(form.confirm) }}
+                        <label>{{ 'label.newsletter_confirm'|trans }} {{ app_name }}</label>
+                    </div>
+                </div>
+                {% if form_errors(form.confirm) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.confirm) }}
+                    </div>
+                {% endif %}
+
+                <div class="field {{ form_errors(form.partners) ? 'error' : '' }}">
+                    <div class="ui checkbox">
+                        {{ form_widget(form.partners) }}
+                        <label>{{ 'label.newsletter_partners'|trans }} {{ app_name }}</label>
+                    </div>
+                </div>
+                {% if form_errors(form.partners) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.partners) }}
+                    </div>
+                {% endif %}
+
+                <div class="ui divider"></div>
+
+                <div class="field required {{ form_errors(form.termsAccepted) ? 'error' : '' }}">
+                    <div class="ui checkbox">
+                        {{ form_widget(form.termsAccepted) }}
+                        <label>{{ 'label.cgu'|trans }}</label>
+                    </div>
+                </div>
+                {% if form_errors(form.termsAccepted) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.termsAccepted) }}
+                    </div>
+                {% endif %}
+                <button class="ui fluid submit large blue button" type="submit">
+                    {{ 'button.create'|trans }}
+                </button>
+            </form>
+            {%  if error != null %}
+                <div class="ui negative message">
+                    <span>{{ error|trans }}</span>
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="application/javascript">
+    $('#appbundle_user_plainPassword')
+        .popup({
+            on: 'focus'
+        })
+    ;
+</script>
+{% endblock %}

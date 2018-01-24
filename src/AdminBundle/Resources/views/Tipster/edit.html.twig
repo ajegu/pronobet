@@ -1,0 +1,14 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="user icon"></i>
+            {{ 'title.tipster_edit'|trans }} {{ tipster.user.email }}
+        </h1>
+
+        {% include '@Admin/Tipster/form.html.twig' %}
+    </div>
+
+{% endblock %}

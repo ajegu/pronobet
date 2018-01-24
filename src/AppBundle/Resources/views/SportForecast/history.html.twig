@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style type="text/css">
+        .content .meta {
+            margin-bottom: 1em !important;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $('.rating')
+            .rating({
+                initialRating: 0,
+                maxRating: 5
+            })
+        ;
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="ui container">
+        <h1 class="ui header">
+            {{ 'title.sport_forecast_history'|trans }}
+        </h1>
+
+        {% include '@App/SportForecast/sport_forecast_items.html.twig' %}
+
+        <div class="ui divider"></div>
+        <div class="ui basic center aligned segment">
+            {% include '@Admin/pagination.html.twig' with {total: sportForecasts.count, count: count, page: page, route: 'sport_forecast_history', id: null} %}
+        </div>
+    </div>
+
+
+{% endblock %}

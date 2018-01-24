@@ -1,0 +1,16 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <h1 class="ui header">
+        <i class="share alternate icon"></i>
+        {{ 'title.sport_forecast_managment'|trans }} > {{ 'title.sport_forecast_to_validate'|trans }}
+    </h1>
+
+    <div class="ui divider"></div>
+
+    {% include '@Forecast/SportForecast/toolbar.html.twig' with {url: path('forecast_sport_forecast_to_validate')} %}
+    {% include '@Forecast/SportForecast/table.html.twig' with {sportForecasts: sportForecasts} %}
+    {% include '@Admin/pagination.html.twig' with {total: sportForecasts.count, count: count, page: page, route: 'forecast_sport_forecast_to_validate', id: null} %}
+
+{% endblock %}

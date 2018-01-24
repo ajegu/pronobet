@@ -1,0 +1,15 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="ui text container">
+        <div class="ui success message">
+            <p>{{ 'text.newsletter_subscribe_success'|trans }}</p>
+
+            {% if subscriber.emailValid == false %}
+                <p>{{ 'text.newsletter_subscribe_success_email_confirm'|trans }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

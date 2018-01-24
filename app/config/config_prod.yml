@@ -1,0 +1,66 @@
+imports:
+    - { resource: config.yml }
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver: apc
+#        result_cache_driver: apc
+#        query_cache_driver: apc
+
+monolog:
+    handlers:
+        main:
+            type: fingers_crossed
+            action_level: error
+            handler: nested
+        nested:
+            type: stream
+            path: '%kernel.logs_dir%/%kernel.environment%.log'
+            level: debug
+        console:
+            type: console
+            process_psr_3_messages: false
+
+knp_gaufrette:
+    adapters:
+        tipster_picture:
+            aws_s3:
+                service_id: aws_s3.client
+                bucket_name: 'pronobet-medias'
+                options:
+                    directory: 'tipster_picture'
+        tipster_cover:
+            aws_s3:
+                service_id: aws_s3.client
+                bucket_name: 'pronobet-medias'
+                options:
+                    directory: 'tipster_cover'
+        sport_icon:
+            aws_s3:
+                service_id: aws_s3.client
+                bucket_name: 'pronobet-medias'
+                options:
+                    directory: 'sport_icon'
+        sportforecast_ticket:
+            aws_s3:
+                service_id: aws_s3.client
+                bucket_name: 'pronobet-medias'
+                options:
+                    directory: 'sportforecast_ticket'
+        bookmaker_logo:
+            aws_s3:
+                service_id: aws_s3.client
+                bucket_name: 'pronobet-medias'
+                options:
+                    directory: 'bookmaker_logo'
+    filesystems:
+        tipster_picture_filesystem:
+            adapter: tipster_picture
+        tipster_cover_filesystem:
+            adapter: tipster_cover
+        sport_icon_filesystem:
+            adapter: sport_icon
+        sportforecast_ticket_filesystem:
+            adapter: sportforecast_ticket
+        bookmaker_logo_filesystem:
+            adapter: bookmaker_logo

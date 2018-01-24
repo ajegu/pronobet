@@ -1,0 +1,168 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="ui positive message">
+            <div class="header">{{ 'title.sport_forecast_edit'|trans }}</div>
+            <i class="close icon"></i>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <h1 class="ui header">
+        <i class="share alternate icon"></i>
+        {{ 'title.sport_forecast_managment'|trans }}
+    </h1>
+
+    <div class="ui one column grid">
+
+        <div class="column mobile only">
+
+
+        </div>
+
+        <div class="column computer tablet only">
+
+            <div class="ui stackable menu">
+
+                <div class="item">
+                    <form action="{{ path('admin_sport_forecast_index') }}" method="get" class="ui form">
+
+                        <div class="inline field">
+                            <div class="ui selection dropdown">
+                                <input type="hidden" name="tipster">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">
+                                    {% if tipsterId == 0 %}
+                                        {{ 'label.tipster'|trans }}
+                                    {% else %}
+                                        {% for tipster in tipsters %}
+                                            {% if tipster.id == tipsterId %}
+                                                {{ tipster.user.nickname }}
+                                            {% else %}
+
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="menu">
+                                    {% for tipster in tipsters %}
+                                        <div class="item"
+                                             data-value="{{ tipster.id }}">{{ tipster.user.nickname }}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            <button class="ui labeled icon button" type="submit"><i
+                                        class="search icon"></i>{{ 'label.search'|trans }}</button>
+                            <a class="ui secondary icon button" href="{{ path('admin_sport_forecast_index') }}"><i
+                                        class="remove icon"></i></a>
+
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <table class="ui celled center aligned table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'label.title'|trans }}</th>
+            <th>{{ 'label.sport_bet_count'|trans }}</th>
+            <th>{{ 'label.tipster'|trans }}</th>
+            <th>{{ 'label.vip'|trans }}</th>
+            <th>{{ 'label.state'|trans }}</th>
+            <th>{{ 'label.published_at'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sportForecast in sportForecasts %}
+            <tr>
+                <td>{{ sportForecast.id }}</td>
+                <td>
+                    {% if sportForecast.title %}
+                        {{ sportForecast.title }}
+                    {% else %}
+                        {{ 'label.sport_forecast_number'|trans }}{{ sportForecast.id }}
+                    {% endif %}
+                </td>
+                <td>{{ sportForecast.sportBets|length }}</td>
+                <td>{{ sportForecast.tipster.user.nickname }}</td>
+                <td>
+                    {% if sportForecast.isVip == true %}
+                        <i class="green big checkmark icon"></i>
+                    {% else %}
+                        <i class="red big remove icon"></i>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if sportForecast.isValidate %}
+                        {% if sportForecast.isCancelled %}
+                            <span class="ui black label">{{ 'label.cancelled'|trans }}</span>
+                        {% else %}
+                            {% if sportForecast.isWon %}
+                                <span class="ui green label">{{ 'label.won'|trans }}</span>
+                            {% else %}
+                                <span class="ui red label">{{ 'label.lose'|trans }}</span>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        {% if sportForecast.isValid %}
+                            <span class="ui orange label">{{ 'label.to_validate'|trans }}</span>
+                        {% else %}
+                            <span class="ui blue label">{{ 'label.in_progress'|trans }}</span>
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>{{ sportForecast.publishedAt|date('d/m/Y H:i') }}</td>
+                <td>
+                    <div class="ui blue buttons">
+                        <div class="ui button">Actions</div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item"
+                                   href="{{ path('admin_sport_forecast_show_sport_forecast', {id: sportForecast.id}) }}">
+                                    <i class="file outline icon"></i>
+                                    {{ 'button.show'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('admin_sport_forecast_edit_sport_forecast', {id: sportForecast.id}) }}">
+                                    <i class="edit icon"></i>
+                                    {{ 'button.edit'|trans }}
+                                </a>
+
+                                {% if sportForecast.isValidate %}
+                                    <a class="item"
+                                       href="{{ path('admin_sport_forecast_restore_to_validate', {id: sportForecast.id}) }}">
+                                        <i class="checkmark box icon"></i>
+                                        {{ 'button.restore_to_validate'|trans }}
+                                    </a>
+                                {% else %}
+                                    <a class="item"
+                                       href="{{ path('admin_sport_forecast_restore_unpublished', {id: sportForecast.id}) }}">
+                                        <i class="delete calendar icon"></i>
+                                        {{ 'button.restore_unpublished'|trans }}
+                                    </a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include '@Admin/pagination.html.twig' with {total: sportForecasts.count, count: count, page: page, route: 'admin_sport_forecast_index', id: tipsterId} %}
+{% endblock %}

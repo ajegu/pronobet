@@ -1,0 +1,17 @@
+<span class="ui label">{{ 'label.rating'|trans }}: {{ sportForecast.globalRating|number_format(2, ',') }}</span>
+<span class="ui label">{{ 'label.betting'|trans }}: {{ sportForecast.betting|number_format(2, ',') }} &euro;</span>
+<span class="ui label">{{ 'label.winnings'|trans }}: {{ sportForecast.getWinning|number_format(2, ',') }} &euro;</span>
+{% if sportForecast.comments|length > 0 %}
+    <span class="ui label">
+                            <i class="comment icon"></i>
+        {{ sportForecast.comments|length }}
+                        </span>
+{% endif %}
+<span class="ui label">
+                        <i class="star yellow icon"></i>
+    {{ sportForecast.averageConfidenceIndex }}
+                    </span>
+
+<span class="ui label">
+    {{ sportForecast.bookmaker.name }}
+</span>

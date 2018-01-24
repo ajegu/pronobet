@@ -1,0 +1,30 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            <i class="user icon"></i>
+            {{ 'title.member_to_tipster'|trans }}
+        </h1>
+
+        <div class="ui warning icon message">
+            <i class="warning icon"></i>
+            <p>{{ 'text.member_to_tipster'|trans }}<b>{{ member.email }}</b> ?</p>
+        </div>
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                {{ 'label.cancel'|trans }}
+            </a>
+            <a class="ui primary labeled icon button" href="{{ path('admin_tipster_add', {id: member.id}) }}">
+                <i class="trash icon"></i>
+                {{ 'button.member_to_tipster'|trans }}
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}
+

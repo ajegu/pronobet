@@ -1,0 +1,65 @@
+<div class="ui inverted vertical sidebar menu">
+    <div class="item">
+        <div class="header">
+            <i class="icon trophy"></i> {{ 'label.sports'|trans }}</div>
+        <div class="menu">
+            {% if sportFilter %}
+                <div class="active item">
+                    {% if tipsterFilter %}
+                        <a href="{{ path('sport_forecast_index', {tipster:tipsterFilter.id}) }}">
+                            <i class="icon remove red"></i>{{ sportFilter.name }}
+                        </a>
+                    {% else %}
+                        <a href="{{ path('sport_forecast_index') }}">
+                            <i class="icon remove red"></i>{{ sportFilter.name }}
+                        </a>
+                    {% endif %}
+                </div>
+            {% else %}
+                {% for sport in sports %}
+                    {% if tipsterFilter %}
+                        <a class="item"
+                           href="{{ path('sport_forecast_index', {sport:sport.id, tipster:tipsterFilter.id}) }}"
+                           rel="nofollow">{{ sport.name }}</a>
+                    {% else %}
+                        <a class="item" href="{{ path('sport_forecast_index', {sport:sport.id}) }}"
+                           rel="nofollow">{{ sport.name }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="item">
+        <div class="header">
+            <i class="icon user"></i> {{ 'label.tipsters'|trans }}</div>
+        <div class="menu">
+            {% if tipsterFilter %}
+                <div class="active item">
+                    {% if sportFilter %}
+                        <a href="{{ path('sport_forecast_index', {sport:sportFilter.id}) }}" rel="nofollow">
+                            <i class="icon remove red"></i>{{ tipsterFilter.user.nickname }}
+                        </a>
+                    {% else %}
+                        <a href="{{ path('sport_forecast_index') }}" rel="nofollow">
+                            <i class="icon remove red"></i>{{ tipsterFilter.user.nickname }}
+                        </a>
+                    {% endif %}
+
+                </div>
+            {% else %}
+                {% for tipster in tipsters %}
+                    {% if sportFilter %}
+                        <a class="item"
+                           href="{{ path('sport_forecast_index', {tipster:tipster.id, sport:sportFilter.id}) }}">{{ tipster.user.nickname }}</a>
+                    {% else %}
+                        <a class="item"
+                           href="{{ path('sport_forecast_index', {tipster:tipster.id}) }}">{{ tipster.user.nickname }}</a>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="item">
+        <a href="{{ path('sport_forecast_history') }}">{{ 'label.history'|trans }}</a>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{% if is_granted('ROLE_ADMIN') %}
+    <a class="item" href="{{ path('admin_index') }}">ADMIN</a>
+{% endif %}
+
+<div class="right item">
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+        <div class="ui dropdown inverted button">
+            <i class="user icon"></i>
+            {{ 'label.my_account'|trans }}<i class="dropdown icon"></i>
+            <div class="menu">
+                <div class="header">{{ app.user.username }}</div>
+                <a class="item" id="user_account_link"
+                   href="{{ path('user_show', {id: app.user.id}) }}">
+                    <i class="user icon"></i>
+                    {{ 'label.my_account'|trans }}
+                </a>
+                <div class="ui divider"></div>
+                <a class="item" href="{{ path('logout') }}">
+                    <i class="sign out icon"></i>{{ 'button.logout'|trans }}
+                </a>
+            </div>
+        </div>
+
+
+    {% else %}
+
+        <a class="ui inverted button" href="{{ path('login') }}">{{ 'button.login'|trans }}</a>
+        <a class="ui inverted button" href="{{ path('user_new') }}">{{ 'button.signup'|trans }}</a>
+
+    {% endif %}
+</div>

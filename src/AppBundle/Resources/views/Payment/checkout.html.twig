@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+
+        $('#month').change(createExpirationDate);
+        $('#year').change(createExpirationDate);
+
+        function createExpirationDate()
+        {
+            var month = $('#month').val();
+            var year = $('#year').val();
+            $('#cardExpirationDate').val(month.toString() + year.toString());
+        }
+
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="ui container">
+
+        <h1 class="ui header">{{ 'title.payment_checkout'|trans }}</h1>
+
+        <div class="ui stackable two column centered grid">
+            <div class="column">
+                <div class="ui segment">
+                    <p class="ui blue header">{{ 'label.order_checkout'|trans }}</p>
+                    <p class="ui divider"></p>
+                    <p>{{ 'text.subscription_one_month'|trans }} {{ subscription.tipster.user.nickname }} du {{ subscription.createdAt|date('d/m/Y') }} au {{ subscription.finishedAt|date('d/m/Y') }}</p>
+                    <p class="ui divider"></p>
+                    <div class="ui stackable container grid">
+                        <div class="height wide left aligned column">Total :</div>
+                        <div class="height wide right aligned column">{{ subscription.tipster.fee|number_format(2, ",", " ") }} &euro;</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="ui icon green message">
+                    <i class="lock black icon"></i>
+                    <span class="ui black text">{{ 'text.payment_checkout_security'|trans }}</span>
+                </div>
+                <form class="ui segment form" action="{{ card.CardRegistrationURL }}" method="post">
+
+                    <input type="hidden" name="data" value="{{ card.PreregistrationData }}" />
+                    <input type="hidden" name="accessKeyRef" value="{{ card.AccessKey }}" />
+                    <input type="hidden" name="returnURL" value="{{ url('payment_process') }}" />
+
+                    <input type="hidden" name="cardExpirationDate" id="cardExpirationDate" value="" autocomplete="cc-exp"/>
+
+                    <div class="field">
+                        <label for="cardNumber" >{{ 'label.card_number'|trans }}</label>
+                        <input type="text" name="cardNumber" required autocomplete="cc-number">
+                    </div>
+
+                    <div class="field">
+                        <label>{{ 'label.expiration_date'|trans }}</label>
+                        <div class="two fields">
+                            <div class="field" id="month-container">
+                                <select class="ui fluid search dropdown" name="month" id="month" required>
+                                    <option value="">{{ 'label.month'|trans }}</option>
+                                    <option value="01">{{ 'label.January'|trans }}</option>
+                                    <option value="02">{{ 'label.February'|trans }}</option>
+                                    <option value="03">{{ 'label.March'|trans }}</option>
+                                    <option value="04">{{ 'label.April'|trans }}</option>
+                                    <option value="05">{{ 'label.May'|trans }}</option>
+                                    <option value="06">{{ 'label.June'|trans }}</option>
+                                    <option value="07">{{ 'label.July'|trans }}</option>
+                                    <option value="08">{{ 'label.August'|trans }}</option>
+                                    <option value="09">{{ 'label.September'|trans }}</option>
+                                    <option value="10">{{ 'label.October'|trans }}</option>
+                                    <option value="11">{{ 'label.November'|trans }}</option>
+                                    <option value="12">{{ 'label.December'|trans }}</option>
+                                </select>
+                            </div>
+                            <div class="field" id="year-container">
+                                <select class="ui fluid search dropdown" name="year" id="year" required>
+                                    <option value="">{{ 'label.year'|trans }}</option>
+                                    {% for i in 0..10  %}
+                                        <option value="{{ date().format('y') + i }}">{{ date().format('Y') + i}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two fields">
+                        <div class="field">
+                            <label for="cardCvx">{{ 'label.cvx'|trans }}</label>
+                            <input type="text" name="cardCvx" required autocomplete="cc-csc">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="ui fluid primary icon button">
+                        <i class="lock icon"></i>
+                        {{ 'label.paid_subscription'|trans }}
+                    </button>
+
+                </form>
+
+                <div class="ui center aligned container">
+                    <img class="ui image" src="{{ asset('images/logo/powered-by-mangopay.png') }}">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

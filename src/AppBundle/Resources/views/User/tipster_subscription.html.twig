@@ -1,0 +1,76 @@
+{% extends '@App/User/base.html.twig' %}
+
+{% block user_body %}
+    <h1 class="ui header">
+        {{ 'label.my_tipsters'|trans }}
+    </h1>
+
+    <div class="ui segment">
+        {% if app.user.subscriptions|length == 0 %}
+            <p>{{ 'label.no_subscription'|trans }}</p>
+        {% else %}
+
+            <h2 class="ui header">{{ 'label.tipster_free_subscription'|trans }}</h2>
+
+            <table class="ui table">
+                <thead>
+                <tr>
+                    <th>{{ 'label.tipster'|trans }}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for subscription in app.user.subscriptions %}
+                    <tr>
+                        {% if subscription.status == 'FREE' %}
+                            <td>{{ subscription.tipster.user.nickname }}</td>
+                            <td class="right aligned">
+                                <a class="ui labeled icon button" href="{{ path('subscription_unsubscribe', {id: subscription.tipster.id}) }}">
+                                    <i class="external icon"></i>
+                                    {{ 'label.unsubscribe'|trans }}
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <h2 class="ui header">{{ 'label.tipster_vip_subscription'|trans }}</h2>
+
+            <table class="ui table">
+                <thead>
+                <tr>
+                    <th>{{ 'label.tipster'|trans }}</th>
+                    <th>{{ 'label.email'|trans }}</th>
+                    <th>{{ 'label.sms'|trans }}</th>
+                    <th>{{ 'label.finished_at'|trans }}</th>
+                    <th>{{ 'label.price'|trans }}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for subscription in app.user.subscriptions %}
+                    <tr>
+                        {% if subscription.status == 'VIP' and subscription.activate == true %}
+                            <td>{{ subscription.tipster.user.nickname }}</td>
+                            <td>{% if subscription.emailNotification %}<i class="checkmark green icon"></i> {% else %}<i class="remove red icon"></i> {% endif %}</td>
+                            <td>{% if subscription.smsNotification %}<i class="checkmark green icon"></i> {% else %}<i class="remove red icon"></i> {% endif %}</td>
+                            <td>{{ subscription.finishedAt|date('d/m/Y H:i') }}</td>
+                            <td>{{ subscription.amount|number_format(2, ",", " ") }} &euro;</td>
+                            <td class="right aligned">
+                                <a class="ui labeled icon button" href="{{ path('subscription_edit_notifications', {id: subscription.id}) }}">
+                                    <i class="edit icon"></i>
+                                    {{ 'label.edit_notifications'|trans }}
+                                </a>
+                            </td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

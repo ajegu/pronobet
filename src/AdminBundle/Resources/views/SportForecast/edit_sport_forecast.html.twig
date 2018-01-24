@@ -1,0 +1,90 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="share alternate icon"></i>
+            {{ 'title.sport_forecast_edit'|trans }} #{{ sportForecast.id }}
+        </h1>
+
+        <div class="ui segment">
+            <form class="ui form"
+                  action="{{ path('admin_sport_forecast_edit_sport_forecast', {id: sportForecast.id}) }}"
+                  method="post" novalidate
+                  enctype="multipart/form-data">
+                {{ form_widget(form._token) }}
+
+                <div class="field {{ form_errors(form.title) ? 'error' : '' }}">
+                    {{ form_label(form.title) }}
+                    <div class="ui input">
+                        {{ form_widget(form.title) }}
+                    </div>
+                </div>
+                {% if form_errors(form.title) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.title) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.betting) ? 'error' : '' }}">
+                    {{ form_label(form.betting) }}
+                    <div class="ui left icon input">
+                        <i class="euro icon"></i>
+                        {{ form_widget(form.betting) }}
+                    </div>
+                </div>
+                {% if form_errors(form.betting) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.betting) }}
+                    </div>
+                {% endif %}
+
+                <div class="field {{ form_errors(form.ticketFile) ? 'error' : '' }}">
+                    {{ form_label(form.ticketFile) }}
+                    <div class="ui input">
+                        {{ form_widget(form.ticketFile) }}
+                    </div>
+                </div>
+                {% if form_errors(form.ticketFile) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.ticketFile) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.isVip) ? 'error' : '' }}">
+                    <div class="inline fields">
+                        {{ form_label(form.isVip) }}
+                        {{ form_widget(form.isVip) }}
+                    </div>
+                </div>
+                {% if form_errors(form.isVip) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.isVip) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.bookmaker) ? 'error' : '' }}">
+                    {{ form_label(form.bookmaker) }}
+                    {{ form_widget(form.bookmaker) }}
+                </div>
+                {% if form_errors(form.bookmaker) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.bookmaker) }}
+                    </div>
+                {% endif %}
+
+                <div class="ui center aligned container">
+                    <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                        {{ 'label.cancel'|trans }}
+                    </a>
+                    <button class="ui primary labeled icon button" type="submit">
+                        <i class="edit icon"></i>
+                        {{ 'button.edit'|trans }}
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+{% endblock %}

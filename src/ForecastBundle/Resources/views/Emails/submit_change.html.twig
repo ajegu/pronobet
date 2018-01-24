@@ -1,0 +1,10 @@
+<h3>{{ 'title.sport_forecast_need_change'|trans }} #{{ sportForecast.getId() }}</h3>
+
+<p>{{ 'text.sport_forecast_submit_change_email'|trans }}</p>
+<ul>
+    <li>{{ 'label.tipster'|trans }} : {{ sportForecast.getTipster().getUser().getNickname() }}</li>
+    <li>{{ 'label.sport_forecast'|trans }} : #{{ sportForecast.getId() }}</li>
+    <li>{{ 'label.message'|trans }} : <p>{{ message }}</p></li>
+</ul>
+
+<a href="{{ path('admin_sport_forecast_show_sport_forecast', {id: sportForecast.id}) }}">path('admin_sport_forecast_show_sport_forecast', {id: sportForecast.id})</a>

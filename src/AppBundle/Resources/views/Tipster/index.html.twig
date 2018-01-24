@@ -1,0 +1,99 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="ui container">
+
+        <h1 class="ui header">
+            {{ 'title.tipster_index'|trans }}
+        </h1>
+
+        <div class="ui fluid card">
+
+            <div class="content">
+                <a class="ui header" href="{{ path('tipster_show', {id: topTipster.id}) }}">
+                    <img class="ui circular image" src="
+                    {% if topTipster.picture %}
+                        {{ asset(vich_uploader_asset(topTipster, 'pictureFile')) | imagine_filter('thumb32') }}
+                    {% else %}
+                        /image/image.png
+                    {% endif %}
+                    ">
+                    {{ topTipster.user.nickname }}
+                </a>
+            </div>
+
+            {% if topTipster.cover %}
+                <a class="image" href="{{ path('tipster_show', {id: topTipster.id}) }}">
+                    <img src="{{ asset(vich_uploader_asset(topTipster, 'coverFile')) | imagine_filter('tipsterCover') }}">
+                </a>
+            {% endif %}
+
+
+
+            <div class="content">
+                <div class="description">
+
+                    {% include '@App/Tipster/stats_overviews.html.twig' with {tipster: topTipster} %}
+
+                    <div class="ui divider"></div>
+
+                    <div class="ui two column stackable grid">
+                        <div class="column">
+                            {% include '@App/Tipster/free_subscription_segment.html.twig' with {tipster: topTipster} %}
+                        </div>
+
+                        <div class="column">
+                            {% include '@App/Tipster/vip_subscription_segment.html.twig' with {tipster: topTipster} %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div class="ui divided items">
+            {% for tipster in tipsters %}
+                <div class="item">
+                    <div class="image">
+                        <a href="{{ path('tipster_show', {id: tipster.id}) }}">
+                            {% if tipster.picture %}
+                                <img src="{{ asset(vich_uploader_asset(tipster, 'pictureFile')) | imagine_filter('thumb150') }}"/>
+                            {% else %}
+                                <img src="/images/image.png"/>
+                            {% endif %}
+                        </a>
+                    </div>
+                    <div class="content">
+                        <a href="{{ path('tipster_show', {id: tipster.id}) }}"
+                           class="header">{{ tipster.user.nickname }}</a>
+                        <div class="description">
+                            <div class="ui message">
+                                {{ tipster.description }}
+                            </div>
+                            {% include '@App/Tipster/stats_overviews.html.twig' with {tipster: tipster} %}
+                            <div class="ui divider"></div>
+                        </div>
+                        <div class="extra">
+                            <a class="ui big button"
+                               href="{{ path('tipster_show', {id: tipster.id}) }}">{{ 'label.show'|trans }}</a>
+                            <div class="right floated">
+                                <a class="ui big button"
+                                   href="{{ path('subscription_subscribe_for_free', {id: tipster.id}) }}">{{ 'label.join'|trans }}</a>
+                                <a class="ui primary labeled icon big button"
+                                   href="{{ path('subscription_subscribe', {id: tipster.id}) }}">
+                                    <i class="shop icon"></i>
+                                    {{ tipster.fee|number_format(2, ",", " ") }} &euro;
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="ui divider"></div>
+
+
+    </div>
+{% endblock %}

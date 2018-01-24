@@ -1,0 +1,67 @@
+{% extends '@App/User/base.html.twig' %}
+
+{% block user_body %}
+
+    <h1 class="ui header">
+        {{ 'title.edit_subscription_notification'|trans }} <b>{{ subscription.tipster.user.nickname }}</b>
+    </h1>
+
+
+    <form class="ui form" action="{{ path('subscription_edit_notifications', {id: subscription.id}) }}" method="post"
+          style="height: 800px" novalidate>
+        {{ form_widget(form._token) }}
+        <div class="ui segment">
+
+            <div class="field {{ form_errors(form.emailNotification) ? 'error' : '' }}">
+                <div class="ui toggle checkbox">
+                    {{ form_widget(form.emailNotification) }}
+                    {{ form_label(form.emailNotification) }}
+                </div>
+            </div>
+            {% if form_errors(form.emailNotification) %}
+                <div class="ui negative message">
+                    {{ form_errors(form.emailNotification) }}
+                </div>
+            {% endif %}
+
+            <div class="field {{ form_errors(form.smsNotification) ? 'error' : '' }}">
+                <div class="ui toggle checkbox">
+                    {{ form_widget(form.smsNotification) }}
+                    {{ form_label(form.smsNotification) }}
+                </div>
+            </div>
+            {% if form_errors(form.smsNotification) %}
+                <div class="ui negative message">
+                    {{ form_errors(form.smsNotification) }}
+                </div>
+            {% endif %}
+
+
+
+            <div class="field {{ form_errors(form.phoneNumber) ? 'error' : '' }}">
+                {{ form_label(form.phoneNumber) }}
+                <div class="ui input">
+                    {{ form_widget(form.phoneNumber) }}
+                </div>
+
+            </div>
+            {% if form_errors(form.phoneNumber) %}
+                <div class="ui negative message">
+                    {{ form_errors(form.phoneNumber) }}
+                </div>
+            {% endif %}
+
+
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+                <button class="ui submit labeled icon primary button" type="submit">
+                    <i class="edit icon"></i>
+                    {{ 'button.edit_notification'|trans }}
+                </button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,103 @@
+<form class="ui form"
+      action="{% if sportBet.id %}{{ path('forecast_sport_bet_edit', {id: sportBet.id}) }}{% else %}{{ path('forecast_sport_bet_add', {id: sportForecast.id}) }}{% endif %}"
+      method="post" novalidate
+      enctype="multipart/form-data">
+    {{ form_widget(form._token) }}
+
+    {{ form_widget(form._token) }}
+
+    <div class="field required {{ form_errors(form.winner) ? 'error' : '' }}">
+        {{ form_label(form.winner) }}
+        <div class="ui input">
+            {{ form_widget(form.winner) }}
+        </div>
+    </div>
+    {% if form_errors(form.winner) %}
+        <div class="ui negative message">
+            {{ form_errors(form.winner) }}
+        </div>
+    {% endif %}
+
+    <div class="field required {{ form_errors(form.playedAt) ? 'error' : '' }}">
+        {{ form_label(form.playedAt) }}
+        <div class="ui input">
+            {{ form_widget(form.playedAt) }}
+        </div>
+    </div>
+    {% if form_errors(form.playedAt) %}
+        <div class="ui negative message">
+            {{ form_errors(form.playedAt) }}
+        </div>
+    {% endif %}
+
+    <div class="field required {{ form_errors(form.rating) ? 'error' : '' }}">
+        {{ form_label(form.rating) }}
+        <div class="ui input">
+            {{ form_widget(form.rating) }}
+        </div>
+    </div>
+    {% if form_errors(form.rating) %}
+        <div class="ui negative message">
+            {{ form_errors(form.rating) }}
+        </div>
+    {% endif %}
+
+    <div class="field required {{ form_errors(form.sport) ? 'error' : '' }}">
+        {{ form_label(form.sport) }}
+        {{ form_widget(form.sport) }}
+    </div>
+    {% if form_errors(form.sport) %}
+        <div class="ui negative message">
+            {{ form_errors(form.sport) }}
+        </div>
+    {% endif %}
+
+    <div class="field {{ form_errors(form.championship) ? 'error' : '' }}">
+        {{ form_label(form.championship) }}
+        {{ form_widget(form.championship) }}
+        <a id="clearChampionship" href="#">
+            {{ 'label.clear'|trans }}
+        </a>
+    </div>
+    {% if form_errors(form.championship) %}
+        <div class="ui negative message">
+            {{ form_errors(form.championship) }}
+        </div>
+    {% endif %}
+
+    <div class="field {{ form_errors(form.analysis) ? 'error' : '' }}">
+        {{ form_label(form.analysis) }}
+        {{ form_widget(form.analysis) }}
+    </div>
+    {% if form_errors(form.analysis) %}
+        <div class="ui negative message">
+            {{ form_errors(form.analysis) }}
+        </div>
+    {% endif %}
+
+    <div class="field {{ form_errors(form.confidenceIndex) ? 'error' : '' }}">
+        {{ form_label(form.confidenceIndex) }}
+        {{ form_widget(form.confidenceIndex) }}
+    </div>
+    {% if form_errors(form.confidenceIndex) %}
+        <div class="ui negative message">
+            {{ form_errors(form.confidenceIndex) }}
+        </div>
+    {% endif %}
+
+    <div class="ui center aligned container">
+        <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+            {{ 'label.cancel'|trans }}
+        </a>
+        <button class="ui primary labeled icon button" type="submit">
+            {% if sportBet.id %}
+                <i class="edit icon"></i>
+                {{ 'button.edit'|trans }}
+            {% else %}
+                <i class="plus icon"></i>
+                {{ 'button.add'|trans }}
+            {% endif %}
+        </button>
+    </div>
+
+</form>

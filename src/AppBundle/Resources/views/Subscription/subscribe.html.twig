@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="ui container">
+
+        <h1 class="ui header">{{ 'title.tipster_subscribe_vip'|trans }}</h1>
+
+        <div class="ui text container">
+
+            <table class="ui celled table">
+                <thead>
+                <tr>
+                    <th>{{ 'label.service'|trans }}</th>
+                    <th>{{ 'label.duration'|trans }}</th>
+                    <th>{{ 'label.price'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ 'label.subscribe_to_vip'|trans }} {{ tipster.user.nickname }}</td>
+                    <td>du {{ createdAt|date('d/m/Y') }} au {{ finishedAt|date('d/m/Y') }}</td>
+                    <td style="text-align:right">{{ tipster.fee|number_format(2, ",", " ") }} &euro;</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="ui center aligned container">
+                <a class="ui primary huge button" href="{{ path('payment_checkout', {id: tipster.id}) }}">
+                    <i class="credit card alternative icon"></i>
+                    {{ 'label.paid_with_credit_card'|trans }}
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

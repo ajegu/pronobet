@@ -1,0 +1,44 @@
+<div class="ui three column center aligned grid">
+    <div class="column">
+        <div class="ui statistic">
+            <div class="label">
+                {{ 'label.last_win_strike'|trans }}
+            </div>
+            <div class="value">
+                {% for sportForecast in tipster.stats['sportForecasts'] %}
+                    {% if sportForecast.isCancelled %}
+                        <a class="ui black big circular label">A</a>
+                    {% else %}
+                        {% if sportForecast.isWon %}
+                            <a class="ui green big circular label">V</a>
+                        {% else %}
+                            <a class="ui red big circular label">D</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui statistic">
+            <div class="label">
+                {{ 'label.winRate'|trans }}
+            </div>
+            <div class="value">
+                {{ tipster.stats['sportForecastStats']['all']['winrate']|number_format(2, ',', ' ')  }} &#37;
+            </div>
+
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui statistic">
+            <div class="label">
+                {{ 'label.roi'|trans }}
+            </div>
+            <div class="value">
+                {{ tipster.stats['sportForecastStats']['all']['roi']|number_format(2, ',', ' ')  }} &#37;
+            </div>
+
+        </div>
+    </div>
+</div>

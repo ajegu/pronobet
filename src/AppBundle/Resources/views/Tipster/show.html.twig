@@ -1,0 +1,100 @@
+{% extends "::base.html.twig" %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+
+        {% set types = ["all", "vip", "free"] %}
+
+        {% for type in types %}
+
+        var ctx = document.getElementById("lineChart-{{ type }}").getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{% for label in stats['sportForecastStats'][type]['bankroll']['labels'] %}"{{ label }}",{% endfor %}],
+                datasets: [{
+                    fill: false,
+                    backgroundColor: '#ff6384',
+                    borderColor: '#ff6384',
+                    label: '{{ 'label.bankroll_evolution'|trans }}',
+                    data: [{% for data in stats['sportForecastStats'][type]['bankroll']['data'] %}"{{ data }}",{% endfor %}],
+                }]
+            }
+        });
+
+        var ctx = document.getElementById("sportChart-{{ type }}").getContext('2d');
+        var sportChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for label in stats['sportDataSet'][type]['labels'] %}"{{ label }}",{% endfor %}],
+                datasets: [{
+                    backgroundColor: '#61D3E5',
+                    borderColor: '#61D3E5',
+                    label: '{{ 'label.sport_win_rate'|trans }}',
+                    data: [{% for data in stats['sportDataSet'][type]['data'] %}"{{ data }}",{% endfor %}],
+                }]
+            }
+        });
+        {% endfor %}
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="ui container">
+
+        <div class="ui fluid card">
+
+            <div class="content">
+                <h1>
+                    <img class="ui rounded image" src="
+                    {% if tipster.picture %}
+                        {{ asset(vich_uploader_asset(tipster, 'pictureFile')) | imagine_filter('thumb50') }}
+                    {% else %}
+                        /image/image.png
+                    {% endif %}
+                    ">
+                    {{ tipster.user.nickname }}
+                </h1>
+            </div>
+
+            <div class="image">
+                <img src="
+                {% if tipster.picture %}
+                         {{ asset(vich_uploader_asset(tipster, 'coverFile')) | imagine_filter('tipsterCover') }}
+                {% else %}
+                    images/image.png
+                {% endif %}
+                ">
+            </div>
+
+            <div class="content">
+                <div class="ui two column stackable grid">
+                    <div class="column">
+                        {% include '@App/Tipster/free_subscription_segment.html.twig' with {tipster: tipster} %}
+                    </div>
+                    <div class="column">
+                        {% include '@App/Tipster/vip_subscription_segment.html.twig' with {tipster: tipster} %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui divider"></div>
+        <h2>{{ 'label.description'|trans }}</h2>
+        <p>{{ tipster.description }}</p>
+
+        <div class="ui divider"></div>
+        <h2>{{ 'label.statistics_all'|trans }}</h2>
+        {% include '@App/Tipster/tipster_stats.html.twig' with {stats: stats, type: 'all'} %}
+
+        <div class="ui divider"></div>
+        <h2>{{ 'label.statistics_vip'|trans }}</h2>
+        {% include '@App/Tipster/tipster_stats.html.twig' with {stats: stats, type: 'vip'} %}
+
+        <div class="ui divider"></div>
+        <h2>{{ 'label.statistics_free'|trans }}</h2>
+        {% include '@App/Tipster/tipster_stats.html.twig' with {stats: stats, type: 'free'} %}
+
+
+    </div>
+{% endblock %}

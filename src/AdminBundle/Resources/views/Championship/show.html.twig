@@ -1,0 +1,59 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            <i class="trophy icon"></i>
+            {{ 'title.championship_show'|trans }} {{ championship.name }}
+        </h1>
+
+        <a class="ui labeled icon button" href="{{ path('admin_championship_index', {id: championship.sport.id}) }}">
+            <i class="arrow left icon"></i>
+            {{ 'label.return_championship_index'|trans }}
+        </a>
+
+        <table class="ui definition table">
+            <tr>
+                <td>{{ 'label.sport'|trans }}</td>
+                <td>{{ championship.sport.name }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.name'|trans }}</td>
+                <td>{{ championship.name }}</td>
+            </tr>
+            <tr>
+                <td><i class="eye icon"></i>{{ 'label.visible'|trans }}</td>
+                <td>
+                    {% if championship.visible == true %}
+                        <i class="green big checkmark icon"></i>
+                    {% else %}
+                        <i class="red big remove icon"></i>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ 'label.createdAt'|trans }}</td>
+                <td>{{ championship.createdAt|date('d-m-Y - H:i') }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.updatedAt'|trans }}</td>
+                <td>{{ championship.updatedAt|date('d-m-Y - H:i') }}</td>
+            </tr>
+        </table>
+
+        <div class="ui center aligned container">
+            <a class="ui labeled icon primary button" href="{{ path('admin_championship_edit', {id: championship.id}) }}">
+                <i class="edit icon"></i>
+                {{ 'button.edit'|trans }}
+            </a>
+            <a class="ui red labeled icon button" href="{{ path('admin_championship_delete', {id: championship.id}) }}">
+                <i class="trash icon"></i>
+                {{ 'button.delete'|trans }}
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

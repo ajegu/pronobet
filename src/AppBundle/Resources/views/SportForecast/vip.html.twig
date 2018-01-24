@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style type="text/css">
+
+        .context.sportforecast {
+            margin-top: 1em;
+        }
+
+        div.ui.top.attached.filters.menu {
+            margin-bottom: 0.5em !important;
+        }
+
+        @media only screen and (min-width: 769px) {
+
+            div.ui.top.attached.filters.menu {
+                display: none;
+            }
+
+            div.ui.top.attached.filters.menu {
+                border: none;
+            }
+
+            div.ui.bottom.attached.segment.pushable {
+                border: none;
+            }
+
+            .content .meta {
+                margin-bottom: 1em !important;
+            }
+
+            body > div.pusher > div.site-content > div.context.sportforecast > div.ui.bottom.attached.segment.pushable {
+                background: none !important;
+            }
+
+        }
+
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $('.context.sportforecast .ui.sidebar')
+            .sidebar({
+                context: $('.context.sportforecast .bottom.segment')
+            })
+            .sidebar('attach events', '.context.sportforecast .filters .item')
+        ;
+
+        $('.rating')
+            .rating({
+                initialRating: 0,
+                maxRating: 5
+            })
+        ;
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div class="ui container">
+        <h1 class="ui header">
+            {{ 'title.sport_forecast_vip'|trans }}
+        </h1>
+    </div>
+
+    <div class="context sportforecast">
+        <div class="ui top attached filters menu">
+            <a class="item">
+                <i class="sidebar icon"></i>
+                {{ 'label.filters'|trans }}
+            </a>
+        </div>
+        <div class="ui bottom attached segment pushable">
+            {% include '@App/SportForecast/sport_forecast_sidebar_filters.html.twig' with {url: 'sport_forecast_vip'} %}
+            <div class="pusher">
+                <div class="ui container grid">
+                    <div class="four wide column computer only">
+                        {% include '@App/SportForecast/sport_forecast_filters.html.twig' with {url: 'sport_forecast_vip'} %}
+                    </div>
+                    <div class="twelve wide column computer only">
+                        {% include '@App/SportForecast/sport_forecast_items.html.twig' %}
+                    </div>
+                    <div class="sixteen wide column mobile tablet only">
+                        {% include '@App/SportForecast/sport_forecast_items.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

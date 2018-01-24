@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="ui text container">
+        <h1 class="ui header">{{ 'title.payment_failure'|trans }}</h1>
+
+        <div class="ui segment">
+            <p class="ui header">{{ 'label.payment_failure'|trans }}</p>
+            <p>{{ 'text.payment_failure'|trans }}</p>
+        </div>
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ path("contact") }}">{{ 'label.contact_us'|trans }}</a>
+            {% if subscription is not null %}
+                <a class="ui primary button" href="{{ path('payment_checkout', {id: subscription.tipster.id}) }}"
+                >{{ 'label.retry'|trans }}</a>
+            {% else %}
+                <a class="ui primary button" href="{{ path('homepage') }}"
+                >{{ 'label.home_return'|trans }}</a>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

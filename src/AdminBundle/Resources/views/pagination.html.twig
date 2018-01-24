@@ -1,0 +1,33 @@
+
+<div class="ui pagination fluid menu ">
+
+    <a class="item {% if 1 == page %}active{% endif %}" href="{{ path(route, {page: 1, id:id}) }}">1</a>
+    {% for i in 0..(total / count)|round(0, 'ceil') %}
+        {% if (i+1) == page %}
+
+            {% if page - 2 > 1 %}
+                <div class="disabled item">...</div>
+            {% endif %}
+
+            {% if page - 1 > 1 %}
+                <a class="item" href="{{ path(route, {page: i, id:id}) }}">{{ i }}</a>
+            {% endif %}
+
+            {% if (i+1) != 1 and (i+1) != (total/count)|round(0, 'ceil') %}
+                <a class="item {% if (i+1) == page %}active{% endif %}" href="{{ path(route, {page: (i+1), id:id}) }}">{{ i+1 }}</a>
+            {% endif %}
+            {% if page + 1 < (total/count)|round(0, 'ceil')  %}
+                <a class="item" href="{{ path(route, {page: (page+1), id:id}) }}">{{ page+1 }}</a>
+            {% endif %}
+
+            {% if page + 2 < (total/count)|round(0, 'ceil')  %}
+                <div class="disabled item">...</div>
+            {% endif %}
+
+        {% endif %}
+    {% endfor %}
+    {% if (total/count)|round(0, 'ceil') > 1 %}
+        <a class="item {% if (total/count)|round(0, 'ceil') == page %}active{% endif %}" href="{{ path(route, {page: ((total/count)|round(0, 'ceil')), id:id}) }}">{{ (total/count)|round(0, 'ceil') }}</a>
+    {% endif %}
+    <span class="header item right">Total : {{ total }}</span>
+</div>

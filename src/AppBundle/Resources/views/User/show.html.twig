@@ -1,0 +1,35 @@
+{% extends '@App/User/base.html.twig' %}
+
+{% block user_body %}
+    <h1 class="ui header">
+        {{ 'label.user_personal_data'|trans }}
+    </h1>
+
+    <div class="ui segment">
+
+        <div class="ui relaxed list">
+            <div class="item">
+                <h5>{{ 'label.email'|trans }}:</h5>
+                <span>{{ app.user.email }}</span>
+            </div>
+            <div class="item">
+                <h5>{{ 'label.password'|trans }}:</h5>
+                <span>******</span>
+            </div>
+            <div class="item">
+                <h5>{{ 'label.username'|trans }}:</h5>
+                <span>{{ app.user.nickname }}</span>
+            </div>
+            <div class="item">
+                <h5>{{ 'label.phoneNumber'|trans }}:</h5>
+                <span>{{ app.user.phoneNumber }}</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="ui center aligned container">
+        <a class="ui primary button" href="{{ path('user_edit', {id:app.user.id}) }}">
+            {{ 'button.edit_info'|trans }}
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="ui text container">
+        <h1 class="ui header">{{ 'title.subscribe_free'|trans }}</h1>
+
+        <div class="ui success message">
+            {{ 'message.subscribe_free'|trans }} {{ tipster.user.nickname }}
+        </div>
+
+        <div class="ui center aligned container">
+            <a class="ui primary button" href="{{ path('tipster_index') }}">
+                {{ 'label.return_to_tipster_list'|trans }}
+            </a>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,64 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        my_user_provider:
+            entity:
+                class: AppBundle:User
+                property: email
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            form_login:
+                login_path: login
+                check_path: login
+                csrf_token_generator: security.csrf.token_manager
+            provider: my_user_provider
+
+            logout:
+                path: /logout
+                target: /
+
+            remember_me:
+                secret: '%secret%'
+                lifetime: 604800
+                path: /
+
+            oauth:
+                resource_owners:
+                    facebook: "/login/check-facebook"
+                login_path: /login
+                use_forward: true
+                failure_path: /login
+                default_target_path: /redirect
+                oauth_user_provider:
+                    service: 'oauth.user_provider'
+
+    role_hierarchy:
+        ROLE_SUBSCRIBER:  ROLE_MEMBER
+        ROLE_TIPSTER:   ROLE_SUBSCRIBER
+        ROLE_ADMIN:   ROLE_SUBSCRIBER
+
+    access_control:
+        - { path: ^/user/[\d], roles: ROLE_MEMBER }
+        - { path: ^/forecast/, roles: ROLE_TIPSTER }
+        - { path: ^/api/, roles: ROLE_TIPSTER }
+        - { path: ^/admin/, roles: ROLE_ADMIN }
+
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

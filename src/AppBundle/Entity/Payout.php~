@@ -1,0 +1,105 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Payout
+ *
+ * @ORM\Table(name="payout")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\PayoutRepository")
+ */
+class Payout
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mangopay_payout_id", type="string", length=100)
+     */
+    private $mangoPayPayoutId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var Tipster
+     *
+     * @ORM\ManyToOne(targetEntity="Tipster", inversedBy="payouts")
+     * @ORM\JoinColumn(name="tipster_id", referencedColumnName="id")
+     */
+    private $tipster;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set setMangoPayPayoutId
+     *
+     * @param string $mangoPayPayoutId
+     *
+     * @return Payout
+     */
+    public function setMangoPayPayoutId($mangoPayPayoutId)
+    {
+        $this->mangoPayPayoutId = $mangoPayPayoutId;
+
+        return $this;
+    }
+
+    /**
+     * Get getMangoPayPayoutId
+     *
+     * @return string
+     */
+    public function getMangoPayPayoutId()
+    {
+        return $this->mangoPayPayoutId;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Payout
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+}
+

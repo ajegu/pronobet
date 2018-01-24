@@ -1,0 +1,142 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block javascript_charts %}
+
+    jQuery.datetimepicker.setLocale('fr');
+    jQuery('#start_datetimepicker').datetimepicker({
+    timepicker: false,
+    format: 'd/m/Y',
+    dayOfWeekStart: 1
+    });
+    jQuery('#end_datetimepicker').datetimepicker({
+    timepicker: false,
+    format: 'd/m/Y',
+    dayOfWeekStart: 1
+    });
+
+    {% set types = ["all", "vip", "free"] %}
+
+    {% for type in types %}
+
+        var ctx = document.getElementById("lineChart-{{ type }}").getContext('2d');
+        var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+        labels: [{% for label in stats['sportForecastStats'][type]['bankroll']['labels'] %}"{{ label }}",{% endfor %}],
+        datasets: [{
+        fill: false,
+        backgroundColor: '#ff6384',
+        borderColor: '#ff6384',
+        label: '{{ 'label.bankroll_evolution'|trans }}',
+        data: [{% for data in stats['sportForecastStats'][type]['bankroll']['data'] %}"{{ data }}",{% endfor %}],
+        }]
+        }
+        });
+
+        var ctx = document.getElementById("sportChart-{{ type }}").getContext('2d');
+        var sportChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: [{% for label in stats['sportDataSet'][type]['labels'] %}"{{ label }}",{% endfor %}],
+        datasets: [{
+        backgroundColor: '#61D3E5',
+        borderColor: '#61D3E5',
+        label: '{{ 'label.sport_win_rate'|trans }}',
+        data: [{% for data in stats['sportDataSet'][type]['data'] %}"{{ data }}",{% endfor %}],
+        }]
+        }
+        });
+    {% endfor %}
+
+{% endblock %}
+
+{% block forecast_content %}
+
+    <h1 class="ui header"><i class="area chart icon"></i>{{ 'title.dashboard'|trans }}</h1>
+
+    <div class="ui one column grid">
+        <div class="column computer only">
+            <div class="ui divider"></div>
+            <div class="ui menu">
+                <div class="item">
+                    <a class="ui button"
+                       href="{{ path("forecast_sport_forecast_add") }}">
+                        <i class="plus icon"></i>
+                        {{ 'button.add_sport_forecast'|trans }}
+                    </a>
+                </div>
+
+
+                <div class="right menu">
+                    <div class="item">
+                        <form action="{{ path('forecast_index') }}" method="get" class="ui form">
+                            <div class="inline field">
+                                <label for="start_datetimepicker">{{ 'label.startDate'|trans }}</label>
+                                <input id="start_datetimepicker" type="text" name="start_date" value="{{ startDate }}"/>
+                                <label for="end_datetimepicker" style="margin-left:10px">{{ 'label.endDate'|trans }}</label>
+                                <input id="end_datetimepicker" type="text" name="end_date" value="{{ endDate }}"/>
+                                <button class="ui primary button" type="submit">
+                                    <i class="line chart icon"></i>
+                                    {{ 'label.generate'|trans }}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="column mobile tablet only">
+            <div class="ui divider"></div>
+
+            <div class="ui segment">
+                <div class="ui center aligned container">
+                    <a class="ui primary button"
+                       href="{{ path("forecast_sport_forecast_add") }}">
+                        <i class="plus icon"></i>
+                        {{ 'button.add_sport_forecast'|trans }}
+                    </a>
+                </div>
+
+                <div class="ui divider"></div>
+
+                <form action="{{ path('forecast_index') }}" method="get" class="ui form">
+                    <div class="field">
+                        <label for="start_datetimepicker">{{ 'label.startDate'|trans }}</label>
+                        <input id="start_datetimepicker" type="text" name="start_date" value="{{ startDate }}"/>
+                    </div>
+                    <div class="field">
+                        <label for="end_datetimepicker" style="margin-left:10px">{{ 'label.endDate'|trans }}</label>
+                        <input id="end_datetimepicker" type="text" name="end_date" value="{{ endDate }}"/>
+                    </div>
+
+                    <div class="ui center aligned container">
+                        <button class="ui button" type="submit">
+                            <i class="line chart icon"></i>
+                            {{ 'label.generate'|trans }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui segment">
+        <div class="ui header">{{ 'label.statistics_all'|trans }}</div>
+        <div class="ui divider"></div>
+        {% include '@Forecast/Default/sport_forecast_stats.html.twig' with {type: 'all', stats: stats} %}
+    </div>
+
+    <div class="ui segment">
+        <div class="ui header">{{ 'label.statistics_vip'|trans }}</div>
+        <div class="ui divider"></div>
+        {% include '@Forecast/Default/sport_forecast_stats.html.twig' with {type: 'vip', stats: stats} %}
+    </div>
+
+    <div class="ui segment">
+        <div class="ui header">{{ 'label.statistics_free'|trans }}</div>
+        <div class="ui divider"></div>
+        {% include '@Forecast/Default/sport_forecast_stats.html.twig' with {type: 'free', stats: stats} %}
+    </div>
+
+{% endblock %}

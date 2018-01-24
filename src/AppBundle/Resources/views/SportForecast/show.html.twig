@@ -1,0 +1,243 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style type="text/css">
+        .content .meta {
+
+            margin-top: 1em;
+        }
+
+        .content .extra {
+            margin-top: 1em;
+        }
+
+        .bordered {
+            border: none !important;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {% if sportForecast.isVip %}
+        {% set type = 'vip' %}
+    {% else %}
+        {% set type = 'free' %}
+    {% endif %}
+    <script>
+        var ctx = document.getElementById("lineChart").getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{% for label in tipsterStats['sportForecastStats'][type]['bankroll']['labels'] %}"{{ label }}",{% endfor %}],
+                datasets: [{
+                    fill: false,
+                    backgroundColor: '#ff6384',
+                    borderColor: '#ff6384',
+                    label: '{{ 'label.bankroll_evolution'|trans }}',
+                    data: [{% for data in tipsterStats['sportForecastStats'][type]['bankroll']['data'] %}"{{ data }}",{% endfor %}],
+                }]
+            }
+        });
+
+        $('.rating')
+            .rating({
+                initialRating: 0,
+                maxRating: 5
+            })
+        ;
+
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    {% if sportForecast.isVip %}
+        {% set type = 'vip' %}
+    {% else %}
+        {% set type = 'free' %}
+    {% endif %}
+
+    <div class="ui container">
+
+        <div class="content">
+            <div class="header">
+                <h1>
+                    {% if sportForecast.title %}
+                        {{ sportForecast.title }}
+                    {% else %}
+                        {{ 'label.sport_forecast_number'|trans }}{{ sportForecast.id }}
+                    {% endif %}
+                </h1>
+            </div>
+            <div class="meta">
+                <div class="ui two column grid">
+                    <div class="column">
+                        <span>{{ 'label.published_at'|trans }} {{ sportForecast.publishedAt|date('d/m/Y') }}
+                            à {{ sportForecast.publishedAt|date('H:i') }}</span>
+                    </div>
+                    <div class="column right aligned">
+                        {% if sportForecast.isVip %}
+                            <span class="ui yellow label">{{ 'label.VIP'|trans }}</span>
+                        {% else %}
+                            <span class="ui blue label">{{ 'label.free'|trans }}</span>
+                        {% endif %}
+                        {% if sportForecast.isValidate %}
+                            {% if sportForecast.cancelled %}
+                                <span class="ui black label">{{ 'label.cancelled'|trans }}</span>
+                            {% else %}
+                                {% if sportForecast.isWon %}
+                                    <span class="ui green label">{{ 'label.win'|trans }}</span>
+                                {% else %}
+                                    <span class="ui red label">{{ 'label.loose'|trans }}</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui two column stackable grid">
+                <div class="six wide column">
+                    <a class="image-link" href="{{ medias_url }}{{ sportForecast.ticket }}">
+                        <div class="ui fluid bordered rounded image">
+                            {% if sportForecast.ticket %}
+                                <img src="{{ sportForecast.ticket | imagine_filter('thumb400') }}"/>
+                            {% else %}
+                                <img src="{{ 'image.png' | imagine_filter('thumb400') }}"/>
+                            {% endif %}
+                        </div>
+                    </a>
+                </div>
+                <div class="ten wide column">
+                    {% include '@App/SportForecast/sport_bet_list.html.twig' %}
+                </div>
+            </div>
+
+            <div class="extra content">
+                {% include '@App/SportForecast/sport_forecast_extra.html.twig' %}
+            </div>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <h2>{{ 'label.info_tipster'|trans }}</h2>
+
+        <div class="ui items">
+            <div class="item">
+                <div class="image">
+                    {% if sportForecast.tipster.picture %}
+                        <img src="{{ asset(vich_uploader_asset(sportForecast.tipster, 'pictureFile')) | imagine_filter('thumb250') }}">
+                    {% endif %}
+                </div>
+                <div class="content">
+                    <div class="header">
+                        {{ sportForecast.tipster.user.nickname }}
+                    </div>
+                    <div class="description">
+                        <div class="ui three column stackable center aligned middle aligned basic segment grid">
+                            <div class="column">
+                                <div class="ui statistic">
+                                    <div class="label">
+                                        {{ 'label.winRate'|trans }}
+                                    </div>
+                                    <div class="value">
+                                        {{ tipsterStats['sportForecastStats'][type]['winrate']|number_format(2, ',', ' ') }}&#37;
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui statistic">
+                                    <div class="label">
+                                        {{ 'label.roi'|trans }}
+                                    </div>
+                                    <div class="value">
+                                        {{ tipsterStats['sportForecastStats'][type]['roi']|number_format(2, ',', ' ') }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="ui statistic">
+                                    <div class="label">
+                                        {{ 'label.last_win_strike'|trans }}
+                                    </div>
+                                    <div class="value">
+                                        {% for sportForecast in tipsterStats['sportForecasts'] %}
+                                            {% if sportForecast.isCancelled %}
+                                                <a class="ui black big circular label">A</a>
+                                            {% else %}
+                                                {% if sportForecast.isWon %}
+                                                    <a class="ui green big circular label">V</a>
+                                                {% else %}
+                                                    <a class="ui red big circular label">D</a>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--
+                            <div class="height wide column">
+                                <canvas id="lineChart"></canvas>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                    <div class="extra">
+                        <a class="ui button right floated"
+                           href="{{ path('tipster_show', {id: sportForecast.tipster.id}) }}">
+                            {{ 'label.show_tipster'|trans }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div class="ui padded stackable grid">
+            <div class="five wide column">
+                <h2>
+                    {{ 'label.comments'|trans }}
+                </h2>
+            </div>
+            <div class="eleven wide column">
+                <div class="ui comments">
+                    {% for comment in sportForecast.comments %}
+                        <div class="comment">
+                            <div class="content">
+                                <a class="author">{{ comment.user.nickname }}</a>
+                                <div class="metadata">
+                                    <span class="date">le {{ comment.createdAt|date('d/m/Y') }}
+                                        à {{ comment.createdAt|date('H:i:s') }}</span>
+                                </div>
+                                <div class="text">
+                                    {{ comment.text }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <form class="ui form" action="{{ path('comment_add', {id: sportForecast.id}) }}" method="post"
+                          novalidate>
+                        {{ form_widget(commentForm._token) }}
+
+                        <div class="field required {{ form_errors(commentForm.text) ? 'error' : '' }}">
+                            {{ form_widget(commentForm.text) }}
+                        </div>
+                        {% if form_errors(commentForm.text) %}
+                            <div class="ui negative message">
+                                {{ form_errors(commentForm.text) }}
+                            </div>
+                        {% endif %}
+
+                        <button class="ui blue labeled submit icon button" type="submit">
+                            <i class="icon edit"></i> {{ 'button.add_reply'|trans }}
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

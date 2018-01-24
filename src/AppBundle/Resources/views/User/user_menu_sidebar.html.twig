@@ -1,0 +1,19 @@
+<div class="ui inverted vertical sidebar menu">
+    <div class="item">
+        <i class="user icon"></i>
+        {{ 'label.my_account'|trans }}
+        <div class="menu">
+            <a class="item {% if app.request.attributes.get('_route') == 'user_show' %}active{% endif %}"
+               href="{{ path('user_show') }}">
+                {{ 'label.user_personal_data'|trans }}
+            </a>
+            <a class="item {% if app.request.attributes.get('_route') == 'user_tipster_subscription' %}active{% endif %}"
+               href="{{ path('user_tipster_subscription') }}">
+                {{ 'label.my_tipsters'|trans }}</a>
+            <a class="item {% if app.request.attributes.get('_route') == 'user_newsletter_subscription' %}active{% endif %}"
+               href="{{ path('user_newsletter_subscription') }}">{{ 'label.newsletter'|trans }}</a>
+            <a class="item {% if app.request.attributes.get('_route') == 'user_payment_history' %}active{% endif %}"
+               href="{{ path('user_payment_history') }}">{{ 'label.payments_history'|trans }}</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<table class="ui celled center aligned table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>{{ 'label.sport'|trans }}</th>
+        <th>{{ 'label.winner'|trans }}</th>
+        <th>{{ 'label.rating'|trans }}</th>
+        <th>{{ 'label.confidence_index'|trans }}</th>
+        <th>{{ 'label.playedAt'|trans }}</th>
+        <th>{{ 'label.championship'|trans }}</th>
+        <th>{{ 'label.state'|trans }}</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for sportBet in sportForecast.sportBets %}
+        <tr>
+            <td>{{ sportBet.id }}</td>
+            <td>
+                {% if sportBet.sport.icon != '' %}
+                    <img width="32px" src="{{ medias_url }}{{ sportBet.sport.icon }}"/>
+                {% else %}
+                    {{ sportBet.sport.name }}
+                {% endif %}
+            </td>
+            <td>{{ sportBet.winner }}</td>
+            <td>{{ sportBet.rating|number_format(2, ",", " ") }}</td>
+            <td>
+                <div class="ui star rating" data-rating="{{ sportBet.confidenceIndex }}" data-max-rating="5"></div>
+            </td>
+            <td class="{{ sportBet.checkDate == false and sportBet.sportForecast.isEditable ? 'error' : '' }}">
+                {{ sportBet.playedAt|date('d-m-Y - H:i') }}
+            </td>
+            <td>
+                {% if sportBet.championship is not null %}
+                    {{ sportBet.championship.name }}
+                {% endif %}
+            </td>
+            <td>
+                {% if sportBet.sportForecast.isValidate %}
+                    {% if sportBet.cancelled %}
+                        <span class="ui black label">{{ "label.cancelled"|trans }}</span>
+                    {% else %}
+                        {% if sportBet.isWon %}
+                            <span class="ui green label">{{ "label.won"|trans }}</span>
+                        {% else %}
+                            <span class="ui red label">{{ "label.lose"|trans }}</span>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    {% if sportBet.checkDate == false and sportBet.sportForecast.isEditable %}
+                        <span class="ui red label">{{ "label.invalid"|trans }}</span>
+                    {% else %}
+                        <span class="ui green label">{{ "label.valid"|trans }}</span>
+                    {% endif %}
+                {% endif %}
+            </td>
+            <td>
+                {% if sportBet.sportForecast.isEditable == true %}
+                    <div class="ui blue buttons">
+                        <div class="ui button">Actions</div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item"
+                                   href="{{ path('forecast_sport_bet_edit', {id: sportBet.id}) }}">
+                                    <i class="edit icon"></i>
+                                    {{ 'button.edit'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('forecast_sport_bet_delete', {id: sportBet.id}) }}">
+                                    <i class="trash icon"></i>
+                                    {{ 'button.delete'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="9">
+            {% if sportForecast.isEditable == true %}
+                <a class="ui button"
+                   href="{{ path('forecast_sport_bet_add', {id: sportForecast.id}) }}">
+                    <i class="plus icon"></i>
+                    {{ 'button.add_sport_bet'|trans }}
+                </a>
+            {% endif %}
+        </th>
+    </tr>
+    </tfoot>
+</table>

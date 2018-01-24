@@ -1,0 +1,5 @@
+<h3>{{ 'title.confirm_new_user'|trans }}</h3>
+
+<p>{{ 'message.confirm_new_user'|trans }}</p>
+<p>{{ 'message.confirm_email'|trans }}</p>
+<a href="{{ url('user_confirm_email', {'id': user.id, 'email': user.email}) }}">{{ url('user_confirm_email', {'id': user.id, 'email': user.email}) }}</a>

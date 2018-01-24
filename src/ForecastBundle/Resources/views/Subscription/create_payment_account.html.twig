@@ -1,0 +1,21 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            {{ 'label.create_payment_account'|trans }}
+        </h1>
+
+        <form class="ui segment form" action="{{ path('forecast_subscription_create_payment_account') }}" method="post" novalidate>
+            {% include '@Forecast/Subscription/payment_account_fields.html.twig' with {form: form} %}
+        </form>
+
+        <div class="ui icon message">
+            <i class="info icon"></i>
+            <p>{{ 'text.tipster_payment_account_infos'|trans }}</p>
+        </div>
+    </div>
+
+{% endblock %}

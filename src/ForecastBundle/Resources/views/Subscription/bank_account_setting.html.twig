@@ -1,0 +1,66 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            {{ 'label.bank_account_setting'|trans }}
+        </h1>
+
+        {% if form is defined %}
+            {%  include '@Forecast/Subscription/bank_account_form.html.twig' with {form: form } %}
+        {% else %}
+            <div class="ui segment">
+                <div class="ui header">{{ 'label.bank_account_informations'|trans }}</div>
+                <table class="ui celled table">
+                    <tr>
+                        <td>{{ 'label.iban'|trans }}</td>
+                        <td>{{ bankAccount.Details.IBAN }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.bic'|trans }}</td>
+                        <td>{{ bankAccount.Details.BIC }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="ui segment">
+                <div class="ui header">{{ 'label.owner_informations'|trans }}</div>
+                <table class="ui definition table">
+                    <tr>
+                        <td>{{ 'label.owner_name'|trans }}</td>
+                        <td>{{ bankAccount.OwnerName }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.address_line_1'|trans }}</td>
+                        <td>{{ bankAccount.OwnerAddress.AddressLine1 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.address_line_2'|trans }}</td>
+                        <td>{{ bankAccount.OwnerAddress.AddressLine2 }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.postal_code'|trans }}</td>
+                        <td>{{ bankAccount.OwnerAddress.PostalCode }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.city'|trans }}</td>
+                        <td>{{ bankAccount.OwnerAddress.City }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.country'|trans }}</td>
+                        <td>{{ bankAccount.OwnerAddress.Country }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ui center aligned container">
+                <a class="ui primary labeled icon button" href="{{ path('forecast_edit_bank_account') }}">
+                    <i class="edit icon"></i>
+                    {{ 'label.edit_bank_account'|trans }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

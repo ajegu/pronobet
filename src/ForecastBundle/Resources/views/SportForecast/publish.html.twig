@@ -1,0 +1,52 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="checkmark icon"></i>
+            {{ 'title.sport_forecast_publish'|trans }} #{{ sportForecast.id }}
+        </h1>
+
+        <div class="ui divider"></div>
+
+        <div class="ui segment">
+            <div class="ui warning message segment">
+                <i class="warning icon"></i>
+                {{ 'text.sport_forecast_publish'|trans }} ?
+            </div>
+
+            <div class="ui segment">
+                <div class="ui header">{{ sportForecast.title }}</div>
+                <ul>
+                    <li>{{ 'label.isVip'|trans }} : <b>{{ sportForecast.isVip ? 'label.yes'|trans : 'label.no'|trans }}</b></li>
+                    <li>{{ 'label.betting'|trans }} : <b>{{ sportForecast.betting|number_format(2, ',') }} &euro;</b></li>
+                    <li>{{ 'label.global_rating'|trans }} : <b>{{ sportForecast.globalRating|number_format(2, ',') }}</b></li>
+                    <li>{{ 'label.winning'|trans }} : <b>{{ sportForecast.winning|number_format(2, ',') }} &euro; </b></li>
+                </ul>
+                {% for sportBet in sportForecast.sportBets %}
+                    <div class="ui segment">
+                        <ul>
+                            <li>{{ 'label.winner'|trans }} : <b>{{ sportBet.winner }}</b></li>
+                            <li>{{ 'label.rating'|trans }} : <b>{{ sportBet.rating }}</b></li>
+                            <li>{{ 'label.playedAt'|trans }} : <b>{{ sportBet.playedAt|date('d/m/Y H:s') }}</b></li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {{  form_start(form) }}
+            {{ form_widget(form._token) }}
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="share icon"></i>
+                    {{ 'button.publish'|trans }}
+                </button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

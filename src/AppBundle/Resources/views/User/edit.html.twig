@@ -1,0 +1,78 @@
+{% extends '@App/User/base.html.twig' %}
+
+{% block user_body %}
+
+    <h1 class="ui header">
+        {{ 'title.user_edit'|trans }}
+    </h1>
+
+<div class="ui segment">
+    <form class="ui form" action="{{ path('user_edit', {id: user.id}) }}" method="post" novalidate>
+        {{ form_widget(form._token) }}
+
+        <div class="field required {{ form_errors(form.email) ? 'error' : '' }}">
+            {{ form_label(form.email) }}
+            <div class="ui left icon input">
+                <i class="at icon"></i>
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        {% if form_errors(form.email) %}
+            <div class="ui negative message">
+                {{ form_errors(form.email) }}
+            </div>
+        {% endif %}
+        <div class="field {{ form_errors(form.nickname) ? 'error' : '' }}">
+            {{ form_label(form.nickname) }}
+            <div class="ui left icon input">
+                <i class="user icon"></i>
+                {{ form_widget(form.nickname) }}
+            </div>
+        </div>
+        {% if form_errors(form.nickname) %}
+            <div class="ui negative message">
+                {{ form_errors(form.nickname) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.plainPassword) ? 'error' : '' }}">
+            {{ form_label(form.plainPassword) }}
+            <div class="ui left icon input">
+                <i class="lock icon"></i>
+                {{ form_widget(form.plainPassword) }}
+            </div>
+        </div>
+        {% if form_errors(form.plainPassword) %}
+            <div class="ui negative message">
+                {{ form_errors(form.plainPassword) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.phoneNumber) ? 'error' : '' }}">
+            {{ form_label(form.phoneNumber) }}
+            <div class="ui left icon input">
+                <i class="mobile icon"></i>
+                {{ form_widget(form.phoneNumber) }}
+            </div>
+        </div>
+        {% if form_errors(form.phoneNumber) %}
+            <div class="ui negative message">
+                {{ form_errors(form.phoneNumber) }}
+            </div>
+        {% endif %}
+
+        <div class="ui center aligned container">
+            <button class="ui submit primary button" type="submit">
+                {{ 'button.edit_info'|trans }}
+            </button>
+        </div>
+    </form>
+    <br>
+    <a href="{{ path('user_show', {id: user.id}) }}">{{ 'label.return'|trans }}</a>
+    {%  if error != null %}
+        <div class="ui negative message">
+            <span>{{ error|trans }}</span>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

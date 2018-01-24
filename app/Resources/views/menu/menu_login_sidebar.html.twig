@@ -1,0 +1,32 @@
+<div class="item"></div>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <a class="item" href="{{ path('admin_index') }}">ADMIN</a>
+{% endif %}
+
+{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+    <div class="item">
+        <div class="header">{{ app.user.username }}</div>
+        <div class="menu">
+
+            <a class="item {% if app.request.attributes.get('_route') == 'user_show' %}active{% endif %}"
+               href="{{ path('user_show', {id: app.user.id}) }}">
+                <i class="user icon"></i>
+                {{ 'label.my_account'|trans }}
+            </a>
+
+            <a class="item" href="{{ path('logout') }}">
+                <i class="sign out icon"></i>{{ 'button.logout'|trans }}
+            </a>
+
+        </div>
+    </div>
+
+
+{% else %}
+    <a class="item {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}"
+       href="{{ path('login') }}">{{ 'button.login'|trans }}</a>
+    <a class="item {% if app.request.attributes.get('_route') == 'user_new' %}active{% endif %}"
+       href="{{ path('user_new') }}">{{ 'button.signup'|trans }}</a>
+{% endif %}

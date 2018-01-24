@@ -1,0 +1,14 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="trophy icon"></i>
+            {{ 'title.championship_add'|trans }} {{ sport.name }}
+        </h1>
+
+        {% include '@Admin/Championship/form.html.twig' %}
+    </div>
+
+{% endblock %}

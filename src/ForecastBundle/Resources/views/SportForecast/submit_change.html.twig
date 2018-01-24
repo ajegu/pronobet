@@ -1,0 +1,48 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="mail icon"></i>
+            {{ 'title.sport_forecast_submit_change'|trans }} #{{ sportForecast.id }}
+        </h1>
+
+        <div class="ui divider"></div>
+
+        <div class="ui icon message">
+            <i class="info icon"></i>
+            <div class="content">
+                {{ 'text.sport_forecast_submit_change'|trans }} <b>#{{ sportForecast.id }}</b>
+            </div>
+        </div>
+
+
+        <form class="ui form" action="{{ path('forecast_sport_forecast_submit_change', {id: sportForecast.id}) }}"
+              method="post" novalidate>
+            {{ form_widget(form._token) }}
+
+            <div class="field {{ form_errors(form.message) ? 'error' : '' }}">
+                {{ form_label(form.message) }}
+                <div class="ui input">
+                    {{ form_widget(form.message) }}
+                </div>
+            </div>
+            {% if form_errors(form.message) %}
+                <div class="ui negative message">
+                    {{ form_errors(form.message) }}
+                </div>
+            {% endif %}
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="mail icon"></i>
+                    {{ 'button.submit_change'|trans }}
+                </button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

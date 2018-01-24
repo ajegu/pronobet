@@ -1,0 +1,13 @@
+services:
+#    forecast.example:
+#        class: ForecastBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    forecast.notification_listener:
+        class: ForecastBundle\EventListener\NotificationListener
+        arguments: ["@doctrine.orm.entity_manager", "@session", "@security.token_storage"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+    tipster:
+        class: ForecastBundle\Service\TipsterService
+        arguments: ["@doctrine.orm.entity_manager"]

@@ -1,0 +1,180 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <h1 class="ui header">
+        <i class="share alternate icon"></i>
+        {{ 'title.sport_forecast_show'|trans }} #{{ sportForecast.id }}
+    </h1>
+
+    <div class="ui divider"></div>
+
+    <div class="ui stackable text menu">
+        <div class="item">
+            <a class="ui fluid labeled icon primary button"
+               href="{{ path('admin_sport_forecast_edit_sport_forecast', {id: sportForecast.id}) }}">
+                <i class="edit icon"></i>
+                {{ 'button.edit'|trans }}
+            </a>
+        </div>
+        {% if sportForecast.isValidate %}
+            <div class="item">
+                <a class="ui fluid labeled icon button"
+                   href="{{ path('admin_sport_forecast_restore_to_validate', {id: sportForecast.id}) }}">
+                    <i class="checkmark box icon"></i>
+                    {{ 'button.restore_to_validate'|trans }}
+                </a>
+            </div>
+        {% else %}
+            <div class="item">
+                <a class="ui fluid labeled icon button"
+                   href="{{ path('admin_sport_forecast_restore_unpublished', {id: sportForecast.id}) }}">
+                    <i class="delete calendar icon"></i>
+                    {{ 'button.restore_unpublished'|trans }}
+                </a>
+            </div>
+        {% endif %}
+
+    </div>
+
+    {% if sportForecast.isPublishable == false and sportForecast.publishedAt is null and sportForecast.sportBets|length > 0 %}
+        <div class="ui error icon message">
+            <i class="warning sign icon"></i>
+            <div class="content">
+                <p>{{ 'text.sport_forecast_unpublishable'|trans }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="ui two column stackable grid">
+        <div class="sixteen wide tablet six wide computer column">
+            <div class="ui segment">
+                <table class="ui definition table">
+                    <tr>
+                        <td>{{ 'label.title'|trans }}</td>
+                        <td>{{ sportForecast.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.betting'|trans }}</td>
+                        <td>{{ sportForecast.betting|number_format(2, ',') }} &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.ticket'|trans }}</td>
+                        <td>
+                            {% if sportForecast.ticket %}
+                                <img width="300px" src="{{ medias_url }}{{ sportForecast.ticket }}"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.isVip'|trans }}</td>
+                        <td>
+                            {% if sportForecast.isVip %}
+                                <span class="ui green label">{{ 'label.yes'|trans }}</span>
+                            {% else %}
+                                <span class="ui red label">{{ 'label.no'|trans }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.bookmaker'|trans }}</td>
+                        <td>
+                            {% if sportForecast.bookmaker is not null %}
+                                {{ sportForecast.bookmaker.name }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.global_rating'|trans }}</td>
+                        <td>{{ sportForecast.globalRating|number_format(2, ',') }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.winning'|trans }}</td>
+                        <td>{{ sportForecast.winning|number_format(2, ',') }} &euro;</td>
+                    </tr>
+                </table>
+
+                {% if sportForecast.isEditable == true %}
+                    <div class="ui center aligned container">
+                        <a class="ui primary button" href="{{ path('forecast_sport_forecast_edit', {id: sportForecast.id}) }}">
+                            <i class="edit icon"></i>
+                            {{ 'button.edit'|trans }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="sixteen wide tablet ten wide computer column">
+            <div class="ui segment">
+                <table class="ui celled center aligned table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>{{ 'label.sport'|trans }}</th>
+                        <th>{{ 'label.winner'|trans }}</th>
+                        <th>{{ 'label.rating'|trans }}</th>
+                        <th>{{ 'label.confidence_index'|trans }}</th>
+                        <th>{{ 'label.playedAt'|trans }}</th>
+                        <th>{{ 'label.championship'|trans }}</th>
+                        <th>{{ 'label.state'|trans }}</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sportBet in sportForecast.sportBets %}
+                        <tr>
+                            <td>{{ sportBet.id }}</td>
+                            <td>
+                                {% if sportBet.sport.icon != '' %}
+                                    <img width="32px" src="{{ medias_url }}{{ sportBet.sport.icon }}"/>
+                                {% else %}
+                                    {{ sportBet.sport.name }}
+                                {% endif %}
+                            </td>
+                            <td>{{ sportBet.winner }}</td>
+                            <td>{{ sportBet.rating|number_format(2, ",", " ") }}</td>
+                            <td>
+                                <div class="ui star rating" data-rating="{{ sportBet.confidenceIndex }}" data-max-rating="5"></div>
+                            </td>
+                            <td class="{{ sportBet.checkDate == false and sportBet.sportForecast.isEditable ? 'error' : '' }}">
+                                {{ sportBet.playedAt|date('d-m-Y - H:i') }}
+                            </td>
+                            <td>
+                                {% if sportBet.championship is not null %}
+                                    {{ sportBet.championship.name }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sportBet.sportForecast.isValidate %}
+                                    {% if sportBet.cancelled %}
+                                        <span class="ui black label">{{ "label.cancelled"|trans }}</span>
+                                    {% else %}
+                                        {% if sportBet.isWon %}
+                                            <span class="ui green label">{{ "label.won"|trans }}</span>
+                                        {% else %}
+                                            <span class="ui red label">{{ "label.lose"|trans }}</span>
+                                        {% endif %}
+                                    {% endif %}
+                                {% else %}
+                                    {% if sportBet.checkDate == false and sportBet.sportForecast.isEditable %}
+                                        <span class="ui red label">{{ "label.invalid"|trans }}</span>
+                                    {% else %}
+                                        <span class="ui green label">{{ "label.valid"|trans }}</span>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a class="ui icon button"
+                                   href="{{ path('admin_sport_forecast_edit_sport_bet', {id: sportBet.id}) }}">
+                                    <i class="edit icon"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

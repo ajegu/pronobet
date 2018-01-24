@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    <style type="text/css">
+        .homepage {
+            padding-top: 10px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="ui container homepage">
+        <img class="ui centered image" src="{{ asset('/images/image.png') }}" height="500px" width="1100px;">
+
+        <div class="ui divider"></div>
+
+        <div class="ui center aligned container">
+            <h1 class="ui header">accroche marketing de la plateforme</h1>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div class="ui three column center aligned grid">
+            <div class="column">
+                <div class="ui header">Les derniers pronostics</div>
+            </div>
+            <div class="column">
+                <div class="ui header">Le classement des tipsters</div>
+            </div>
+            <div class="column">
+                <div class="ui header">Autre module...</div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+<div class="ui vertical fluid menu">
+
+    <a class="item {% if app.request.attributes.get('_route') == 'forecast_index' %}active{% endif %}" href="{{ path('forecast_index') }}">
+        <i class="area chart icon"></i>{{ 'title.dashboard'|trans }}
+    </a>
+
+    <div class="item">
+        <i class="users icon"></i>
+        <b>{{ 'title.subscription_managment'|trans }}</b>
+        <div class="menu">
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_subscription_account_setting' %}active{% endif %}"
+            href="{{ path('forecast_subscription_account_setting') }}">
+                {{ 'label.account_setting'|trans }}
+            </a>
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_bank_account_setting' %}active{% endif %}"
+               href="{{ path('forecast_bank_account_setting') }}">
+                {{ 'label.bank_account_setting'|trans }}
+            </a>
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_payout_setting' %}active{% endif %}"
+               href="{{ path('forecast_payout_setting') }}">
+                {{ 'label.payout_setting'|trans }}
+            </a>
+        </div>
+    </div>
+
+    <div class="item">
+        <i class="share alternate icon"></i>
+        <b>{{ 'title.sport_forecast_managment'|trans }}</b>
+        <div class="menu">
+
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_sport_forecast_unpublished' %}active{% endif %}"
+               href="{{ path('forecast_sport_forecast_unpublished') }}">
+                {{ 'title.sport_forecast_unpublished'|trans }}
+                {% if app.session.get('sport_forecast_unpublished') > 0 %}
+                    <span class="ui blue label">{{ app.session.get('sport_forecast_unpublished') }}</span>
+                {% endif %}
+            </a>
+
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_sport_forecast_in_progress' %}active{% endif %}"
+               href="{{ path('forecast_sport_forecast_in_progress') }}">
+                {{ 'title.sport_forecast_in_progress'|trans }}
+                {% if app.session.get('sport_forecast_in_progress') > 0 %}
+                    <span class="ui green label">{{ app.session.get('sport_forecast_in_progress') }}</span>
+                {% endif %}
+            </a>
+
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_sport_forecast_to_validate' %}active{% endif %}"
+               href="{{ path('forecast_sport_forecast_to_validate') }}">
+                {{ 'title.sport_forecast_to_validate'|trans }}
+                {% if app.session.get('sport_forecast_to_validate') > 0 %}
+                    <span class="ui red label">{{ app.session.get('sport_forecast_to_validate') }}</span>
+                {% endif %}
+            </a>
+
+            <a class="item {% if app.request.attributes.get('_route') == 'forecast_sport_forecast_history' %}active{% endif %}"
+               href="{{ path('forecast_sport_forecast_history') }}">
+                {{ 'title.history'|trans }}
+            </a>
+
+        </div>
+    </div>
+</div>

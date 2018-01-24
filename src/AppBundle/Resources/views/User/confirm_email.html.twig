@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .column {
+            max-width: 450px;
+        }
+
+        .negative ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="ui centered grid">
+        <div class="column">
+            <h2 class="ui header blue">
+                {{ 'title.confirm_email'|trans }}
+            </h2>
+
+            <div class="ui center aligned segment success message">
+                {{ 'message.confirm_email_success'|trans }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

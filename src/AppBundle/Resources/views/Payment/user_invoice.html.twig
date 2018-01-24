@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="ui container">
+        <h1>{{ 'title.user_invoice'|trans }}</h1>
+
+        <div class="ui text container">
+            <form class="ui segment form" action="{{ path('payment_user_invoice') }}" method="post" novalidate>
+
+                {{ form_widget(form._token) }}
+
+                <div class="field required {{ form_errors(form.firstName) ? 'error' : '' }}">
+                    {{ form_label(form.firstName) }}
+                    <div class="ui input">
+                        {{ form_widget(form.firstName) }}
+                    </div>
+                </div>
+                {% if form_errors(form.firstName) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.firstName) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.lastName) ? 'error' : '' }}">
+                    {{ form_label(form.lastName) }}
+                    <div class="ui input">
+                        {{ form_widget(form.lastName) }}
+                    </div>
+                </div>
+                {% if form_errors(form.lastName) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.lastName) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.birthday) ? 'error' : '' }}">
+                    {{ form_label(form.birthday) }}
+                    <div class="ui input">
+                        {{ form_widget(form.birthday) }}
+                    </div>
+                </div>
+                {% if form_errors(form.birthday) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.birthday) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.nationality) ? 'error' : '' }}">
+                    {{ form_label(form.nationality) }}
+                    {{ form_widget(form.nationality) }}
+                </div>
+                {% if form_errors(form.nationality) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.nationality) }}
+                    </div>
+                {% endif %}
+
+                <div class="field required {{ form_errors(form.country) ? 'error' : '' }}">
+                    {{ form_label(form.country) }}
+                    {{ form_widget(form.country) }}
+                </div>
+                {% if form_errors(form.country) %}
+                    <div class="ui negative message">
+                        {{ form_errors(form.country) }}
+                    </div>
+                {% endif %}
+
+                <div class="ui center aligned container">
+                    <button class="ui submit huge primary button" type="submit">
+                        {{ 'button.save'|trans }}
+                    </button>
+                </div>
+            </form>
+
+            <div class="ui icon message">
+                <i class="lock icon"></i>
+                <p>{{ 'text.user_invoice_security'|trans }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

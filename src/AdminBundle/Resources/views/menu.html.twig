@@ -1,0 +1,34 @@
+<div class="ui vertical fluid menu">
+    <a class="item {% if app.request.attributes.get('_route') == 'admin_index' %}active{% endif %}" href="{{ path('admin_index') }}">
+        <i class="area chart icon"></i>{{ 'title.dashboard'|trans }}
+    </a>
+    <a class="item {% if app.request.attributes.get('_route') == 'admin_sport_index' %}active{% endif %}"
+       href="{{ path('admin_sport_index') }}">
+        {{ 'title.sports'|trans }}
+        <i class="trophy icon"></i>
+    </a>
+    <a class="item {% if app.request.attributes.get('_route') == 'admin_bookmaker_index' %}active{% endif %}"
+       href="{{ path('admin_bookmaker_index') }}">
+        {{ 'title.bookmakers'|trans }}
+        <i class="bookmark icon"></i>
+    </a>
+    <div class="item">
+        <i class="user icon"></i>
+        <b>{{ 'title.user_managment'|trans }}</b>
+        <div class="menu">
+            <a class="item {% if app.request.attributes.get('_route') == 'admin_member_index' %}active{% endif %}"
+               href="{{ path('admin_member_index') }}">
+                {{ 'title.members'|trans }}
+            </a>
+            <a class="item {% if app.request.attributes.get('_route') == 'admin_tipster_index' %}active{% endif %}"
+               href="{{ path('admin_tipster_index') }}">
+                {{ 'title.tipsters'|trans }}
+            </a>
+        </div>
+    </div>
+    <a class="item {% if app.request.attributes.get('_route') == 'admin_sport_forecast_index' %}active{% endif %}"
+       href="{{ path('admin_sport_forecast_index') }}">
+        {{ 'title.sport_forecasts'|trans }}
+        <i class="share alternate icon"></i>
+    </a>
+</div>

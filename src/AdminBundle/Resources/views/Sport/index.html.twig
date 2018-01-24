@@ -1,0 +1,176 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="ui positive message">
+            <div class="header">{{ 'title.bookmaker_delete'|trans }}</div>
+            <i class="close icon"></i>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <h1 class="ui header">
+        <i class="trophy icon"></i>
+        {{ 'title.sport_managment'|trans }}
+    </h1>
+
+    <div class="ui one column grid">
+
+        <div class="column mobile only">
+
+            <a class="ui primary fluid button"
+               href="{{ path("admin_sport_add") }}">
+                <i class="plus icon"></i>
+                {{ 'button.add'|trans }}
+            </a>
+
+            <form action="{{ path('admin_sport_index') }}" method="get" class="ui segment form">
+                <div class="inline fields">
+                    <label>{{ 'label.state'|trans }}</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="state" id="enable" value="1" {% if app.request.get("state") == "1" %}checked{% endif %}>
+                            <label for="enable">{{ 'label.enable'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="state" id="disable" value="0" {% if app.request.get("state") == "0" %}checked{% endif %}>
+                            <label for="disable">{{ 'label.disable'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="state" id="all" value="" {% if app.request.get("state") == "" %}checked{% endif %}>
+                            <label for="all">{{ 'label.all'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui icon input">
+                            <input type="text" name="search" placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                            <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                            <a class="ui secondary icon button" href="{{ path('admin_sport_index') }}"><i class="remove icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="column computer tablet only">
+
+            <div class="ui stackable menu">
+
+                <div class="item">
+                    <a class="ui primary labeled icon button"
+                       href="{{ path("admin_sport_add") }}">
+                        <i class="plus icon"></i>
+                        {{ 'button.add'|trans }}
+                    </a>
+                </div>
+
+                <div class="right item">
+                    <form action="{{ path('admin_sport_index') }}" method="get" class="ui form">
+                        <div class="inline fields">
+                            <label>{{ 'label.state'|trans }}</label>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="state" id="enable" value="1" {% if app.request.get("state") == "1" %}checked{% endif %}>
+                                    <label for="enable">{{ 'label.enable'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="state" id="disable" value="0" {% if app.request.get("state") == "0" %}checked{% endif %}>
+                                    <label for="disable">{{ 'label.disable'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="state" id="all" value="" {% if app.request.get("state") == "" %}checked{% endif %}>
+                                    <label for="all">{{ 'label.all'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui icon input">
+                                    <input type="text" name="search" placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                                    <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                                    <a class="ui secondary icon button" href="{{ path('admin_sport_index') }}"><i class="remove icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <table class="ui celled center aligne table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'label.icon'|trans }}</th>
+            <th>{{ 'label.name'|trans }}</th>
+            <th>{{ 'label.visible'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sport in sports %}
+            <tr>
+                <td>{{ sport.id }}</td>
+                <td class="center aligned">
+                    {% if sport.icon != '' %}
+                        <img width="32px" src="{{ medias_url }}{{ sport.icon }}" />
+                    {% endif %}
+                </td>
+                <td>{{ sport.name }}</td>
+                <td class="center aligned">
+                    {% if sport.visible == true %}
+                        <i class="green big checkmark icon"></i>
+                    {% else %}
+                        <i class="red big remove icon"></i>
+                    {% endif %}
+                </td>
+                <td class="center aligned">
+                    <div class="ui blue buttons">
+                        <div class="ui button">Actions</div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item"
+                                   href="{{ path('admin_sport_show', {id: sport.id}) }}">
+                                    <i class="file outline icon"></i>
+                                    {{ 'button.show'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('admin_championship_index', {id: sport.id}) }}">
+                                    <i class="eye icon"></i>
+                                    {{ 'button.championship'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('admin_sport_edit', {id: sport.id}) }}">
+                                    <i class="edit icon"></i>
+                                    {{ 'button.edit'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('admin_sport_delete', {id: sport.id}) }}">
+                                    <i class="trash icon"></i>
+                                    {{ 'button.delete'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include '@Admin/pagination.html.twig' with {total: sports.count, count: count, page: page, route: 'admin_sport_index', id: 0} %}
+{% endblock %}

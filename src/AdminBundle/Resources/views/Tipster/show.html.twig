@@ -1,0 +1,73 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            <i class="user icon"></i>
+            {{ 'title.tipster_show'|trans }} {{ tipster.user.email }}
+        </h1>
+
+        <table class="ui definition table">
+            <tr>
+                <td><i class="at icon"></i>{{ 'label.email'|trans }}</td>
+                <td>{{ tipster.user.email }}</td>
+            </tr>
+            <tr>
+                <td><i class="user icon"></i>{{ 'label.nickname'|trans }}</td>
+                <td>{{ tipster.user.nickname }}</td>
+            </tr>
+            <tr>
+                <td><i class="image icon"></i>{{ 'label.tipster_picture'|trans }}</td>
+                <td>
+                    {% if tipster.picture %}
+                        <img width="100px" src="{{ medias_url }}{{ tipster.picture }}" />
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><i class="image icon"></i>{{ 'label.tipster_cover'|trans }}</td>
+                <td>
+                    {% if tipster.picture %}
+                        <img width="200px" src="{{ medias_url }}{{ tipster.cover }}" />
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><i class="euro icon"></i>{{ 'label.fee'|trans }}</td>
+                <td>{{ tipster.fee|number_format(2, ',') }} &euro;</td>
+            </tr>
+            <tr>
+                <td><i class="percent icon"></i>{{ 'label.commission'|trans }}</td>
+                <td>{{ tipster.commission|number_format(2, ',') }} &percnt;</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.description'|trans }}</td>
+                <td>{{ tipster.description }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.createdAt'|trans }}</td>
+                <td>{{ tipster.createdAt|date('d-m-Y - H:i') }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.updatedAt'|trans }}</td>
+                <td>{{ tipster.updatedAt|date('d-m-Y - H:i') }}</td>
+            </tr>
+        </table>
+
+        <div class="ui center aligned container">
+            <a class="ui labeled icon primary button" href="{{ path('admin_tipster_edit', {id: tipster.id}) }}">
+                <i class="edit icon"></i>
+                {{ 'button.edit'|trans }}
+            </a>
+            <a class="ui red labeled icon button" href="{{ path('admin_tipster_delete', {id: tipster.id}) }}">
+                <i class="trash icon"></i>
+                {{ 'button.delete'|trans }}
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}
+

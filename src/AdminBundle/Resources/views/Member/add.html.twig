@@ -1,0 +1,14 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="user icon"></i>
+            {{ 'title.member_add'|trans }}
+        </h1>
+
+        {% include '@Admin/Member/form.html.twig' %}
+    </div>
+
+{% endblock %}

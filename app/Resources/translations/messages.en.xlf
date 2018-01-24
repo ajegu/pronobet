@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="button.login">
+                <source>button.login</source>
+                <target>Login</target>
+            </trans-unit>
+
+            <trans-unit id="user.new.cgu_text">
+                <source>user.new.cgu_text</source>
+                <target>I agree to the Terms and Conditions</target>
+            </trans-unit>
+
+            <trans-unit id="help.password_length">
+                <source>help.password_length</source>
+                <target>Password required 6 characters length</target>
+            </trans-unit>
+
+            <trans-unit id="message.reset_password_email">
+                <source>message.reset_password_email</source>
+                <target>Click the link below for reset your password:</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

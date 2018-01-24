@@ -1,0 +1,86 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            <i class="bookmark icon"></i>
+            {{ 'title.bookmaker_show'|trans }} {{ bookmaker.name }}
+        </h1>
+
+        <table class="ui definition table">
+            <tr>
+                <td>{{ 'label.name'|trans }}</td>
+                <td>{{ bookmaker.name }}</td>
+            </tr>
+            <tr>
+                <td><i class="image icon"></i>{{ 'label.logo'|trans }}</td>
+                <td>
+                    {% if bookmaker.logo %}
+                        <img width="32px" src="{{ medias_url }}{{ bookmaker.logo }}"/>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><i class="euro icon"></i>{{ 'label.bonus'|trans }}</td>
+                <td>{{ bookmaker.bonus|number_format(2, ",", " ") }} &euro;</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.description'|trans }}</td>
+                <td>{{ bookmaker.description }}</td>
+            </tr>
+            <tr>
+                <td><i class="world icon"></i>{{ 'label.websiteLink'|trans }}</td>
+                <td>{{ bookmaker.websiteLink }}</td>
+            </tr>
+            <tr>
+                <td><i class="euro icon"></i>{{ 'label.adLink'|trans }}</td>
+                <td>{{ bookmaker.adLink }}</td>
+            </tr>
+            <tr>
+                <td><i class="facebook icon"></i>{{ 'label.facebookLink'|trans }}</td>
+                <td>{{ bookmaker.facebookLink }}</td>
+            </tr>
+            <tr>
+                <td><i class="twitter icon"></i>{{ 'label.twitterLink'|trans }}</td>
+                <td>{{ bookmaker.twitterLink }}</td>
+            </tr>
+            <tr>
+                <td><i class="youtube icon"></i>{{ 'label.youtubeLink'|trans }}</td>
+                <td>{{ bookmaker.youtubeLink }}</td>
+            </tr>
+            <tr>
+                <td><i class="eye icon"></i>{{ 'label.visible'|trans }}</td>
+                <td>
+                    {% if bookmaker.visible == true %}
+                        <i class="green big checkmark icon"></i>
+                    {% else %}
+                        <i class="red big remove icon"></i>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ 'label.createdAt'|trans }}</td>
+                <td>{{ bookmaker.createdAt|date('d-m-Y - H:i') }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'label.updatedAt'|trans }}</td>
+                <td>{{ bookmaker.updatedAt|date('d-m-Y - H:i') }}</td>
+            </tr>
+        </table>
+
+        <div class="ui center aligned container">
+            <a class="ui labeled icon primary button" href="{{ path('admin_bookmaker_edit', {id: bookmaker.id}) }}">
+                <i class="edit icon"></i>
+                {{ 'button.edit'|trans }}
+            </a>
+            <a class="ui red labeled icon button" href="{{ path('admin_bookmaker_delete', {id: bookmaker.id}) }}">
+                <i class="trash icon"></i>
+                {{ 'button.delete'|trans }}
+            </a>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,2338 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+
+            <!-- GENERALS TRANSLATIONS -->
+            <trans-unit id="label.return">
+                <source>label.return</source>
+                <target>Retour</target>
+            </trans-unit>
+
+            <trans-unit id="error.server">
+                <source>error.server</source>
+                <target>Une erreur serveur est survenu</target>
+            </trans-unit>
+
+            <trans-unit id="placeholder.search">
+                <source>placeholder.search</source>
+                <target>Rechercher...</target>
+            </trans-unit>
+
+            <!-- CRUD BUTTON -->
+            <trans-unit id="button.show">
+                <source>button.show</source>
+                <target>Voir</target>
+            </trans-unit>
+
+            <trans-unit id="button.add">
+                <source>button.add</source>
+                <target>Ajouter</target>
+            </trans-unit>
+
+            <trans-unit id="button.edit">
+                <source>button.edit</source>
+                <target>Modifier</target>
+            </trans-unit>
+
+            <trans-unit id="button.delete">
+                <source>button.delete</source>
+                <target>Supprimer</target>
+            </trans-unit>
+
+            <!-- ROLE TRANSLATION -->
+            <trans-unit id="ROLE_MEMBER">
+                <source>ROLE_MEMBER</source>
+                <target>Membre</target>
+            </trans-unit>
+
+            <trans-unit id="ROLE_SUBSCRIBER">
+                <source>ROLE_SUBSCRIBER</source>
+                <target>Abonné</target>
+            </trans-unit>
+
+            <trans-unit id="ROLE_TIPSTER">
+                <source>ROLE_TIPSTER</source>
+                <target>Tipster</target>
+            </trans-unit>
+
+            <trans-unit id="ROLE_ADMIN">
+                <source>ROLE_ADMIN</source>
+                <target>Admin</target>
+            </trans-unit>
+
+            <!-- MENU TRANSLATIONS -->
+            <trans-unit id="button.login">
+                <source>button.login</source>
+                <target>Se connecter</target>
+            </trans-unit>
+
+            <trans-unit id="button.logout">
+                <source>button.logout</source>
+                <target>Se déconnecter</target>
+            </trans-unit>
+
+            <trans-unit id="button.signup">
+                <source>button.signup</source>
+                <target>Créer un compte</target>
+            </trans-unit>
+
+            <trans-unit id="link.home">
+                <source>link.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+
+            <trans-unit id="link.sport_forecast">
+                <source>link.sport_forecast</source>
+                <target>Pronostics Sportifs Gratuits</target>
+            </trans-unit>
+
+            <trans-unit id="link.sport_forecast_vip">
+                <source>link.sport_forecast_vip</source>
+                <target>Pronostics Sportifs VIP</target>
+            </trans-unit>
+
+            <!-- FORM USER NEW TRANSLATION -->
+            <trans-unit id="title.new_user">
+                <source>title.new_user</source>
+                <target>Créer votre compte</target>
+            </trans-unit>
+
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
+            </trans-unit>
+
+            <trans-unit id="label.username">
+                <source>label.username</source>
+                <target>Nom d'utilisateur</target>
+            </trans-unit>
+
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+
+            <trans-unit id="label.repeat_password">
+                <source>label.repeat_password</source>
+                <target>Répétez votre mot de passe</target>
+            </trans-unit>
+
+            <trans-unit id="button.create">
+                <source>button.create</source>
+                <target>Créer</target>
+            </trans-unit>
+
+            <trans-unit id="error.email_exist">
+                <source>error.email_exist</source>
+                <target>L'adresse email existe déjà</target>
+            </trans-unit>
+
+            <trans-unit id="label.cgu">
+                <source>label.cgu</source>
+                <target>J'accèpte les conditions générales d'utilisation</target>
+            </trans-unit>
+
+            <trans-unit id="help.password_length">
+                <source>help.password_length</source>
+                <target>Le mot de passe doit avoir au moins 6 caractères</target>
+            </trans-unit>
+
+            <!-- LOGIN FORM TRANSLATION -->
+            <trans-unit id="text.login_title">
+                <source>text.login_title</source>
+                <target>Connecter vous à votre compte</target>
+            </trans-unit>
+
+            <trans-unit id="placeholder.email">
+                <source>placeholder.email</source>
+                <target>Adresse email</target>
+            </trans-unit>
+
+            <trans-unit id="label.remember_me">
+                <source>label.remember_me</source>
+                <target>Restez connecté</target>
+            </trans-unit>
+
+            <trans-unit id="text.create_account">
+                <source>text.create_account</source>
+                <target>Nouveau ?</target>
+            </trans-unit>
+
+            <trans-unit id="label.forget_password">
+                <source>label.forget_password</source>
+                <target>Mot de passe oublié ?</target>
+            </trans-unit>
+
+            <!-- PASSWORD RESET FORM -->
+            <trans-unit id="title.reset_password">
+                <source>title.reset_password</source>
+                <target>Réinitialiser votre mot de passe</target>
+            </trans-unit>
+
+            <trans-unit id="button.reset">
+                <source>button.reset</source>
+                <target>Réinitialiser</target>
+            </trans-unit>
+
+            <trans-unit id="error.user_not_found">
+                <source>error.user_not_found</source>
+                <target>L'utilisateur n'existe pas</target>
+            </trans-unit>
+
+            <trans-unit id="message.reset_password_email">
+                <source>message.reset_password_email</source>
+                <target>Cliquer sur le lien suivant pour réinitialiser votre mot de passe :</target>
+            </trans-unit>
+
+            <trans-unit id="message.reset_password_success">
+                <source>message.reset_password_success</source>
+                <target>Un email de confirmation vous a bien été envoyé à l'adresse suivante :</target>
+            </trans-unit>
+
+            <trans-unit id="button.save">
+                <source>button.save</source>
+                <target>Enregistrer</target>
+            </trans-unit>
+
+            <trans-unit id="error.user_token_not_found">
+                <source>error.user_token_not_found</source>
+                <target>Impossible de réinitialiser votre mot de passe</target>
+            </trans-unit>
+
+            <trans-unit id="error.repeat_password">
+                <source>error.repeat_password</source>
+                <target>Les mots de passe saisis ne sont pas valides</target>
+            </trans-unit>
+
+            <!-- USER PROFILE -->
+            <trans-unit id="link.profile">
+                <source>link.profile</source>
+                <target>Votre compte</target>
+            </trans-unit>
+
+            <trans-unit id="title.user_profile">
+                <source>title.user_profile</source>
+                <target>Mon Compte</target>
+            </trans-unit>
+
+            <trans-unit id="text.generals_infos">
+                <source>text.generals_infos</source>
+                <target>Informations générales</target>
+            </trans-unit>
+
+            <trans-unit id="button.edit_info">
+                <source>button.edit_info</source>
+                <target>Modifier mes informations</target>
+            </trans-unit>
+
+            <!-- USER EDIT PROFIL FORM -->
+            <trans-unit id="title.user_edit">
+                <source>title.user_edit</source>
+                <target>Modifier votre profil</target>
+            </trans-unit>
+
+            <!-- ADMIN DASHBOARD TRANSLATION -->
+            <trans-unit id="title.dashboard">
+                <source>title.dashboard</source>
+                <target>Tableau de bord</target>
+            </trans-unit>
+
+            <!-- ADMIN USER TRANSLATION -->
+            <trans-unit id="title.user_managment">
+                <source>title.user_managment</source>
+                <target>Gestion des utilisateurs</target>
+            </trans-unit>
+
+            <trans-unit id="title.members">
+                <source>title.members</source>
+                <target>Membres</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipsters">
+                <source>title.tipsters</source>
+                <target>Tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="title.admins">
+                <source>title.admins</source>
+                <target>Admins</target>
+            </trans-unit>
+
+            <trans-unit id="label.role">
+                <source>label.role</source>
+                <target>Droits</target>
+            </trans-unit>
+
+            <trans-unit id="title.member_add">
+                <source>title.member_add</source>
+                <target>Ajouter un nouveau membre</target>
+            </trans-unit>
+
+            <trans-unit id="title.member_delete">
+                <source>title.member_delete</source>
+                <target>Suppression du membre</target>
+            </trans-unit>
+
+            <trans-unit id="text.member_delete">
+                <source>text.member_delete</source>
+                <target>Êtes-vous sûr de vouloir supprimer l'utilisateur suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="text.member_delete_success">
+                <source>text.member_delete_success</source>
+                <target>Le membre a bien été supprimé</target>
+            </trans-unit>
+
+            <trans-unit id="title.member_edit">
+                <source>title.member_edit</source>
+                <target>Modifier le membre</target>
+            </trans-unit>
+
+            <trans-unit id="label.status">
+                <source>label.status</source>
+                <target>Statut</target>
+            </trans-unit>
+
+            <trans-unit id="label.member">
+                <source>label.member</source>
+                <target>Membre</target>
+            </trans-unit>
+
+            <trans-unit id="label.subscriber">
+                <source>label.subscriber</source>
+                <target>Abonné</target>
+            </trans-unit>
+
+            <trans-unit id="label.all">
+                <source>label.all</source>
+                <target>Tous</target>
+            </trans-unit>
+
+            <trans-unit id="title.confirm_new_user">
+                <source>title.confirm_new_user</source>
+                <target>Votre compte a bien été créer</target>
+            </trans-unit>
+
+            <trans-unit id="message.confirm_new_user">
+                <source>message.confirm_new_user</source>
+                <target>Félicitation, votre compte utilisateur a bien été crée.</target>
+            </trans-unit>
+
+            <trans-unit id="message.confirm_email">
+                <source>message.confirm_email</source>
+                <target>Veuillez cliquer sur le lien suivant afin de valider votre adresse email.</target>
+            </trans-unit>
+
+            <trans-unit id="error.user_confirm_email">
+                <source>error.user_confirm_email</source>
+                <target>L'utilisateur n'existe pas</target>
+            </trans-unit>
+
+            <trans-unit id="title.confirm_email">
+                <source>title.confirm_email</source>
+                <target>Validation de votre adresse email</target>
+            </trans-unit>
+
+            <trans-unit id="message.confirm_email_success">
+                <source>message.confirm_email_success</source>
+                <target>Votre adresse email a bien été confirmé.</target>
+            </trans-unit>
+
+            <trans-unit id="text.email_not_confirm">
+                <source>text.email_not_confirm</source>
+                <target>L'adresse email n'est pas confirmée !</target>
+            </trans-unit>
+
+            <trans-unit id="button.member_to_tipster">
+                <source>button.member_to_tipster</source>
+                <target>Promouvoir en Tipster</target>
+            </trans-unit>
+
+            <trans-unit id="title.member_to_tipster">
+                <source>title.member_to_tipster</source>
+                <target>Promouvoir le membre en Tipster</target>
+            </trans-unit>
+
+            <trans-unit id="text.member_to_tipster">
+                <source>text.member_to_tipster</source>
+                <target>Êtes-vous sûr de vouloir promouvoir en ipster le membre suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_add">
+                <source>title.tipster_add</source>
+                <target>Créer le nouveau tipster</target>
+            </trans-unit>
+
+            <trans-unit id="title.member_show">
+                <source>title.member_show</source>
+                <target>Fiche du membre</target>
+            </trans-unit>
+
+            <trans-unit id="label.nickname">
+                <source>label.nickname</source>
+                <target>Nom d'utilisateur</target>
+            </trans-unit>
+
+            <trans-unit id="label.phoneNumber">
+                <source>label.phoneNumber</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+
+            <trans-unit id="label.emailValid">
+                <source>label.emailValid</source>
+                <target>Email validé</target>
+            </trans-unit>
+
+            <trans-unit id="label.valid">
+                <source>label.valid</source>
+                <target>Valide</target>
+            </trans-unit>
+
+            <trans-unit id="label.invalid">
+                <source>label.invalid</source>
+                <target>Invalide</target>
+            </trans-unit>
+
+            <trans-unit id="label.createdAt">
+                <source>label.createdAt</source>
+                <target>Crée le</target>
+            </trans-unit>
+
+            <trans-unit id="label.updatedAt">
+                <source>label.updatedAt</source>
+                <target>Dernière mise à Jour</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster_picture">
+                <source>label.tipster_picture</source>
+                <target>Photo de profil</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster_cover">
+                <source>label.tipster_cover</source>
+                <target>Image de couverture</target>
+            </trans-unit>
+
+            <trans-unit id="label.description">
+                <source>label.description</source>
+                <target>Description</target>
+            </trans-unit>
+
+            <trans-unit id="label.bankroll">
+                <source>label.bankroll</source>
+                <target>Bankroll</target>
+            </trans-unit>
+
+            <trans-unit id="label.fee">
+                <source>label.fee</source>
+                <target>Tarif d'abonnement</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_show">
+                <source>title.tipster_show</source>
+                <target>Fiche du Tipster</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_edit">
+                <source>title.tipster_edit</source>
+                <target>Modifier le tipster</target>
+            </trans-unit>
+
+            <trans-unit id="button.tipster_edit_user">
+                <source>button.tipster_edit_user</source>
+                <target>Modifier le membre</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_delete">
+                <source>title.tipster_delete</source>
+                <target>Suppresion du tipster</target>
+            </trans-unit>
+
+            <trans-unit id="text.tipster_delete">
+                <source>text.tipster_delete</source>
+                <target>Êtes-vous sûr de vouloir supprimer le tipster suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="text.tipster_delete_success">
+                <source>text.tipster_delete_success</source>
+                <target>Le tipster a bien été supprimé</target>
+            </trans-unit>
+
+            <trans-unit id="link.forecast_managment">
+                <source>link.forecast_managment</source>
+                <target>Mes Pronostics</target>
+            </trans-unit>
+
+            <trans-unit id="title.sports">
+                <source>title.sports</source>
+                <target>Sports</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_managment">
+                <source>title.sport_managment</source>
+                <target>Gestion des sports</target>
+            </trans-unit>
+
+            <trans-unit id="label.state">
+                <source>label.state</source>
+                <target>Etat</target>
+            </trans-unit>
+
+            <trans-unit id="label.enable">
+                <source>label.enable</source>
+                <target>Activé</target>
+            </trans-unit>
+
+            <trans-unit id="label.disable">
+                <source>label.disable</source>
+                <target>Désactivé</target>
+            </trans-unit>
+
+            <trans-unit id="label.icon">
+                <source>label.icon</source>
+                <target>Icône</target>
+            </trans-unit>
+
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Nom</target>
+            </trans-unit>
+
+            <trans-unit id="label.visible">
+                <source>label.visible</source>
+                <target>Visible</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_add">
+                <source>title.sport_add</source>
+                <target>Ajouter un sport</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_edit">
+                <source>title.sport_edit</source>
+                <target>Modifier le sport</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_show">
+                <source>title.sport_show</source>
+                <target>Fiche du sport</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_delete">
+                <source>title.sport_delete</source>
+                <target>Suppression du sport</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_delete">
+                <source>text.sport_delete</source>
+                <target>Êtes-vous sûr de vouloir supprimer le sport suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_delete_success">
+                <source>text.sport_delete_success</source>
+                <target>Le sport a bien été supprimé</target>
+            </trans-unit>
+
+            <trans-unit id="button.championship">
+                <source>button.championship</source>
+                <target>Voir les championnats</target>
+            </trans-unit>
+
+            <trans-unit id="title.championship_index">
+                <source>title.championship_index</source>
+                <target>Liste des championnats</target>
+            </trans-unit>
+
+            <trans-unit id="button.return_to_sport">
+                <source>button.return_to_sport</source>
+                <target>Retour au sport</target>
+            </trans-unit>
+
+            <trans-unit id="title.championship_add">
+                <source>title.championship_add</source>
+                <target>Ajouter un championnat pour</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_championship_index">
+                <source>label.return_championship_index</source>
+                <target>Retour à la liste des championnats</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_sport">
+                <source>label.return_sport</source>
+                <target>Retour à la liste des sports</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_member">
+                <source>label.return_member</source>
+                <target>Retour vers la liste des membres</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_show">
+                <source>label.return_show</source>
+                <target>Retour à la fiche</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_tipster">
+                <source>label.return_tipster</source>
+                <target>Retour à la liste des tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_managment">
+                <source>title.tipster_managment</source>
+                <target>Gestion des tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="title.championship_show">
+                <source>title.championship_show</source>
+                <target>Fiche du championnat</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport">
+                <source>label.sport</source>
+                <target>Sport</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_championship">
+                <source>label.return_championship</source>
+                <target>Retour à la liste des championnats</target>
+            </trans-unit>
+
+            <trans-unit id="title.championship_edit">
+                <source>title.championship_edit</source>
+                <target>Modifier le championnat</target>
+            </trans-unit>
+
+            <trans-unit id="title.championship_delete">
+                <source>title.championship_delete</source>
+                <target>Suppression du championnat</target>
+            </trans-unit>
+
+            <trans-unit id="text.championship_delete">
+                <source>text.championship_delete</source>
+                <target>Êtes-vous sûr de vouloir supprimer le championnat suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="text.championship_delete_success">
+                <source>text.championship_delete_success</source>
+                <target>Le championnat a bien été supprimé.</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_add">
+                <source>title.sport_forecast_add</source>
+                <target>Ajouter un pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_forecast_picture">
+                <source>label.sport_forecast_picture</source>
+                <target>Illustration</target>
+            </trans-unit>
+
+            <trans-unit id="label.ticket">
+                <source>label.ticket</source>
+                <target>Ticket</target>
+            </trans-unit>
+
+            <trans-unit id="label.yes">
+                <source>label.yes</source>
+                <target>Oui</target>
+            </trans-unit>
+
+            <trans-unit id="label.no">
+                <source>label.no</source>
+                <target>Non</target>
+            </trans-unit>
+
+
+            <trans-unit id="title.bookmakers">
+                <source>title.bookmakers</source>
+                <target>Bookmakers</target>
+            </trans-unit>
+
+            <trans-unit id="title.bookmaker_add">
+                <source>title.bookmaker_add</source>
+                <target>Ajouter un bookmaker</target>
+            </trans-unit>
+
+            <trans-unit id="label.logo">
+                <source>label.logo</source>
+                <target>Logo</target>
+            </trans-unit>
+
+            <trans-unit id="label.bonus">
+                <source>label.bonus</source>
+                <target>Bonus</target>
+            </trans-unit>
+
+            <trans-unit id="label.adLink">
+                <source>label.adLink</source>
+                <target>Url d'affiliation</target>
+            </trans-unit>
+
+            <trans-unit id="label.websiteLink">
+                <source>label.websiteLink</source>
+                <target>Url du site web</target>
+            </trans-unit>
+
+            <trans-unit id="label.facebookLink">
+                <source>label.facebookLink</source>
+                <target>Facebook</target>
+            </trans-unit>
+
+            <trans-unit id="label.isVip">
+                <source>label.isVip</source>
+                <target>VIP</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_show">
+                <source>title.sport_forecast_show</source>
+                <target>Fiche du pronostic</target>
+            </trans-unit>
+
+            <trans-unit id="button.add_sport_bet">
+                <source>button.add_sport_bet</source>
+                <target>Ajouter un pari sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.clear">
+                <source>label.clear</source>
+                <target>Effacer</target>
+            </trans-unit>
+
+            <trans-unit id="label.betting">
+                <source>label.betting</source>
+                <target>Mise</target>
+            </trans-unit>
+
+            <trans-unit id="label.title">
+                <source>label.title</source>
+                <target>Titre</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecasts">
+                <source>title.sport_forecasts</source>
+                <target>Pronostics Sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_managment">
+                <source>title.sport_forecast_managment</source>
+                <target>Pronostics Sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_unpublished">
+                <source>title.sport_forecast_unpublished</source>
+                <target>Non publiés</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_in_progress">
+                <source>title.sport_forecast_in_progress</source>
+                <target>En cours</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_to_validate">
+                <source>title.sport_forecast_to_validate</source>
+                <target>A valider</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_history">
+                <source>title.sport_forecast_history</source>
+                <target>Historique des pronostics sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="title.history">
+                <source>title.history</source>
+                <target>Historique</target>
+            </trans-unit>
+
+            <trans-unit id="label.isValid">
+                <source>label.isValid</source>
+                <target>Valide</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_sport_forecast_unpublished">
+                <source>label.return_sport_forecast_unpublished</source>
+                <target>Retour à la liste des pronostics non publiés</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_empty">
+                <source>title.sport_forecast_empty</source>
+                <target>Aucun pari sportif</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_empty">
+                <source>text.sport_forecast_empty</source>
+                <target>Ajouter un nouveau pari sportif afin de pouvoir le publier.</target>
+            </trans-unit>
+
+            <trans-unit id="button.publish">
+                <source>button.publish</source>
+                <target>Publier</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_edit">
+                <source>title.sport_forecast_edit</source>
+                <target>Modification du pronostic</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_delete">
+                <source>title.sport_forecast_delete</source>
+                <target>Suppression du pronostic</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_delete">
+                <source>text.sport_forecast_delete</source>
+                <target>Êtes-vous sûr de vouloir supprimer le pronostic </target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_delete_success">
+                <source>text.sport_forecast_delete_success</source>
+                <target>Le pronostic a bien été supprimé.</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_bet_add">
+                <source>title.sport_bet_add</source>
+                <target>Ajouter un pari sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.winner">
+                <source>label.winner</source>
+                <target>Gagnant</target>
+            </trans-unit>
+
+            <trans-unit id="label.playedAt">
+                <source>label.playedAt</source>
+                <target>Joué le</target>
+            </trans-unit>
+
+            <trans-unit id="label.rating">
+                <source>label.rating</source>
+                <target>Cote</target>
+            </trans-unit>
+
+            <trans-unit id="label.championship">
+                <source>label.championship</source>
+                <target>Championnat</target>
+            </trans-unit>
+
+            <trans-unit id="label.analysis">
+                <source>label.analysis</source>
+                <target>Analyse</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_bet_index">
+                <source>title.sport_bet_index</source>
+                <target>Liste des paris sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_bet_edit">
+                <source>title.sport_bet_edit</source>
+                <target>Modifier le pari sportif</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_bet_delete">
+                <source>title.sport_bet_delete</source>
+                <target>Suppression du pari sportif</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_bet_delete">
+                <source>text.sport_bet_delete</source>
+                <target>Êtes-vous sûr de vouloir supprimer le pari sportif suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_bet_delete_success">
+                <source>text.sport_bet_delete_success</source>
+                <target>Le pari sportif a bien été supprimé.</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_publish">
+                <source>title.sport_forecast_publish</source>
+                <target>Publier le pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_publish">
+                <source>text.sport_forecast_publish</source>
+                <target>Êtes-vous sûr de publier le pronostic sportif suivant</target>
+            </trans-unit>
+
+            <trans-unit id="error.sport_forecast_publish">
+                <source>error.sport_forecast_publish</source>
+                <target>Le pronostic sportif est invalide</target>
+            </trans-unit>
+            
+            <trans-unit id="label.global_rating">
+                <source>label.global_rating</source>
+                <target>Cote totale</target>
+            </trans-unit>
+            
+            <trans-unit id="label.winning">
+                <source>label.winning</source>
+                <target>Gains potentiels</target>
+            </trans-unit>
+
+            <trans-unit id="label.twitterLink">
+                <source>label.twitterLink</source>
+                <target>Twitter</target>
+            </trans-unit>
+
+            <trans-unit id="label.youtubeLink">
+                <source>label.youtubeLink</source>
+                <target>Youtube</target>
+            </trans-unit>
+
+            <trans-unit id="title.bookmaker_managment">
+                <source>title.bookmaker_managment</source>
+                <target>Gestion des bookmakers</target>
+            </trans-unit>
+
+            <trans-unit id="title.bookmaker_show">
+                <source>title.bookmaker_show</source>
+                <target>Fiche du bookmaker</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_bookmaker">
+                <source>label.return_bookmaker</source>
+                <target>Retour à la liste des bookmakers</target>
+            </trans-unit>
+
+            <trans-unit id="title.bookmaker_delete">
+                <source>title.bookmaker_delete</source>
+                <target>Suppresion du bookmaker</target>
+            </trans-unit>
+
+            <trans-unit id="text.bookmaker_delete">
+                <source>text.bookmaker_delete</source>
+                <target>Êtes-vous sur de vouloir supprimer le bookmaker suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="text.bookmaker_delete_success">
+                <source>text.bookmaker_delete_success</source>
+                <target>Le bookmaker a bien été supprimé</target>
+            </trans-unit>
+
+            <trans-unit id="title.bookmaker_edit">
+                <source>title.bookmaker_edit</source>
+                <target>Modifier le bookmaker </target>
+            </trans-unit>
+
+            <trans-unit id="button.submit_change">
+                <source>button.submit_change</source>
+                <target>Soumettre une modification</target>
+            </trans-unit>
+
+            <trans-unit id="button.edit_ticket">
+                <source>button.edit_ticket</source>
+                <target>Modifier le ticket</target>
+            </trans-unit>
+
+            <trans-unit id="button.validate">
+                <source>button.validate</source>
+                <target>Valider</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_submit_change">
+                <source>title.sport_forecast_submit_change</source>
+                <target>Soumettre une modification</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_submit_change">
+                <source>text.sport_forecast_submit_change</source>
+                <target>Veuillez saisir la demande de modification pour le pronostic</target>
+            </trans-unit>
+
+            <trans-unit id="label.message">
+                <source>label.message</source>
+                <target>Message</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_submit_change_success">
+                <source>text.sport_forecast_submit_change_success</source>
+                <target>Votre demande de modification a bien été envoyé aux administrateurs, elle sera traitée dans les plus brefs délais.</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_submit_change_email">
+                <source>text.sport_forecast_submit_change_email</source>
+                <target>Vous avez reçu une demande de mofication de pronostic :</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_forecast">
+                <source>label.sport_forecast</source>
+                <target>Pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster">
+                <source>label.tipster</source>
+                <target>Tipster</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_need_change">
+                <source>title.sport_forecast_need_change</source>
+                <target>Demande de modification du pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_edit_ticket">
+                <source>title.sport_forecast_edit_ticket</source>
+                <target>Modifier le ticket du pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_validate">
+                <source>title.sport_forecast_validate</source>
+                <target>Valider le pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.won">
+                <source>label.won</source>
+                <target>Gagné</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_validate">
+                <source>text.sport_forecast_validate</source>
+                <target>Êtes-vous sûr de valider le pronostic sportif ?</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_bankroll_validate">
+                <source>text.sport_forecast_bankroll_validate</source>
+                <target>Valeur de la bankroll après validation :</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast">
+                <source>title.sport_forecast</source>
+                <target>Pronostics sportifs gratuits</target>
+            </trans-unit>
+
+            <trans-unit id="button.show_sport_forecast">
+                <source>button.show_sport_forecast</source>
+                <target>Détails</target>
+            </trans-unit>
+
+            <trans-unit id="label.sports">
+                <source>label.sports</source>
+                <target>Sports</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipsters">
+                <source>label.tipsters</source>
+                <target>Tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="title.commentaries">
+                <source>title.commentaries</source>
+                <target>Commentaires</target>
+            </trans-unit>
+
+            <trans-unit id="label.winRate">
+                <source>label.winRate</source>
+                <target>Taux de victoire</target>
+            </trans-unit>
+
+            <trans-unit id="label.roi">
+                <source>label.roi</source>
+                <target>Retour sur Investissement</target>
+            </trans-unit>
+
+            <trans-unit id="label.show_history">
+                <source>label.show_history</source>
+                <target>Voir les anciens pronostics sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="label.VIP">
+                <source>label.VIP</source>
+                <target>VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.free">
+                <source>label.free</source>
+                <target>Gratuit</target>
+            </trans-unit>
+
+            <trans-unit id="label.win">
+                <source>label.win</source>
+                <target>Gagné</target>
+            </trans-unit>
+
+            <trans-unit id="label.loose">
+                <source>label.loose</source>
+                <target>Perdu</target>
+            </trans-unit>
+
+            <trans-unit id="label.potentialWinnings">
+                <source>label.potentialWinnings</source>
+                <target>Gains potentiels</target>
+            </trans-unit>
+
+            <trans-unit id="button.add_sport_forecast">
+                <source>button.add_sport_forecast</source>
+                <target>Ajouter un pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.startDate">
+                <source>label.startDate</source>
+                <target>Date de début</target>
+            </trans-unit>
+
+            <trans-unit id="label.endDate">
+                <source>label.endDate</source>
+                <target>Date de fin</target>
+            </trans-unit>
+
+            <trans-unit id="label.generate">
+                <source>label.generate</source>
+                <target>Générer</target>
+            </trans-unit>
+
+            <trans-unit id="label.bankroll_evolution">
+                <source>label.bankroll_evolution</source>
+                <target>Evolution de la bankroll (en €)</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_win_rate">
+                <source>label.sport_win_rate</source>
+                <target>Taux de victoire par sport (en %)</target>
+            </trans-unit>
+
+            <trans-unit id="label.totalPlayed">
+                <source>label.totalPlayed</source>
+                <target>Pronostics joués</target>
+            </trans-unit>
+
+            <trans-unit id="label.totalWon">
+                <source>label.totalWon</source>
+                <target>Pronostics gagnés</target>
+            </trans-unit>
+
+            <trans-unit id="label.totalWinnings">
+                <source>label.totalWinnings</source>
+                <target>Total des gains</target>
+            </trans-unit>
+
+            <trans-unit id="label.totalBetting">
+                <source>label.totalBetting</source>
+                <target>Total des mises</target>
+            </trans-unit>
+
+            <trans-unit id="button.add_reply">
+                <source>button.add_reply</source>
+                <target>Ajouter un commentaire</target>
+            </trans-unit>
+
+            <trans-unit id="button.login_with">
+                <source>button.login_with</source>
+                <target>Se connecter avec</target>
+            </trans-unit>
+
+            <trans-unit id="label.or">
+                <source>label.or</source>
+                <target>OU</target>
+            </trans-unit>
+
+            <trans-unit id="label.reply">
+                <source>label.reply</source>
+                <target>Répondre</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_index">
+                <source>title.tipster_index</source>
+                <target>Notre TOP Tipster du mois</target>
+            </trans-unit>
+
+            <trans-unit id="label.global_stats">
+                <source>label.global_stats</source>
+                <target>Statistiques Générales</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_vip">
+                <source>title.sport_forecast_vip</source>
+                <target>Pronostics Sportifs VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.home">
+                <source>label.home</source>
+                <target>Accueil</target>
+            </trans-unit>
+
+            <trans-unit id="label.free_sport_forecast_list">
+                <source>label.free_sport_forecast_list</source>
+                <target>Liste des pronostics sportifs gratuits</target>
+            </trans-unit>
+
+            <trans-unit id="label.vip_sport_forecast_list">
+                <source>label.vip_sport_forecast_list</source>
+                <target>Liste des pronostics sportifs VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.history">
+                <source>label.history</source>
+                <target>Historique</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_forecast_details">
+                <source>label.sport_forecast_details</source>
+                <target>Détail du pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster_list">
+                <source>label.tipster_list</source>
+                <target>Liste des tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster_show">
+                <source>label.tipster_show</source>
+                <target>Détail du tipster</target>
+            </trans-unit>
+
+            <trans-unit id="title.subscribe_free">
+                <source>title.subscribe_free</source>
+                <target>Abonnement gratuit</target>
+            </trans-unit>
+
+            <trans-unit id="message.subscribe_free">
+                <source>message.subscribe_free</source>
+                <target>Vous êtes maintenant abonné aux pronostics gratuits du tipster :</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_to_tipster_list">
+                <source>label.return_to_tipster_list</source>
+                <target>Retour à la liste des tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="label.join">
+                <source>label.join</source>
+                <target>S'inscrire</target>
+            </trans-unit>
+
+            <trans-unit id="label.my_subscriptions">
+                <source>label.my_subscriptions</source>
+                <target>Mes abonnements</target>
+            </trans-unit>
+
+            <trans-unit id="label.no_subscription">
+                <source>label.no_subscription</source>
+                <target>Vous n'avez encore aucun abonnement</target>
+            </trans-unit>
+
+            <trans-unit id="title.subscription">
+                <source>title.subscription</source>
+                <target>Accès à l'espace VIP</target>
+            </trans-unit>
+
+            <trans-unit id="message.subscription">
+                <source>message.subscription</source>
+                <target>Vous devez avoir un abonnement actif à l'un des VIP de nos Tipsters pour accèder aux pronostics !</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_to_home">
+                <source>label.return_to_home</source>
+                <target>Retour à la page d'accueil</target>
+            </trans-unit>
+
+            <trans-unit id="label.show_tipster_list">
+                <source>label.show_tipster_list</source>
+                <target>Voir les Tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="label.subscription">
+                <source>label.subscription</source>
+                <target>Abonnement</target>
+            </trans-unit>
+
+            <trans-unit id="title.subscribe_to">
+                <source>title.subscribe_to</source>
+                <target>S'abonné au VIP de</target>
+            </trans-unit>
+
+            <trans-unit id="label.confirm_order">
+                <source>label.confirm_order</source>
+                <target>Confirmer la commande</target>
+            </trans-unit>
+
+            <trans-unit id="label.paid_with_paypal">
+                <source>label.paid_with_paypal</source>
+                <target>Payer avec Paypal</target>
+            </trans-unit>
+
+            <trans-unit id="label.paid_with_credit_card">
+                <source>label.paid_with_credit_card</source>
+                <target>Payer par carte bancaire</target>
+            </trans-unit>
+
+            <trans-unit id="link.tipsters">
+                <source>link.tipsters</source>
+                <target>Tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="label.my_account">
+                <source>label.my_account</source>
+                <target>Mon Compte</target>
+            </trans-unit>
+
+            <trans-unit id="label.filters">
+                <source>label.filters</source>
+                <target>Filtres de recherche</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_forecast_number">
+                <source>label.sport_forecast_number</source>
+                <target>Pronostic sportif #</target>
+            </trans-unit>
+
+            <trans-unit id="label.winnings">
+                <source>label.winnings</source>
+                <target>Gains</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_details">
+                <source>title.sport_forecast_details</source>
+                <target>Détails du pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.published_at">
+                <source>label.published_at</source>
+                <target>Publié le</target>
+            </trans-unit>
+
+            <trans-unit id="label.show_tipster">
+                <source>label.show_tipster</source>
+                <target>Voir le tipster</target>
+            </trans-unit>
+
+            <trans-unit id="label.info_tipster">
+                <source>label.info_tipster</source>
+                <target>Informations sur le tipster</target>
+            </trans-unit>
+
+            <trans-unit id="label.comments">
+                <source>label.comments</source>
+                <target>Commentaires</target>
+            </trans-unit>
+
+            <trans-unit id="label.free_subscription">
+                <source>label.free_subscription</source>
+                <target>Inscription gratuite</target>
+            </trans-unit>
+
+            <trans-unit id="label.statistics">
+                <source>label.statistics</source>
+                <target>Statistiques</target>
+            </trans-unit>
+
+            <trans-unit id="label.confidence_index">
+                <source>label.confidence_index</source>
+                <target>Indice de confiance</target>
+            </trans-unit>
+
+            <trans-unit id="0">
+                <source>0</source>
+            </trans-unit>
+
+            <trans-unit id="1">
+                <source>1</source>
+            </trans-unit>
+
+            <trans-unit id="2">
+                <source>2</source>
+            </trans-unit>
+
+            <trans-unit id="3">
+                <source>3</source>
+            </trans-unit>
+
+            <trans-unit id="4">
+                <source>4</source>
+            </trans-unit>
+
+            <trans-unit id="5">
+                <source>5</source>
+            </trans-unit>
+
+            <trans-unit id="button.cancellation">
+                <source>button.cancellation</source>
+                <target>Annulation</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_cancellation">
+                <source>title.sport_forecast_cancellation</source>
+                <target>Annulation du pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="header.sport_forecast_cancellation">
+                <source>header.sport_forecast_cancellation</source>
+                <target>Annulation pour cause de match annulé ou reporté</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_cancellation">
+                <source>text.sport_forecast_cancellation</source>
+                <target>Êtes-vous sûr de vouloir annuler le pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_cancellation_infos">
+                <source>text.sport_forecast_cancellation_infos</source>
+                <target>L'annulation d'un pronostic sportif rendra celui-ci visible des utilisateurs avec le status "Annulé"</target>
+            </trans-unit>
+
+            <trans-unit id="button.cancellation_confirm">
+                <source>button.cancellation_confirm</source>
+                <target>Confirmer l'annulation</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_cancellation_success">
+                <source>text.sport_forecast_cancellation_success</source>
+                <target>Le pronostic sportif a bien été annulé.</target>
+            </trans-unit>
+
+            <trans-unit id="label.cancelled">
+                <source>label.cancelled</source>
+                <target>Annulé</target>
+            </trans-unit>
+
+            <trans-unit id="label.statistics_all">
+                <source>label.statistics_all</source>
+                <target>Stats - Tous pronostics</target>
+            </trans-unit>
+
+            <trans-unit id="label.statistics_vip">
+                <source>label.statistics_vip</source>
+                <target>Stats - Pronostic VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.statistics_free">
+                <source>label.statistics_free</source>
+                <target>Stats - Pronostic Gratuit</target>
+            </trans-unit>
+
+            <trans-unit id="button.submit">
+                <source>button.submit</source>
+                <target>Envoyer</target>
+            </trans-unit>
+
+            <trans-unit id="label.menu">
+                <source>label.menu</source>
+                <target>Menu</target>
+            </trans-unit>
+
+            <trans-unit id="label.user_personal_data">
+                <source>label.user_personal_data</source>
+                <target>Mes informations personnelles</target>
+            </trans-unit>
+
+            <trans-unit id="label.newsletter">
+                <source>label.newsletter</source>
+                <target>Newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="label.my_tipsters">
+                <source>label.my_tipsters</source>
+                <target>Mes Tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="label.payments_history">
+                <source>label.payments_history</source>
+                <target>Historique des Paiements</target>
+            </trans-unit>
+
+            <trans-unit id="button.subscribe">
+                <source>button.subscribe</source>
+                <target>S'inscrire</target>
+            </trans-unit>
+
+            <trans-unit id="title.newsletter_subscription">
+                <source>title.newsletter_subscription</source>
+                <target>Inscription à la newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="label.newsletter_confirm">
+                <source>label.newsletter_confirm</source>
+                <target>S'inscrire à la newsletter de </target>
+            </trans-unit>
+
+            <trans-unit id="label.newsletter_partners">
+                <source>label.newsletter_partners</source>
+                <target>S'inscrire à la newsletter des partenaires de </target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_subscribe_success">
+                <source>text.newsletter_subscribe_success</source>
+                <target>Votre inscription à la newsletter a bien été prise en compte.</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_subscribe_success_email_confirm">
+                <source>text.newsletter_subscribe_success_email_confirm</source>
+                <target>Un email de confirmation vous a été envoyé !</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_subscription_thank">
+                <source>text.newsletter_subscription_thank</source>
+                <target>Nous vous remerçions pour votre inscription à notre newsletter.</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_email_confirm">
+                <source>text.newsletter_email_confirm</source>
+                <target>Afin de valider votre inscription, veuillez cliquer sur le lien ci-dessous :</target>
+            </trans-unit>
+
+            <trans-unit id="title.newsletter_confirm">
+                <source>title.newsletter_confirm</source>
+                <target>Confirmation de votre inscription à la newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_confirm_success">
+                <source>text.newsletter_confirm_success</source>
+                <target>Votre inscription à notre newsletter a bien été prise en compte.</target>
+            </trans-unit>
+
+            <trans-unit id="label.newsletter_subscription">
+                <source>label.newsletter_subscription</source>
+                <target>Inscription à la newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_no_subscription">
+                <source>text.newsletter_no_subscription</source>
+                <target>Vous n'êtes pas abonné à notre newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="label.newsletter_subscribe">
+                <source>label.newsletter_subscribe</source>
+                <target>M'inscrire à la newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_subscription_confirm">
+                <source>text.newsletter_subscription_confirm</source>
+                <target>Vous êtes abonné à notre newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_subscription_partners_confirm">
+                <source>text.newsletter_subscription_partners_confirm</source>
+                <target>Vous êtes abonné à la newsletter de nos partenaires</target>
+            </trans-unit>
+
+            <trans-unit id="label.newsletter_unsubscribe">
+                <source>label.newsletter_unsubscribe</source>
+                <target>Me Désabonner</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_unscubscribe">
+                <source>text.newsletter_unscubscribe</source>
+                <target>Vous avez bien été désabonner à notre newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="title.newsletter_unsubscribe">
+                <source>title.newsletter_unsubscribe</source>
+                <target>Désinscription à la newsletter</target>
+            </trans-unit>
+
+            <trans-unit id="text.newsletter_subscription">
+                <source>text.newsletter_subscription</source>
+                <target>Merci de vous être abonné à notre newsletter !</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster_free_subscription">
+                <source>label.tipster_free_subscription</source>
+                <target>Abonnement Tipster Gratuit</target>
+            </trans-unit>
+
+            <trans-unit id="label.unsubscribe">
+                <source>label.unsubscribe</source>
+                <target>Se désabonner</target>
+            </trans-unit>
+
+            <trans-unit id="title.tipster_subscribe_vip">
+                <source>title.tipster_subscribe_vip</source>
+                <target>Abonnement VIP à un tipster</target>
+            </trans-unit>
+
+            <trans-unit id="label.subscribe_to_vip">
+                <source>label.subscribe_to_vip</source>
+                <target>Abonnement VIP à</target>
+            </trans-unit>
+
+            <trans-unit id="label.firstname">
+                <source>label.firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+
+            <trans-unit id="label.lastname">
+                <source>label.lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+
+            <trans-unit id="label.birthday">
+                <source>label.birthday</source>
+                <target>Date d'anniversaire</target>
+            </trans-unit>
+
+            <trans-unit id="label.nationality">
+                <source>label.nationality</source>
+                <target>Nationalité</target>
+            </trans-unit>
+
+            <trans-unit id="label.country_of_residence">
+                <source>label.country_of_residence</source>
+                <target>Pays de résidence</target>
+            </trans-unit>
+
+            <trans-unit id="title.user_invoice">
+                <source>title.user_invoice</source>
+                <target>Informations de facturation</target>
+            </trans-unit>
+
+            <trans-unit id="text.user_invoice_security">
+                <source>text.user_invoice_security</source>
+                <target>Ces informations sont obligatoires pour utiliser notre service de paiement en ligne afin de garantir la sécurité du paiement.</target>
+            </trans-unit>
+
+            <trans-unit id="title.payment_checkout">
+                <source>title.payment_checkout</source>
+                <target>Finaliser votre paiement</target>
+            </trans-unit>
+
+            <trans-unit id="text.payment_checkout_security">
+                <source>text.payment_checkout_security</source>
+                <target>Paiement sécurisé (serveur https, validation 3D-Secure)</target>
+            </trans-unit>
+
+            <trans-unit id="label.card_number">
+                <source>label.card_number</source>
+                <target>Numéro de carte</target>
+            </trans-unit>
+
+            <trans-unit id="label.expiration_date">
+                <source>label.expiration_date</source>
+                <target>Date de fin de validité</target>
+            </trans-unit>
+
+            <trans-unit id="label.cvx">
+                <source>label.cvx</source>
+                <target>Cryptogramme visuel</target>
+            </trans-unit>
+
+            <trans-unit id="label.paid_subscription">
+                <source>label.paid_subscription</source>
+                <target>Payer l'abonnement</target>
+            </trans-unit>
+
+            <trans-unit id="label.month">
+                <source>label.month</source>
+                <target>Mois</target>
+            </trans-unit>
+
+            <trans-unit id="label.January">
+                <source>label.January</source>
+                <target>Janvier</target>
+            </trans-unit>
+
+            <trans-unit id="label.February">
+                <source>label.February</source>
+                <target>Février</target>
+            </trans-unit>
+
+            <trans-unit id="label.March">
+                <source>label.March</source>
+                <target>Mars</target>
+            </trans-unit>
+
+            <trans-unit id="label.April">
+                <source>label.April</source>
+                <target>Avril</target>
+            </trans-unit>
+
+            <trans-unit id="label.May">
+                <source>label.May</source>
+                <target>Mai</target>
+            </trans-unit>
+
+            <trans-unit id="label.June">
+                <source>label.June</source>
+                <target>Juin</target>
+            </trans-unit>
+
+            <trans-unit id="label.July">
+                <source>label.July</source>
+                <target>Juillet</target>
+            </trans-unit>
+
+            <trans-unit id="label.August">
+                <source>label.August</source>
+                <target>Août</target>
+            </trans-unit>
+
+            <trans-unit id="label.September">
+                <source>label.September</source>
+                <target>Septembre</target>
+            </trans-unit>
+
+            <trans-unit id="label.October">
+                <source>label.October</source>
+                <target>Octobre</target>
+            </trans-unit>
+
+            <trans-unit id="label.November">
+                <source>label.November</source>
+                <target>Novembre</target>
+            </trans-unit>
+
+            <trans-unit id="label.December">
+                <source>label.December</source>
+                <target>Décembre</target>
+            </trans-unit>
+
+            <trans-unit id="label.year">
+                <source>label.year</source>
+                <target>Année</target>
+            </trans-unit>
+
+            <trans-unit id="label.search">
+                <source>label.search</source>
+                <target>Rechercher</target>
+            </trans-unit>
+
+            <trans-unit id="label.cancel">
+                <source>label.cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_unpublishable">
+                <source>text.sport_forecast_unpublishable</source>
+                <target>Le pronostic ne peut pas être publié car il contient des erreurs.</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_forecast_cancellation">
+                <source>label.sport_forecast_cancellation</source>
+                <target>Annuler/Reporter</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_validate_confirm">
+                <source>title.sport_forecast_validate_confirm</source>
+                <target>Confirmer la validation du pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="button.validate_confirm">
+                <source>button.validate_confirm</source>
+                <target>Confirmer</target>
+            </trans-unit>
+
+            <trans-unit id="title.payment_failure">
+                <source>title.payment_failure</source>
+                <target>Échec de paiement</target>
+            </trans-unit>
+
+            <trans-unit id="label.payment_failure">
+                <source>label.payment_failure</source>
+                <target>Votre paiement a échoué.</target>
+            </trans-unit>
+
+            <trans-unit id="text.payment_failure">
+                <source>text.payment_failure</source>
+                <target>Votre abonnement n'a pas pu être créer, votre compte bancaire n'a pas été débité.</target>
+            </trans-unit>
+
+            <trans-unit id="label.retry">
+                <source>label.retry</source>
+                <target>Réessayer</target>
+            </trans-unit>
+
+            <trans-unit id="label.home_return">
+                <source>label.home_return</source>
+                <target>Revenir à l'accueil</target>
+            </trans-unit>
+
+            <trans-unit id="label.commission">
+                <source>label.commission</source>
+                <target>Commission</target>
+            </trans-unit>
+
+            <trans-unit id="label.contact_us">
+                <source>label.contact_us</source>
+                <target>Nous contactez</target>
+            </trans-unit>
+
+            <trans-unit id="title.existing_subscription">
+                <source>title.existing_subscription</source>
+                <target>Abonnement en cours</target>
+            </trans-unit>
+
+            <trans-unit id="text.existing_subscription1">
+                <source>text.existing_subscription1</source>
+                <target>Vous avez déjà un abonnement au tipster </target>
+            </trans-unit>
+
+            <trans-unit id="text.existing_subscription2">
+                <source>text.existing_subscription2</source>
+                <target>valable jusqu'au </target>
+            </trans-unit>
+
+            <trans-unit id="label.show_sport_forecast_vip">
+                <source>label.show_sport_forecast_vip</source>
+                <target>Voir les pronostics sportifs VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.show_sport_forecast_free">
+                <source>label.show_sport_forecast_free</source>
+                <target>Voir les pronostics sportifs gratuits</target>
+            </trans-unit>
+
+            <trans-unit id="label.service">
+                <source>label.service</source>
+                <target>Service</target>
+            </trans-unit>
+
+            <trans-unit id="label.duration">
+                <source>label.duration</source>
+                <target>Durée</target>
+            </trans-unit>
+
+            <trans-unit id="label.price">
+                <source>label.price</source>
+                <target>Prix</target>
+            </trans-unit>
+
+            <trans-unit id="label.tipster_vip_subscription">
+                <source>label.tipster_vip_subscription</source>
+                <target>Abonnement Tipster VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.edit_notifications">
+                <source>label.edit_notifications</source>
+                <target>Modifier les notifications</target>
+            </trans-unit>
+
+            <trans-unit id="label.sms">
+                <source>label.sms</source>
+                <target>SMS</target>
+            </trans-unit>
+
+            <trans-unit id="label.finished_at">
+                <source>label.finished_at</source>
+                <target>Fin le</target>
+            </trans-unit>
+
+            <trans-unit id="label.payment_history">
+                <source>label.payment_history</source>
+                <target>Historique des paiements</target>
+            </trans-unit>
+
+            <trans-unit id="label.amount">
+                <source>label.amount</source>
+                <target>Montant</target>
+            </trans-unit>
+
+            <trans-unit id="label.created_at">
+                <source>label.created_at</source>
+                <target>Créé le</target>
+            </trans-unit>
+
+            <trans-unit id="label.payment_type">
+                <source>label.payment_type</source>
+                <target>Type de paiement</target>
+            </trans-unit>
+
+            <trans-unit id="label.payment_status">
+                <source>label.payment_status</source>
+                <target>Status</target>
+            </trans-unit>
+
+            <trans-unit id="label.subscribe_to">
+                <source>label.subscribe_to</source>
+                <target>Abonnement à</target>
+            </trans-unit>
+
+            <trans-unit id="label.credit_card">
+                <source>label.credit_card</source>
+                <target>Carte bancaire</target>
+            </trans-unit>
+
+            <trans-unit id="label.succeeded">
+                <source>label.succeeded</source>
+                <target>Validé</target>
+            </trans-unit>
+
+            <trans-unit id="title.edit_subscription_notification">
+                <source>title.edit_subscription_notification</source>
+                <target>Modification des notifications de l'abonnement à</target>
+            </trans-unit>
+
+            <trans-unit id="button.edit_notification">
+                <source>button.edit_notification</source>
+                <target>Modifier les notifications</target>
+            </trans-unit>
+
+            <trans-unit id="label.email_notification">
+                <source>label.email_notification</source>
+                <target>Notification par email</target>
+            </trans-unit>
+
+            <trans-unit id="label.sms_notification">
+                <source>label.sms_notification</source>
+                <target>Notification par SMS</target>
+            </trans-unit>
+
+            <trans-unit id="title.payment_success">
+                <source>title.payment_success</source>
+                <target>Validation de votre paiment</target>
+            </trans-unit>
+
+            <trans-unit id="label.payment_success">
+                <source>label.payment_success</source>
+                <target>Paiement validé</target>
+            </trans-unit>
+
+            <trans-unit id="text.payment_success">
+                <source>text.payment_success</source>
+                <target>Votre paiement a bien été validé, vous pouvez maintenant accéder au pronostics sportifs VIP.</target>
+            </trans-unit>
+
+            <trans-unit id="title.subscription_managment">
+                <source>title.subscription_managment</source>
+                <target>Gestion des abonnements</target>
+            </trans-unit>
+
+            <trans-unit id="label.account_setting">
+                <source>label.account_setting</source>
+                <target>Paramètre du compte</target>
+            </trans-unit>
+
+            <trans-unit id="title.account_setting_not_activate">
+                <source>title.account_setting_not_activate</source>
+                <target>Activation de votre compte de paiement</target>
+            </trans-unit>
+
+            <trans-unit id="text.account_setting_not_activate">
+                <source>text.account_setting_not_activate</source>
+                <target>Afin de pouvoir effectuer l'argent de vos abonnements, vous devez activer votre compte de paiement.</target>
+            </trans-unit>
+
+            <trans-unit id="label.activate_payment_account">
+                <source>label.activate_payment_account</source>
+                <target>Activer mon compte de paiement</target>
+            </trans-unit>
+
+            <trans-unit id="label.create_payment_account">
+                <source>label.create_payment_account</source>
+                <target>Création du compte de paiement</target>
+            </trans-unit>
+
+            <trans-unit id="text.tipster_payment_account_infos">
+                <source>text.tipster_payment_account_infos</source>
+                <target>Ces informations sont obligatoires afin de créer votre compte de paiement.</target>
+            </trans-unit>
+
+            <trans-unit id="text.payment_account_activate">
+                <source>text.payment_account_activate</source>
+                <target>Votre compte de paiement a bien été activé le </target>
+            </trans-unit>
+
+            <trans-unit id="label.bank_account_setting">
+                <source>label.bank_account_setting</source>
+                <target>Informations bancaires</target>
+            </trans-unit>
+
+            <trans-unit id="label.bank_account_informations">
+                <source>label.bank_account_informations</source>
+                <target>Informations sur le compte bancaire</target>
+            </trans-unit>
+
+            <trans-unit id="label.owner_informations">
+                <source>label.owner_informations</source>
+                <target>Informations sur le propriétaire</target>
+            </trans-unit>
+
+            <trans-unit id="label.iban">
+                <source>label.iban</source>
+                <target>IBAN</target>
+            </trans-unit>
+
+            <trans-unit id="label.bic">
+                <source>label.bic</source>
+                <target>BIC</target>
+            </trans-unit>
+            
+            <trans-unit id="label.owner_name">
+                <source>label.owner_name</source>
+                <target>Propriétaire du compte</target>
+            </trans-unit>
+
+            <trans-unit id="label.address_line_1">
+                <source>label.address_line_1</source>
+                <target>Adresse</target>
+            </trans-unit>
+
+            <trans-unit id="label.address_line_2">
+                <source>label.address_line_2</source>
+                <target>Complément d'adresse</target>
+            </trans-unit>
+
+            <trans-unit id="label.postal_code">
+                <source>label.postal_code</source>
+                <target>Code postal</target>
+            </trans-unit>
+
+            <trans-unit id="label.city">
+                <source>label.city</source>
+                <target>Ville</target>
+            </trans-unit>
+
+            <trans-unit id="label.country">
+                <source>label.country</source>
+                <target>Pays</target>
+            </trans-unit>
+
+            <trans-unit id="label.edit_bank_account">
+                <source>label.edit_bank_account</source>
+                <target>Modifier le compte bancaire</target>
+            </trans-unit>
+
+            <trans-unit id="label.payout_setting">
+                <source>label.payout_setting</source>
+                <target>Mes virements</target>
+            </trans-unit>
+
+            <trans-unit id="title.wallet_balance">
+                <source>title.wallet_balance</source>
+                <target>Total de votre solde</target>
+            </trans-unit>
+
+            <trans-unit id="text.wallet_balance">
+                <source>text.wallet_balance</source>
+                <target>Votre solde disponible s'élève à </target>
+            </trans-unit>
+
+            <trans-unit id="label.create_payout">
+                <source>label.create_payout</source>
+                <target>Effectuer le virement</target>
+            </trans-unit>
+
+            <trans-unit id="text.payout_succeeded">
+                <source>text.payout_succeeded</source>
+                <target>Votre demande de virement a bien été prise en compte.</target>
+            </trans-unit>
+
+            <trans-unit id="text.payout_kyc_required">
+                <source>text.payout_kyc_required</source>
+                <target>Votre demande de virement a échoué car vous devez mettre à jour vos informations d'identification.</target>
+            </trans-unit>
+
+            <trans-unit id="text.payout_failed">
+                <source>text.payout_failed</source>
+                <target>Votre demande de virement a échoué, veuillez vérifier vos informations bancaires et réessayer ultérieurement.</target>
+            </trans-unit>
+
+            <trans-unit id="label.upgrade_payment_account">
+                <source>label.upgrade_payment_account</source>
+                <target>Mettre à jour mes informations d'identification</target>
+            </trans-unit>
+
+            <trans-unit id="label.return_to_payout_setting">
+                <source>label.return_to_payout_setting</source>
+                <target>Retourner à mes virements</target>
+            </trans-unit>
+
+            <trans-unit id="label.payouts_history">
+                <source>label.payouts_history</source>
+                <target>Historique des virements</target>
+            </trans-unit>
+
+            <trans-unit id="label.personal_informations">
+                <source>label.personal_informations</source>
+                <target>Informations Personnelles</target>
+            </trans-unit>
+
+            <trans-unit id="label.occupation">
+                <source>label.occupation</source>
+                <target>Activité</target>
+            </trans-unit>
+
+            <trans-unit id="label.incode_range">
+                <source>label.income_range</source>
+                <target>Salaire annuel</target>
+            </trans-unit>
+
+            <trans-unit id="label.address_informations">
+                <source>label.address_informations</source>
+                <target>Adresse principale</target>
+            </trans-unit>
+
+            <trans-unit id="label.edit_infos">
+                <source>label.edit_infos</source>
+                <target>Modifier mes informations</target>
+            </trans-unit>
+
+            <trans-unit id="label.edit_payment_account">
+                <source>label.edit_payment_account</source>
+                <target>Modifier les informations du compte de paiement</target>
+            </trans-unit>
+
+            <trans-unit id="text.kyc_required">
+                <source>text.kyc_required</source>
+                <target>Afin de débloquer votre compte de paiement, vous devez nous envoyer votre copie de carte d'identité (recto/verso) ou de votre passeport en cours de validité ainsi qu'un justificatif de domicile de moins de 3 mois.</target>
+            </trans-unit>
+
+            <trans-unit id="label.kyc_documents">
+                <source>label.kyc_documents</source>
+                <target>Mes documents justificatifs</target>
+            </trans-unit>
+
+            <trans-unit id="label.identity_proof">
+                <source>label.identity_proof</source>
+                <target>Copie de carte d'identité (recto/verso) ou passeport</target>
+            </trans-unit>
+
+            <trans-unit id="label.submit">
+                <source>label.submit</source>
+                <target>Envoyer</target>
+            </trans-unit>
+
+            <trans-unit id="CREATED">
+                <source>CREATED</source>
+                <target>Crée</target>
+            </trans-unit>
+
+            <trans-unit id="VALIDATION_ASKED">
+                <source>VALIDATION_ASKED</source>
+                <target>Validation en cours</target>
+            </trans-unit>
+
+            <trans-unit id="VALIDATED">
+                <source>VALIDATED</source>
+                <target>Validé</target>
+            </trans-unit>
+
+            <trans-unit id="REFUSED">
+                <source>REFUSED</source>
+                <target>Refusé</target>
+            </trans-unit>
+
+            <trans-unit id="label.address_proof">
+                <source>label.address_proof</source>
+                <target>Justificatif de domicile (facture EDF, internet, ... de moins de 3 mois)</target>
+            </trans-unit>
+
+            <trans-unit id="text.subscription_one_month">
+                <source>text.subscription_one_month</source>
+                <target>Abonnement 1 mois à</target>
+            </trans-unit>
+
+            <trans-unit id="label.order_checkout">
+                <source>label.order_checkout</source>
+                <target>Récupitulatif de votre commande</target>
+            </trans-unit>
+
+            <trans-unit id="label.bookmaker">
+                <source>label.bookmaker</source>
+                <target>Bookmaker</target>
+            </trans-unit>
+
+            <trans-unit id="label.title/match">
+                <source>label.title/match</source>
+                <target>Titre/Match</target>
+            </trans-unit>
+
+            <trans-unit id="title.add_sport_bet">
+                <source>title.add_sport_bet</source>
+                <target>Ajouter un pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.lose">
+                <source>label.lose</source>
+                <target>Perdu</target>
+            </trans-unit>
+
+            <trans-unit id="label.result">
+                <source>label.result</source>
+                <target>Résultat</target>
+            </trans-unit>
+
+            <trans-unit id="subject.free_sport_forecast">
+                <source>subject.free_sport_forecast</source>
+                <target>Nouveau pronostic sportif gratuit</target>
+            </trans-unit>
+
+            <trans-unit id="title.email_sport_forecast_free">
+                <source>title.email_sport_forecast_free</source>
+                <target>vient de publier un nouveau pronostic sportif gratuit</target>
+            </trans-unit>
+
+            <trans-unit id="subject.vip_sport_forecast">
+                <source>subject.vip_sport_forecast</source>
+                <target>Nouveau pronostic sportif VIP</target>
+            </trans-unit>
+
+            <trans-unit id="title.email_sport_forecast_vip">
+                <source>title.email_sport_forecast_vip</source>
+                <target>vient de publier un nouveau pronostic sportif VIP</target>
+            </trans-unit>
+
+            <trans-unit id="label.confidenceIndex">
+                <source>label.confidenceIndex</source>
+                <target>Confiance</target>
+            </trans-unit>
+
+            <trans-unit id="label.show_sport_forecast">
+                <source>label.show_sport_forecast</source>
+                <target>Voir le pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="sms.sport_forecast">
+                <source>sms.sport_forecast</source>
+                <target>vient de publier un nouveau pronostic sportif</target>
+            </trans-unit>
+
+            <trans-unit id="label.vip">
+                <source>label.vip</source>
+                <target>VIP</target>
+            </trans-unit>
+
+            <trans-unit id="title.sms_notification_sucess">
+                <source>title.sms_notification_sucess</source>
+                <target>Voulez-vous activer les notifications SMS ?</target>
+            </trans-unit>
+
+            <trans-unit id="text.sms_notification_sucess">
+                <source>text.sms_notification_sucess</source>
+                <target>En activant les notifications SMS, vous recevrez un texto à chaque fois que le tipster publiera un pronostic.</target>
+            </trans-unit>
+
+            <trans-unit id="label.activate_sms_notification">
+                <source>label.activate_sms_notification</source>
+                <target>Activer les notifications SMS</target>
+            </trans-unit>
+
+            <trans-unit id="label.phone_number">
+                <source>label.phone_number</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+
+            <trans-unit id="error.subscription_phone_number_required">
+                <source>error.subscription_phone_number_required</source>
+                <target>Le numéro de téléphone est obligatoire pour l'activation des notifications SMS !</target>
+            </trans-unit>
+            
+            <trans-unit id="0614875696">
+                <source>0614875696</source>
+            </trans-unit>
+
+            <trans-unit id="text.bookmaker_delete_many_sport_forecast">
+                <source>text.bookmaker_delete_many_sport_forecast</source>
+                <target>Vous ne pouvez pas supprimer ce bookmaker car il est associé à des pronostics sportifs.</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_delete_many_championships">
+                <source>text.sport_delete_many_championships</source>
+                <target>Vous ne pouvez pas supprimer ce sport car il possède des championnats</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_delete_many_sport_bets">
+                <source>text.sport_delete_many_sport_bets</source>
+                <target>Vous ne pouvez pas supprimer ce sport car il est associé à des paris sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="text.championship_delete_many_sport_bet">
+                <source>text.championship_delete_many_sport_bet</source>
+                <target>Vous ne pouvez pas supprimer ce championnat car il est associé à des paris sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="text.user_delete_many_subscriptions">
+                <source>text.user_delete_many_subscriptions</source>
+                <target>Vous ne pouvez pas supprimer ce membre car il a un ou plusieurs abonnements à des tipsters</target>
+            </trans-unit>
+
+            <trans-unit id="text.user_delete_many_comments">
+                <source>text.user_delete_many_comments</source>
+                <target>Vous ne pouvez pas supprimer ce membre car il a publié un ou plusieurs commentaires</target>
+            </trans-unit>
+
+            <trans-unit id="text.tipster_delete_many_sport_forecast">
+                <source>text.tipster_delete_many_sport_forecast</source>
+                <target>Vous ne pouvez pas supprimer ce tipster car il a publié un ou plusieurs pronostics sportifs</target>
+            </trans-unit>
+
+            <trans-unit id="text.tipster_delete_many_subscription">
+                <source>text.tipster_delete_many_subscription</source>
+                <target>Vous ne pouvez pas supprimer ce tipster car un ou plusieurs membres sont abonnés</target>
+            </trans-unit>
+
+            <trans-unit id="label.sport_bet_count">
+                <source>label.sport_bet_count</source>
+                <target>Nb paris</target>
+            </trans-unit>
+
+            <trans-unit id="button.restore_unpublished">
+                <source>button.restore_unpublished</source>
+                <target>Remettre en "Non Publié"</target>
+            </trans-unit>
+
+            <trans-unit id="button.restore_to_validate">
+                <source>button.restore_to_validate</source>
+                <target>Remettre en "A Valider"</target>
+            </trans-unit>
+
+            <trans-unit id="label.to_validate">
+                <source>label.to_validate</source>
+                <target>A valider</target>
+            </trans-unit>
+
+            <trans-unit id="label.in_progress">
+                <source>label.in_progress</source>
+                <target>En cours</target>
+            </trans-unit>
+
+            <trans-unit id="text.restore_unpublished_sport_forecast_validate">
+                <source>text.restore_unpublished_sport_forecast_validate</source>
+                <target>Vous ne pouvez remettre en "Non Publié" un pronostic sportif qui a été validé</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_restore_unpublished_success">
+                <source>text.sport_forecast_restore_unpublished_success</source>
+                <target>Le pronostic sportif a bien été remis en "Non Publié"</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_restore_unpublished">
+                <source>text.sport_forecast_restore_unpublished</source>
+                <target>Êtes-vous sûr de vouloir remettre en "Non Publié" le pronostic sportif suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="button.restore">
+                <source>button.restore</source>
+                <target>Restaurer</target>
+            </trans-unit>
+
+            <trans-unit id="error.restore_unpublished_sport_forecast_unpublished">
+                <source>error.restore_unpublished_sport_forecast_unpublished</source>
+                <target>Vous ne pouvez mettre en "A Valider" un pronostic sportif non publié</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_restore_to_validate_success">
+                <source>text.sport_forecast_restore_to_validate_success</source>
+                <target>Le pronostic sportif a bien été remis en "A Valider"</target>
+            </trans-unit>
+
+            <trans-unit id="text.sport_forecast_restore_to_validate">
+                <source>text.sport_forecast_restore_to_validate</source>
+                <target>Êtes-vous sûr de vouloir remettre en "A Valider" le pronostic sportif suivant :</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_restore_unpublished">
+                <source>title.sport_forecast_restore_unpublished</source>
+                <target>Restauration d'un pronostic sportif en "Non Publié"</target>
+            </trans-unit>
+
+            <trans-unit id="title.sport_forecast_restore_to_validate">
+                <source>title.sport_forecast_restore_to_validate</source>
+                <target>Restauration d'un pronostic sportif en "A Valider"</target>
+            </trans-unit>
+
+            <trans-unit id="label.last_win_strike">
+                <source>label.last_win_strike</source>
+                <target>Série de victoire</target>
+            </trans-unit>
+
+            <trans-unit id="label.show">
+                <source>label.show</source>
+                <target>Voir</target>
+            </trans-unit>
+
+            <trans-unit id="label.about">
+                <source>label.about</source>
+                <target>À PROPOS</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

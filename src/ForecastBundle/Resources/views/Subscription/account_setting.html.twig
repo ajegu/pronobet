@@ -1,0 +1,151 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui container">
+
+        <h1 class="ui header">
+            {{ 'label.account_setting'|trans }}
+        </h1>
+
+        {% if tipster.checkKYC %}
+            <div class="ui red message">
+                {{ 'text.kyc_required'|trans }}
+            </div>
+        {% endif %}
+
+        {% if user is null %}
+            <div class="ui warning message">
+                <div class="header">{{ 'title.account_setting_not_activate'|trans }}</div>
+                {{ 'text.account_setting_not_activate'|trans }}
+            </div>
+            <div class="ui center aligned container">
+                <a class="ui primary button"
+                   href="{{ path('forecast_subscription_create_payment_account') }}">{{ 'label.activate_payment_account'|trans }}</a>
+            </div>
+        {% else %}
+
+            <table class="ui definition table">
+                <tbody>
+                <tr>
+                    <td>#</td>
+                    <td>{{ user.Id }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.created_at'|trans }}</td>
+                    <td>{{ user.CreationDate|date('d/m/Y H:i') }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.status'|trans }}</td>
+                    <td>{{ user.KYCLevel }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.lastname'|trans }}</td>
+                    <td>{{ user.LastName }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.firstname'|trans }}</td>
+                    <td>{{ user.FirstName }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.birthday'|trans }}</td>
+                    <td>{{ user.Birthday|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.nationality'|trans }}</td>
+                    <td>{{ user.Nationality }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.occupation'|trans }}</td>
+                    <td>{{ user.Occupation }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.income_range'|trans }}</td>
+                    <td>{{ user.IncomeRange }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.address_line_1'|trans }}</td>
+                    <td>{{ user.Address.AddressLine1 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.address_line_2'|trans }}</td>
+                    <td>{{ user.Address.AddressLine2 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.postal_code'|trans }}</td>
+                    <td>{{ user.Address.PostalCode }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.city'|trans }}</td>
+                    <td>{{ user.Address.City }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.country'|trans }}</td>
+                    <td>{{ user.Address.Country }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="ui center aligned container">
+                <a class="ui labeled icon primary button"
+                   href="{{ path('forecast_subscription_edit_payment_account') }}">
+                    <i class="edit icon"></i>
+                    {{ 'label.edit_infos'|trans }}
+                </a>
+            </div>
+
+            <div class="ui segment">
+                <div class="ui header">{{ 'label.kyc_documents'|trans }}</div>
+
+                <form class="ui form" action="{{ path('forecast_subscription_submit_document') }}" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="kyc_type" value="IDENTITY_PROOF">
+                    <div class="inline field">
+                        <label>{{ 'label.identity_proof'|trans }}</label>
+                        {% if identityProof is not null %}
+                            <div class="ui label {% if identityProof.Status == 'REFUSED' %}red{% else %}green{% endif %}">
+                                {{ identityProof.Status|trans }}
+                            </div>
+                        {% endif %}
+
+                        {% if identityProof is null or identityProof.Status == 'REFUSED' %}
+                            <input type="file" name="kyc_document"
+                                   accept="application/pdf|image/jpeg|image/png|image/jpg|image/gif">
+
+                            <button type="submit" class="ui button">
+                                {{ 'label.submit'|trans }}
+                            </button>
+                        {% endif %}
+                    </div>
+                </form>
+
+                <div class="ui divider"></div>
+
+                <form class="ui form" action="{{ path('forecast_subscription_submit_document') }}" method="post"
+                      enctype="multipart/form-data">
+                    <input type="hidden" name="kyc_type" value="ADDRESS_PROOF">
+                    <div class="inline field">
+                        <label>{{ 'label.address_proof'|trans }}</label>
+                        {% if addressProof is not null %}
+                            <div class="ui label {% if addressProof.Status == 'REFUSED' %}red{% else %}green{% endif %}">
+                                {{ addressProof.Status|trans }}
+                            </div>
+                        {% endif %}
+
+                        {% if addressProof is null or addressProof.Status == 'REFUSED' %}
+                            <input type="file" name="kyc_document"
+                                   accept="application/pdf|image/jpeg|image/png|image/jpg|image/gif">
+
+                            <button type="submit" class="ui button">
+                                {{ 'label.submit'|trans }}
+                            </button>
+                        {% endif %}
+                    </div>
+                </form>
+
+            </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

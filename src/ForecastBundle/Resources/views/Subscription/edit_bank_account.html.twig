@@ -1,0 +1,15 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            {{ 'label.edit_bank_account'|trans }}
+        </h1>
+
+        {%  include '@Forecast/Subscription/bank_account_form.html.twig' with {form: form } %}
+
+    </div>
+
+{% endblock %}

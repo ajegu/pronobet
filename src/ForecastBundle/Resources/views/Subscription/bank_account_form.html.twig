@@ -1,0 +1,119 @@
+<form class="ui segment form" action="{{ path('forecast_bank_account_setting') }}" method="post" novalidate>
+
+    {{ form_widget(form._token) }}
+
+    <div class="ui segment">
+        <div class="ui header">{{ 'label.bank_account_informations'|trans }}</div>
+
+        <div class="field required {{ form_errors(form.iban) ? 'error' : '' }}">
+            {{ form_label(form.iban) }}
+            <div class="ui input">
+                {{ form_widget(form.iban) }}
+            </div>
+        </div>
+        {% if form_errors(form.iban) %}
+            <div class="ui negative message">
+                {{ form_errors(form.iban) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.bic) ? 'error' : '' }}">
+            {{ form_label(form.bic) }}
+            <div class="ui input">
+                {{ form_widget(form.bic) }}
+            </div>
+        </div>
+        {% if form_errors(form.bic) %}
+            <div class="ui negative message">
+                {{ form_errors(form.bic) }}
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="ui segment">
+        <div class="ui header">{{ 'label.owner_informations'|trans }}</div>
+
+        <div class="field required {{ form_errors(form.ownerName) ? 'error' : '' }}">
+            {{ form_label(form.ownerName) }}
+            <div class="ui input">
+                {{ form_widget(form.ownerName) }}
+            </div>
+        </div>
+        {% if form_errors(form.ownerName) %}
+            <div class="ui negative message">
+                {{ form_errors(form.ownerName) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.addressLine1) ? 'error' : '' }}">
+            {{ form_label(form.addressLine1) }}
+            <div class="ui input">
+                {{ form_widget(form.addressLine1) }}
+            </div>
+        </div>
+        {% if form_errors(form.addressLine1) %}
+            <div class="ui negative message">
+                {{ form_errors(form.addressLine1) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.addressLine2) ? 'error' : '' }}">
+            {{ form_label(form.addressLine2) }}
+            <div class="ui input">
+                {{ form_widget(form.addressLine2) }}
+            </div>
+        </div>
+        {% if form_errors(form.addressLine2) %}
+            <div class="ui negative message">
+                {{ form_errors(form.addressLine2) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.postalCode) ? 'error' : '' }}">
+            {{ form_label(form.postalCode) }}
+            <div class="ui input">
+                {{ form_widget(form.postalCode) }}
+            </div>
+        </div>
+        {% if form_errors(form.postalCode) %}
+            <div class="ui negative message">
+                {{ form_errors(form.postalCode) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.city) ? 'error' : '' }}">
+            {{ form_label(form.city) }}
+            <div class="ui input">
+                {{ form_widget(form.city) }}
+            </div>
+        </div>
+        {% if form_errors(form.city) %}
+            <div class="ui negative message">
+                {{ form_errors(form.city) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.country) ? 'error' : '' }}">
+            {{ form_label(form.country) }}
+            {{ form_widget(form.country) }}
+        </div>
+        {% if form_errors(form.country) %}
+            <div class="ui negative message">
+                {{ form_errors(form.country) }}
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="ui center aligned container">
+        <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+            {{ 'label.cancel'|trans }}
+        </a>
+        <button class="ui submit labeled icon primary button" type="submit">
+            <i class="save icon"></i>
+            {{ 'button.save'|trans }}
+        </button>
+    </div>
+
+</form>

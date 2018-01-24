@@ -1,0 +1,38 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="mail icon"></i>
+            {{ 'title.sport_forecast_edit_ticket'|trans }} #{{ sportForecast.id }}
+        </h1>
+
+        <form class="ui segment form" action="{{ path('forecast_sport_forecast_edit_ticket', {id: sportForecast.id}) }}" method="post" novalidate
+              enctype="multipart/form-data">
+            {{ form_widget(form._token) }}
+
+            <div class="field {{ form_errors(form.ticketFile) ? 'error' : '' }}">
+                {{ form_label(form.ticketFile) }}
+                <div class="ui input">
+                    {{ form_widget(form.ticketFile) }}
+                </div>
+            </div>
+            {% if form_errors(form.ticketFile) %}
+                <div class="ui negative message">
+                    {{ form_errors(form.ticketFile) }}
+                </div>
+            {% endif %}
+
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+                <button class="ui primary button" type="submit">
+                    {{ 'button.edit_ticket'|trans }}
+                </button>
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

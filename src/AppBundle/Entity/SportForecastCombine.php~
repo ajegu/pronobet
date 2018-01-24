@@ -1,0 +1,171 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SportForecastCombine
+ *
+ * @ORM\Table(name="sport_forecast_combine")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SportForecastCombineRepository")
+ */
+class SportForecastCombine
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SportForecast", inversedBy="sportForecastCombines")
+     * @ORM\JoinColumn(name="sport_forecast_id", referencedColumnName="id", nullable=false)
+     */
+    private $sportForecast;
+
+    /**
+     * @ORM\OneToMany(targetEntity="SportForecastSimple", mappedBy="sportforecastCombine")
+     */
+    private $sportForecastSimples;
+
+    public function __construct()
+    {
+        $this->sportForecastSimples = new ArrayCollection();
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set sportForecast
+     *
+     * @param \AppBundle\Entity\SportForecast $sportForecast
+     *
+     * @return SportForecastCombine
+     */
+    public function setSportForecast(\AppBundle\Entity\SportForecast $sportForecast = null)
+    {
+        $this->sportForecast = $sportForecast;
+
+        return $this;
+    }
+
+    /**
+     * Get sportForecast
+     *
+     * @return \AppBundle\Entity\SportForecast
+     */
+    public function getSportForecast()
+    {
+        return $this->sportForecast;
+    }
+
+    /**
+     * Add sportForecastSimple
+     *
+     * @param \AppBundle\Entity\SportForecastSimple $sportForecastSimple
+     *
+     * @return SportForecastCombine
+     */
+    public function addSportForecastSimple(\AppBundle\Entity\SportForecastSimple $sportForecastSimple)
+    {
+        $this->sportForecastSimples[] = $sportForecastSimple;
+
+        return $this;
+    }
+
+    /**
+     * Remove sportForecastSimple
+     *
+     * @param \AppBundle\Entity\SportForecastSimple $sportForecastSimple
+     */
+    public function removeSportForecastSimple(\AppBundle\Entity\SportForecastSimple $sportForecastSimple)
+    {
+        $this->sportForecastSimples->removeElement($sportForecastSimple);
+    }
+
+    /**
+     * Get sportForecastSimples
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSportForecastSimples()
+    {
+        return $this->sportForecastSimples;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return SportForecastCombine
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return SportForecastCombine
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+}

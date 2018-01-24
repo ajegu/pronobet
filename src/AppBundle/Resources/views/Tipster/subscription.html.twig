@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="ui stackable centered container grid">
+        <div class="row">
+            <h2 class="ui horizontal divider blue header">
+                {{ 'title.subscription'|trans }}
+            </h2>
+        </div>
+        <div class="row">
+            <div class="ui center aligned segment message">
+                {{ 'message.subscription'|trans }}
+            </div>
+        </div>
+        <div class="row">
+            <a class="ui huge primary button" href="{{ path('tipster_index') }}">
+                {{ 'label.show_tipster_list'|trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

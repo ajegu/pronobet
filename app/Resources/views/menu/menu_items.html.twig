@@ -1,0 +1,16 @@
+<a href="{{ path('homepage') }}" class="item">
+    Accueil
+</a>
+
+<a class="item {% if app.request.attributes.get('_route') == 'sport_forecast_index' %}active{% endif %}"
+   href="{{ path('sport_forecast_index') }}">{{ 'link.sport_forecast'|trans }}</a>
+<a class="item {% if app.request.attributes.get('_route') == 'sport_forecast_vip' %}active{% endif %}"
+   href="{{ path('sport_forecast_vip') }}">{{ 'link.sport_forecast_vip'|trans }}</a>
+<a class="item {% if app.request.attributes.get('_route') == 'tipster_index' %}active{% endif %}"
+   href="{{ path('tipster_index') }}">{{ 'link.tipsters'|trans }}</a>
+{% if is_granted('ROLE_TIPSTER') %}
+    <a class="item" href="{{ path('forecast_index') }}">
+        {{ 'link.forecast_managment'|trans }}
+    </a>
+{% endif %}
+

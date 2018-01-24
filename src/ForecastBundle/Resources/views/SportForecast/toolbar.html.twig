@@ -1,0 +1,98 @@
+<div class="ui one column grid">
+    <div class="column mobile only">
+
+        <a class="ui primary fluid button"
+           href="{{ path("forecast_sport_forecast_add") }}">
+            <i class="plus icon"></i>
+            {{ 'button.add'|trans }}
+        </a>
+
+        <form action="{{ url }}" method="get" class="ui segment form">
+            <div class="inline fields">
+                <label>{{ 'label.isVip'|trans }} :</label>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="is-vip" id="yes" value="1" {% if app.request.get("is-vip") == "1" %}checked{% endif %}>
+                        <label for="yes">{{ 'label.yes'|trans }}</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="is-vip" id="no" value="0" {% if app.request.get("is-vip") == "0" %}checked{% endif %}>
+                        <label for="no">{{ 'label.no'|trans }}</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui radio checkbox">
+                        <input type="radio" name="is-vip" id="all" value="" {% if app.request.get("is-vip") == "" %}checked{% endif %}>
+                        <label for="all">{{ 'label.all'|trans }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>{{ 'label.search'|trans }}</label>
+                <div class="ui icon input">
+                    <i class="search icon"></i>
+                    <input type="text" name="search" placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                </div>
+            </div>
+            <div class="ui center aligned container">
+                <button class="ui icon button" type="submit">
+                    <i class="search icon"></i>
+                    <label>{{ 'label.search'|trans }}</label>
+                </button>
+
+                <a class="ui secondary icon button" href="{{ path('forecast_sport_forecast_unpublished') }}">
+                    <i class="remove icon"></i>
+                    <label>{{ 'label.cancel'|trans }}</label>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="column computer tablet only">
+        <div class="ui stackable menu">
+            <div class="item">
+                <a class="ui primary button"
+                   href="{{ path("forecast_sport_forecast_add") }}">
+                    <i class="plus icon"></i>
+                    {{ 'button.add'|trans }}
+                </a>
+            </div>
+
+            <div class="right item">
+                <form action="{{ url }}" method="get" class="ui form">
+                    <div class="inline fields">
+                        <label>{{ 'label.isVip'|trans }}</label>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="is-vip" id="yes" value="1" {% if app.request.get("is-vip") == "1" %}checked{% endif %}>
+                                <label for="yes">{{ 'label.yes'|trans }}</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="is-vip" id="no" value="0" {% if app.request.get("is-vip") == "0" %}checked{% endif %}>
+                                <label for="no">{{ 'label.no'|trans }}</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui radio checkbox">
+                                <input type="radio" name="is-vip" id="all" value="" {% if app.request.get("is-vip") == "" %}checked{% endif %}>
+                                <label for="all">{{ 'label.all'|trans }}</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui icon input">
+                                <input type="text" name="search" placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                                <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                                <a class="ui secondary icon button" href="{{ url }}"><i class="remove icon"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

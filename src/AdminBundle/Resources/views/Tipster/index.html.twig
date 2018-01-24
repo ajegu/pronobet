@@ -1,0 +1,102 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="ui positive message">
+            <div class="header">{{ 'title.tipster_delete'|trans }}</div>
+            <i class="close icon"></i>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <h1 class="ui header">
+        <i class="user icon"></i>
+        {{ 'title.tipster_managment'|trans }}
+    </h1>
+
+    <div class="ui divider"></div>
+
+    <div class="ui one column grid">
+
+        <div class="column mobile only">
+
+            <form action="{{ path('admin_tipster_index') }}" method="get" class="ui segment form">
+                <div class="inline fields">
+                    <div class="field">
+                        <div class="ui icon input">
+                            <input type="text" name="search"
+                                   placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                            <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                            <a class="ui secondary icon button" href="{{ path('admin_tipster_index') }}"><i
+                                        class="remove icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="column computer tablet only">
+
+            <div class="ui stackable menu">
+                <div class="right item">
+                    <form action="{{ path('admin_tipster_index') }}" method="get" class="ui form">
+                        <div class="inline fields">
+                            <div class="field">
+                                <div class="ui icon input">
+                                    <input type="text" name="search"
+                                           placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                                    <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                                    <a class="ui secondary icon button" href="{{ path('admin_tipster_index') }}"><i
+                                                class="remove icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <table class="ui celled center aligned table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'label.username'|trans }}</th>
+            <th>{{ 'label.fee'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.tipster.id }}</td>
+                <td>{{ user.nickname }}</td>
+                <td class="right aligned">{{ user.tipster.fee|number_format(2, ',') }} &euro;</td>
+                <td class="center aligned">
+                    <div class="ui blue buttons">
+                        <div class="ui button">Actions</div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="{{ path('admin_tipster_show', {id: user.tipster.id}) }}"><i
+                                            class="file outline icon"></i> {{ 'button.show'|trans }}</a>
+                                <a class="item" href="{{ path('admin_tipster_edit', {id: user.tipster.id}) }}"><i
+                                            class="edit icon"></i> {{ 'button.edit'|trans }}</a>
+                                <a class="item" href="{{ path('admin_tipster_delete', {id: user.tipster.id}) }}"><i
+                                            class="trash icon"></i> {{ 'button.delete'|trans }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% include '@Admin/pagination.html.twig' with {total: users.count, count: count, page: page, route: 'admin_tipster_index', id:0} %}
+
+{% endblock %}

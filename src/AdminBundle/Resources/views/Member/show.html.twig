@@ -1,0 +1,64 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container"></div>
+
+    <h1 class="ui  header">
+        <i class="user icon"></i>
+        {{ 'title.member_show'|trans }} {{ member.email }}
+    </h1>
+
+    <a class="ui labeled icon button"
+       href="{{ path('member_to_tipster', {id: member.id}) }}">
+        <i class="cloud upload icon"></i>
+        {{ 'button.member_to_tipster'|trans }}
+    </a>
+
+    <table class="ui definition table">
+        <tr>
+            <td><i class="at icon"></i> {{ 'label.email'|trans }}</td>
+            <td>{{ member.email }}</td>
+        </tr>
+        <tr>
+            <td><i class="user icon"></i>{{ 'label.nickname'|trans }}</td>
+            <td>{{ member.nickname }}</td>
+        </tr>
+        <tr>
+            <td><i class="mobile icon"></i>{{ 'label.phoneNumber'|trans }}</td>
+            <td>{{ member.phoneNumber }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'label.role'|trans }}</td>
+            <td>{{ member.role|trans }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'label.emailValid'|trans }}</td>
+            <td>{% if member.emailValid %}
+                    <span class="ui green label">{{ 'label.valid'|trans }}</span>
+                {% else %}
+                    <span class="ui red label">{{ 'label.invalid'|trans }}</span>
+                {% endif %}</td>
+        </tr>
+        <tr>
+            <td>{{ 'label.createdAt'|trans }}</td>
+            <td>{{ member.createdAt|date('d-m-Y - H:i') }}</td>
+        </tr>
+        <tr>
+            <td>{{ 'label.updatedAt'|trans }}</td>
+            <td>{{ member.updatedAt|date('d-m-Y - H:i') }}</td>
+        </tr>
+    </table>
+
+    <div class="ui center aligned container">
+        <a class="ui primary labeled icon button" href="{{ path('admin_member_edit', {id: member.id}) }}">
+            <i class="edit icon"></i>
+            {{ 'button.edit'|trans }}
+        </a>
+        <a class="ui red labeled icon button" href="{{ path('admin_member_delete', {id: member.id}) }}">
+            <i class="remove icon"></i>
+            {{ 'button.delete'|trans }}
+        </a>
+    </div>
+
+{% endblock %}

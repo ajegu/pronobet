@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="ui text container">
+        <h1 class="ui header">{{ 'title.existing_subscription'|trans }}</h1>
+
+        <div class="ui segment">
+            <p>
+                {{ 'text.existing_subscription1'|trans }}<b>{{ subscription.tipster.user.nickname }}</b>
+                {% if subscription.status == 'VIP' %}
+                    {{ 'text.existing_subscription2'|trans }}<b>{{ subscription.finishedAt|date('d/m/Y H:i') }}</b>
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ path("user_show", {id: subscription.user.id}) }}">{{ 'label.my_account'|trans }}</a>
+            {% if subscription.status == 'VIP' %}
+                <a class="ui primary button" href="{{ path("sport_forecast_vip") }}">{{ 'label.show_sport_forecast_vip'|trans }}</a>
+            {% else %}
+                <a class="ui primary button" href="{{ path("sport_forecast_index") }}">{{ 'label.show_sport_forecast_free'|trans }}</a>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

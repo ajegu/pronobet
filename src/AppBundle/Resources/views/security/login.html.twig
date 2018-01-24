@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        .column {
+            max-width: 450px;
+        }
+        .negative ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui blue image header">
+                <div class="content">
+                    {{ 'text.login_title'|trans }}
+                </div>
+            </h2>
+
+            <div class="ui center aligned segment">
+                <a href="{{ path('facebook_connect') }}" class="ui button primary">
+                    <i class="facebook square large icon"></i>
+                    {{ 'button.login_with'|trans }} Facebook</a>
+            </div>
+
+            <div class="ui horizontal divider">{{ 'label.or'|trans }}</div>
+
+            <form class="ui large form" action="{{ path('login') }}" method="post">
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+                <div class="ui stacked segment">
+                    <div class="field required {{ form_errors(form._username) ? 'error' : '' }}">
+                        <div class="ui left icon input">
+                            <i class="at icon"></i>
+                            <!--
+                            <input type="email" name="_username" id="email" placeholder="{{ 'placeholder.email'|trans }}"
+                                   value="{% if last_email is defined %}{{ last_email }}{% endif %}">
+                                   -->
+                            {{ form_widget(form._username) }}
+                        </div>
+                        {% if form_errors(form._username) %}
+                            <div class="ui negative message">
+                                {{ form_errors(form._username) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="field required {{ form_errors(form._password) ? 'error' : '' }}">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            {{ form_widget(form._password) }}
+                        </div>
+                        {% if form_errors(form._password) %}
+                            <div class="ui negative message">
+                                {{ form_errors(form._password) }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {{ form_widget(form._target_path) }}
+
+                    <div class="ui left aligned basic segment field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" id="remember_me" name="_remember_me" checked />
+                            <label>{{ 'label.remember_me'|trans }}</label>
+                        </div>
+                    </div>
+                    <button class="ui fluid submit large blue button" type="submit">
+                        {{ 'button.login'|trans }}
+                    </button>
+                    <div class="ui right aligned basic segment field">
+                        <a href="{{ path('reset_password') }}">{{ 'label.forget_password'|trans }}</a>
+                    </div>
+                </div>
+            </form>
+
+
+            {% if error %}
+                <div class="ui error message">
+                    <ul class="list">
+                        <li>{{ error.messageKey|trans(error.messageData, 'security') }}</li>
+                    </ul>
+                </div>
+            {% endif %}
+
+            <div class="ui message">
+                {{ 'text.create_account'|trans }} <a href="{{ path('user_new') }}">{{ 'button.signup'|trans }}</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

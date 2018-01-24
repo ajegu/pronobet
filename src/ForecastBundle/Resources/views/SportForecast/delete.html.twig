@@ -1,0 +1,32 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="share alternate icon"></i>
+            {{ 'title.sport_forecast_delete'|trans }} #{{ sportForecast.id }}
+        </h1>
+
+        <div class="ui divider"></div>
+
+        <div class="ui warning icon message segment">
+            <i class="warning icon"></i>
+            <div class="content">
+                <p>{{ 'text.sport_forecast_delete'|trans }} #{{ sportForecast.id }} ?</p>
+            </div>
+        </div>
+        <div class="ui center aligned container">
+            {{ form_start(form) }}
+            {{ form_widget(form._token) }}
+            <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                {{ 'label.cancel'|trans }}
+            </a>
+            <button class="ui primary labeled icon button" type="submit">
+                <i class="trash icon"></i>
+                {{ 'button.delete'|trans }}
+            </button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

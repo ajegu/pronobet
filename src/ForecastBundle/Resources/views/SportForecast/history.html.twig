@@ -1,0 +1,129 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+    <h2 class="ui horizontal divider blue header">
+        <i class="share alternate icon"></i>
+        {{ 'title.sport_forecast_managment'|trans }}
+    </h2>
+
+    <div class="ui stackable container menu">
+        <div class="item">
+            <a class="ui primary button"
+               href="{{ path("forecast_sport_forecast_add") }}">
+                <i class="plus icon"></i>
+                {{ 'button.add'|trans }}
+            </a>
+        </div>
+        <div class="right item">
+            <form action="{{ path('forecast_sport_forecast_history') }}" method="get" class="ui form">
+                <div class="inline fields">
+                    <label>{{ 'label.isVip'|trans }}</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="is-vip" id="yes" value="1"
+                                   {% if app.request.get("is-vip") == "1" %}checked{% endif %}>
+                            <label for="yes">{{ 'label.yes'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="is-vip" id="no" value="0"
+                                   {% if app.request.get("is-vip") == "0" %}checked{% endif %}>
+                            <label for="no">{{ 'label.no'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="is-vip" id="all" value=""
+                                   {% if app.request.get("is-vip") == "" %}checked{% endif %}>
+                            <label for="all">{{ 'label.all'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui icon input">
+                            <input type="text" name="search"
+                                   placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                            <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                            <a class="ui secondary icon button" href="{{ path('forecast_sport_forecast_history') }}"><i
+                                        class="remove icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <table class="ui celled padded table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'label.title'|trans }}</th>
+            <th class="right aligned">{{ 'label.betting'|trans }}</th>
+            <th>{{ 'label.ticket'|trans }}</th>
+            <th class="center aligned">{{ 'label.isVip'|trans }}</th>
+            <th class="center aligned">{{ 'label.won'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for sportForecast in sportForecasts %}
+            <tr>
+                <td>{{ sportForecast.id }}</td>
+                <td>{{ sportForecast.title }}</td>
+                <td class="right aligned">{{ sportForecast.betting|number_format(2, ',') }} &euro;</td>
+                <td class="center aligned">
+                    {% if sportForecast.ticket != '' %}
+                        <img width="32px" src="{{ medias_url }}{{ sportForecast.ticket }}"/>
+                    {% endif %}
+                </td>
+                <td class="center aligned">
+                    {% if sportForecast.isVip == true %}
+                        <i class="green big checkmark icon"></i>
+                    {% else %}
+                        <i class="red big remove icon"></i>
+                    {% endif %}
+                </td>
+
+                <td class="center aligned">
+                    {% if sportForecast.isCancelled == true %}
+                        <i class="black big ban icon"></i>
+                    {% else %}
+                        {% if sportForecast.isWon == true %}
+                            <i class="green big checkmark icon"></i>
+                        {% else %}
+                            <i class="red big remove icon"></i>
+                        {% endif %}
+                    {% endif %}
+                </td>
+
+                <td class="center aligned">
+                    <div class="ui blue buttons">
+                        <div class="ui button">Actions</div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item"
+                                   href="{{ path('forecast_sport_forecast_show', {id: sportForecast.id}) }}">
+                                    <i class="file outline icon"></i>
+                                    {{ 'button.show'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('forecast_sport_forecast_submit_change', {id: sportForecast.id}) }}">
+                                    <i class="mail icon"></i>
+                                    {{ 'button.submit_change'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('forecast_sport_forecast_edit_ticket', {id: sportForecast.id}) }}">
+                                    <i class="image icon"></i>
+                                    {{ 'button.edit_ticket'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include '@Admin/pagination.html.twig' with {total: sportForecasts.count, count: count, page: page, route: 'forecast_sport_forecast_history', id: 0} %}
+{% endblock %}

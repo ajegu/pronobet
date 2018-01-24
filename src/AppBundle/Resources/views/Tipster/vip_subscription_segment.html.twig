@@ -1,0 +1,23 @@
+<div class="ui segment">
+    <h4 class="ui large centered dividing header">Offre 1 mois</h4>
+    <ul class="list">
+        <li>Accès aux pronostics VIP</li>
+        <li>Notification par Email et SMS</li>
+        <li>Livechat avec les Tipsters</li>
+    </ul>
+
+    <div class="ui center aligned basic segment">
+        <div class="ui horizontal statistic">
+            <div class="value">
+                {{ tipster.fee|number_format(2, ",", " ") }} &euro;
+            </div>
+
+        </div>
+    </div>
+    <div class="ui center aligned basic segment">
+        <a class="ui huge primary labeled icon button vip-button"
+           href="{{ path('subscription_subscribe', {id: tipster.id}) }}">
+            <i class="shop icon"></i>
+            S'abonner</a>
+    </div>
+</div>

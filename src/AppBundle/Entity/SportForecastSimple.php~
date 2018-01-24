@@ -1,0 +1,343 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SportForecastSimple
+ *
+ * @ORM\Table(name="sport_forecast_simple")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SportForecastSimpleRepository")
+ */
+class SportForecastSimple
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="played_at", type="datetime")
+     */
+    private $playedAt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="rating", type="float")
+     */
+    private $rating;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="bet", type="float")
+     */
+    private $bet;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="winnings", type="float")
+     */
+    private $winnings;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="isWon", type="boolean")
+     */
+    private $isWon;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\OneToOne(targetEntity="SportForecast", inversedBy="sportForecastSimples")
+     * @ORM\JoinColumn(name="sport_forecast_id", referencedColumnName="id", nullable=false)
+     */
+    private $sportForecast;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="SportForecastCombine", inversedBy="sportForecastSimples")
+     * @ORM\JoinColumn(name="sport_forecast_combine_id", referencedColumnName="id", nullable=true)
+     */
+    private $sportForecastCombine;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return SportForecastSimple
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set playedAt
+     *
+     * @param \DateTime $playedAt
+     *
+     * @return SportForecastSimple
+     */
+    public function setPlayedAt($playedAt)
+    {
+        $this->playedAt = $playedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get playedAt
+     *
+     * @return \DateTime
+     */
+    public function getPlayedAt()
+    {
+        return $this->playedAt;
+    }
+
+    /**
+     * Set rating
+     *
+     * @param float $rating
+     *
+     * @return SportForecastSimple
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * Get rating
+     *
+     * @return float
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * Set bet
+     *
+     * @param float $bet
+     *
+     * @return SportForecastSimple
+     */
+    public function setBet($bet)
+    {
+        $this->bet = $bet;
+
+        return $this;
+    }
+
+    /**
+     * Get bet
+     *
+     * @return float
+     */
+    public function getBet()
+    {
+        return $this->bet;
+    }
+
+    /**
+     * Set winnings
+     *
+     * @param float $winnings
+     *
+     * @return SportForecastSimple
+     */
+    public function setWinnings($winnings)
+    {
+        $this->winnings = $winnings;
+
+        return $this;
+    }
+
+    /**
+     * Get winnings
+     *
+     * @return float
+     */
+    public function getWinnings()
+    {
+        return $this->winnings;
+    }
+
+    /**
+     * Set isWon
+     *
+     * @param boolean $isWon
+     *
+     * @return SportForecastSimple
+     */
+    public function setIsWon($isWon)
+    {
+        $this->isWon = $isWon;
+
+        return $this;
+    }
+
+    /**
+     * Get isWon
+     *
+     * @return boolean
+     */
+    public function getIsWon()
+    {
+        return $this->isWon;
+    }
+
+    /**
+     * Set sportForecast
+     *
+     * @param \AppBundle\Entity\SportForecast $sportForecast
+     *
+     * @return SportForecastSimple
+     */
+    public function setSportForecast(\AppBundle\Entity\SportForecast $sportForecast = null)
+    {
+        $this->sportForecast = $sportForecast;
+
+        return $this;
+    }
+
+    /**
+     * Get sportForecast
+     *
+     * @return \AppBundle\Entity\SportForecast
+     */
+    public function getSportForecast()
+    {
+        return $this->sportForecast;
+    }
+
+    /**
+     * Set sportForecastCombine
+     *
+     * @param \AppBundle\Entity\SportForecastCombine $sportForecastCombine
+     *
+     * @return SportForecastSimple
+     */
+    public function setSportForecastCombine(\AppBundle\Entity\SportForecastCombine $sportForecastCombine = null)
+    {
+        $this->sportForecastCombine = $sportForecastCombine;
+
+        return $this;
+    }
+
+    /**
+     * Get sportForecastCombine
+     *
+     * @return \AppBundle\Entity\SportForecastCombine
+     */
+    public function getSportForecastCombine()
+    {
+        return $this->sportForecastCombine;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return SportForecastSimple
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return SportForecastSimple
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+}

@@ -1,0 +1,42 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    <div class="ui text container">
+
+        <h1 class="ui header">
+            <i class="share alternate icon"></i>
+            {{ 'title.sport_forecast_restore_unpublished'|trans }}
+        </h1>
+
+        {% if error is defined %}
+            <div class="ui warning icon message">
+                {{ error }}
+            </div>
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+            </div>
+        {% else %}
+            <div class="ui warning icon message">
+                <i class="warning icon"></i>
+                {{ 'text.sport_forecast_restore_unpublished'|trans }}<b>#{{ sportForecast.id }}</b>?
+            </div>
+            {{ form_start(form) }}
+            {{ form_widget(form._token) }}
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="delete calendar icon"></i>
+                    {{ 'button.restore'|trans }}
+                </button>
+            </div>
+            {{ form_end(form) }}
+        {% endif %}
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="share alternate icon"></i>
+            {% if sportBet.id %}
+                {{ 'title.sport_bet_edit'|trans }} #{{ sportBet.id }}
+            {% else %}
+                {{ 'title.sport_bet_add'|trans }}
+            {% endif %}
+        </h1>
+
+        <div class="ui segment">
+            {% include '@Forecast/SportBet/fields.html.twig' %}
+        </div>
+    </div>
+{% endblock %}

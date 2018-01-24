@@ -1,0 +1,52 @@
+background_job:
+    resource: "@BackgroundJobBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login-oauth
+
+api:
+    resource: "@ApiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+forecast:
+    resource: "@ForecastBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fake:
+    resource: "@FakeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+admin:
+    resource: "@AdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+logout:
+    path: /logout
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+facebook_login:
+    path: /login/check-facebook
+
+facebook_connect:
+    path: /connect/facebook

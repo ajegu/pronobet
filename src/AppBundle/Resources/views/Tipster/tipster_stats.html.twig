@@ -1,0 +1,78 @@
+<div class="ui three column center aligned stackable grid">
+    <div class="column">
+        <div class="ui statistic">
+            <div class="value">
+                {{ stats['sportForecastStats'][type]['won'] }}
+            </div>
+            <div class="label">
+                {{ 'label.totalWon'|trans }}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui statistic">
+            <div class="value">
+                {{ stats['sportForecastStats'][type]['played'] }}
+            </div>
+            <div class="label">
+                {{ 'label.totalPlayed'|trans }}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui statistic">
+            <div class="value">
+                {{ stats['sportForecastStats'][type]['winrate']|number_format(2, ',', ' ')  }} &#37;
+            </div>
+            <div class="label">
+                {{ 'label.winRate'|trans }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui three column center aligned stackable grid">
+    <div class="column">
+        <div class="ui statistic">
+            <div class="value">
+                {{ stats['sportForecastStats'][type]['winnings']|number_format(2, ',', ' ') }} &euro;
+            </div>
+            <div class="label">
+                {{ 'label.totalWinnings'|trans }}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui statistic">
+            <div class="value">
+                {{ stats['sportForecastStats'][type]['bettings']|number_format(2, ',', ' ') }} &euro;
+            </div>
+            <div class="label">
+                {{ 'label.totalBetting'|trans }}
+            </div>
+        </div>
+    </div>
+    <div class="column">
+        <div class="ui statistic">
+            <div class="value">
+                {{ stats['sportForecastStats'][type]['roi']|number_format(2, ',', ' ') }}
+            </div>
+            <div class="label">
+                {{ 'label.roi'|trans }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="ui two column stackable grid">
+    <div class="column">
+        <canvas id="lineChart-{{ type }}"></canvas>
+    </div>
+    <div class="column">
+        <canvas id="sportChart-{{ type }}"></canvas>
+    </div>
+</div>
+
+<div class="ui divider"></div>

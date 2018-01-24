@@ -1,0 +1,159 @@
+<div class="ui segment">
+    <form class="ui form" action="{% if bookmaker is defined %}{{ path('admin_bookmaker_edit', {id: bookmaker.id}) }}{% else %}{{ path('admin_bookmaker_add') }}{% endif %}" method="post" novalidate
+          enctype="multipart/form-data">
+        {{ form_widget(form._token) }}
+
+
+        <div class="field required {{ form_errors(form.name) ? 'error' : '' }}">
+            {{ form_label(form.name) }}
+            <div class="ui input">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        {% if form_errors(form.name) %}
+            <div class="ui negative message">
+                {{ form_errors(form.name) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field required{{ form_errors(form.logoFile) ? 'error' : '' }}">
+            {{ form_label(form.logoFile) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.logoFile) }}
+                <i class="image icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.logoFile) %}
+            <div class="ui negative message">
+                {{ form_errors(form.logoFile) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field {{ form_errors(form.bonus) ? 'error' : '' }}">
+            {{ form_label(form.bonus) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.bonus) }}
+                <i class="euro icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.bonus) %}
+            <div class="ui negative message">
+                {{ form_errors(form.bonus) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field {{ form_errors(form.description) ? 'error' : '' }}">
+            {{ form_label(form.description) }}
+            <div class="ui input">
+                {{ form_widget(form.description) }}
+            </div>
+        </div>
+        {% if form_errors(form.description) %}
+            <div class="ui negative message">
+                {{ form_errors(form.description) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field required {{ form_errors(form.websiteLink) ? 'error' : '' }}">
+            {{ form_label(form.websiteLink) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.websiteLink) }}
+                <i class="world icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.websiteLink) %}
+            <div class="ui negative message">
+                {{ form_errors(form.websiteLink) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field {{ form_errors(form.adLink) ? 'error' : '' }}">
+            {{ form_label(form.adLink) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.adLink) }}
+                <i class="euro icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.adLink) %}
+            <div class="ui negative message">
+                {{ form_errors(form.adLink) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field {{ form_errors(form.facebookLink) ? 'error' : '' }}">
+            {{ form_label(form.facebookLink) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.facebookLink) }}
+                <i class="facebook icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.facebookLink) %}
+            <div class="ui negative message">
+                {{ form_errors(form.facebookLink) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field {{ form_errors(form.twitterLink) ? 'error' : '' }}">
+            {{ form_label(form.twitterLink) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.twitterLink) }}
+                <i class="twitter icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.twitterLink) %}
+            <div class="ui negative message">
+                {{ form_errors(form.twitterLink) }}
+            </div>
+        {% endif %}
+
+
+        <div class="field {{ form_errors(form.youtubeLink) ? 'error' : '' }}">
+            {{ form_label(form.youtubeLink) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.youtubeLink) }}
+                <i class="youtube icon"></i>
+            </div>
+        </div>
+        {% if form_errors(form.youtubeLink) %}
+            <div class="ui negative message">
+                {{ form_errors(form.youtubeLink) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.visible) ? 'error' : '' }}">
+            <div class="inline fields">
+                {{ form_label(form.visible) }}
+                {{ form_widget(form.visible) }}
+            </div>
+        </div>
+        {% if form_errors(form.visible) %}
+            <div class="ui negative message">
+                {{ form_errors(form.visible) }}
+            </div>
+        {% endif %}
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                {{ 'label.cancel'|trans }}
+            </a>
+            {% if bookmaker is defined %}
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="edit icon"></i>
+                    {{ 'button.edit'|trans }}
+                </button>
+            {% else %}
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="add icon"></i>
+                    {{ 'button.add'|trans }}
+                </button>
+            {% endif %}
+        </div>
+    </form>
+</div>

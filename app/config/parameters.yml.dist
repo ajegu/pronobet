@@ -1,0 +1,63 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_port:       ~
+    mailer_user:       ~
+    mailer_password:   ~
+    mailer_encryption: ~
+    mailer_sender_address: ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    app_name: symfony_app
+    domain_name: 
+
+    # Test
+    test_password: 
+    test_admin_account_email: 
+    test_admin_account_nickname: 
+    test_admin_account_password: 
+
+    # Facebook Connect
+    facebook_app_id: 
+    facebook_key_secret: 
+
+    # Redis
+    redis_dns: "redis://localhost"
+
+    # Mango Pay
+    mangopay_client_id: 
+    mangopay_passphrase: 
+
+    # AWS
+    aws_key: 
+    aws_sender_id: 
+    aws_secret: 
+    aws_region: 
+    aws_version: 
+
+    # AWS SQS Queues URLs
+    aws_sqs.notification_email: 
+    aws_sqs.notification_sms: 
+
+    # AWS S3
+    aws_s3.medias_url: 
+    aws_s3.bucket_medias: 
+    aws_s3.bucket_cache: 
+
+    # Google
+    ga_id: 
+
+

@@ -1,0 +1,4 @@
+services:
+#    background_job.example:
+#        class: BackgroundJobBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

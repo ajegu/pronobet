@@ -1,0 +1,32 @@
+<div class="ui inverted vertical footer segment">
+    <div class="ui container">
+        <div class="ui stackable inverted divided equal height stackable grid">
+            <div class="three wide column">
+                <h4 class="ui inverted header">{{ 'label.about'|trans }}</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Conditions générales de ventes</a>
+                    <a href="#" class="item">Données personnelles</a>
+                    <a href="#" class="item">Mentions légales</a>
+                    <a href="#" class="item">Cookies</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header">EQUIPE PRONOBET</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">Contactez-nous</a>
+                    <a href="#" class="item">FAQs</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted header">Inscription à notre newsletter</h4>
+                <form class="ui form" action="{{ path('subscriber_subscribe') }}" method="get">
+                    <div class="ui left icon input action input inline field">
+                        <i class="at icon"></i>
+                        <input type="text" placeholder="{{ 'placeholder.email'|trans }}" name="email" value="{% if app.user is not null %}{{ app.user.email }}{% endif %}">
+                        <button type="submit" class="ui primary button">{{ 'button.subscribe'|trans }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

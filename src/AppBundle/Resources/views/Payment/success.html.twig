@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+    <div class="ui text container">
+        <h1 class="ui header">{{ 'title.payment_success'|trans }}</h1>
+
+        <div class="ui icon message">
+            <i class="thumbs up icon"></i>
+            <div class="content">
+                <div class="header">
+                    {{ 'label.payment_success'|trans }}
+                </div>
+                <p>{{ 'text.payment_success'|trans }}</p>
+            </div>
+        </div>
+
+        <div class="ui center aligned container">
+            <a class="ui primary button" href="{{ path("sport_forecast_vip") }}">{{ 'label.show_sport_forecast_vip'|trans }}</a>
+        </div>
+
+        <div class="ui divider"></div>
+
+        <div class="ui icon message">
+            <i class="mobile icon"></i>
+            <div class="content">
+                <div class="header">
+                    {{ 'title.sms_notification_sucess'|trans }}
+                </div>
+                <p>{{ 'text.sms_notification_sucess'|trans }}</p>
+            </div>
+        </div>
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ path("subscription_edit_notifications", {id: subscription.id}) }}">{{ 'label.activate_sms_notification'|trans }}</a>
+        </div>
+    </div>
+
+{% endblock %}

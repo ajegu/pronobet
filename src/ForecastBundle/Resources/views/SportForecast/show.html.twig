@@ -1,0 +1,159 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <h1 class="ui header">
+        <i class="share alternate icon"></i>
+        {{ 'title.sport_forecast_show'|trans }} #{{ sportForecast.id }}
+    </h1>
+
+    <div class="ui divider"></div>
+
+    {% if sportForecast.isValidate == false %}
+        <div class="ui stackable text menu">
+            {% if sportForecast.isValid == true %}
+                <div class="item">
+                    <a class="ui primary fluid labeled icon button"
+                       href="{{ path('forecast_sport_forecast_validate', {id: sportForecast.id}) }}">
+                        <i class="checkmark icon"></i>
+                        {{ 'button.validate'|trans }}
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if sportForecast.publishedAt is null %}
+                {% if sportForecast.isPublishable %}
+                    <div class="item">
+                        <a class="ui primary fluid labeled icon button"
+                           href="{{ path('forecast_sport_forecast_publish', {id: sportForecast.id}) }}">
+                            <i class="share icon"></i>
+                            {{ 'button.publish'|trans }}
+                        </a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="item">
+                    <a class="ui fluid labeled icon button"
+                       href="{{ path('forecast_sport_forecast_cancellation', {id: sportForecast.id}) }}">
+                        <i class="ban icon"></i>
+                        {{ 'label.sport_forecast_cancellation'|trans }}
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="ui fluid labeled icon button"
+                       href="{{ path('forecast_sport_forecast_submit_change', {id: sportForecast.id}) }}">
+                        <i class="mail icon"></i>
+                        {{ 'button.submit_change'|trans }}
+                    </a>
+                </div>
+                <div class="item">
+                    <a class="ui fluid labeled icon button"
+                       href="{{ path('forecast_sport_forecast_edit_ticket', {id: sportForecast.id}) }}">
+                        <i class="image icon"></i>
+                        {{ 'button.edit_ticket'|trans }}
+                    </a>
+                </div>
+            {% endif %}
+
+            {% if sportForecast.isEditable == true %}
+                <div class="right item">
+                    <a class="ui labeled icon fluid red button" href="{{ path('forecast_sport_forecast_delete', {id: sportForecast.id}) }}">
+                        <i class="trash icon"></i>
+                        {{ 'button.delete'|trans }}
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if sportForecast.isPublishable == false and sportForecast.publishedAt is null and sportForecast.sportBets|length > 0 %}
+        <div class="ui error icon message">
+            <i class="warning sign icon"></i>
+            <div class="content">
+                <p>{{ 'text.sport_forecast_unpublishable'|trans }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="ui two column stackable grid">
+        <div class="sixteen wide tablet six wide computer column">
+            <div class="ui segment">
+                <table class="ui definition table">
+                    <tr>
+                        <td>{{ 'label.title'|trans }}</td>
+                        <td>{{ sportForecast.title }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.betting'|trans }}</td>
+                        <td>{{ sportForecast.betting|number_format(2, ',') }} &euro;</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.ticket'|trans }}</td>
+                        <td>
+                            {% if sportForecast.ticket %}
+                                <img width="300px" src="{{ medias_url }}{{ sportForecast.ticket }}"/>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.isVip'|trans }}</td>
+                        <td>
+                            {% if sportForecast.isVip %}
+                                <span class="ui green label">{{ 'label.yes'|trans }}</span>
+                            {% else %}
+                                <span class="ui red label">{{ 'label.no'|trans }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.bookmaker'|trans }}</td>
+                        <td>
+                            {% if sportForecast.bookmaker is not null %}
+                                {{ sportForecast.bookmaker.name }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.global_rating'|trans }}</td>
+                        <td>{{ sportForecast.globalRating|number_format(2, ',') }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ 'label.winning'|trans }}</td>
+                        <td>{{ sportForecast.winning|number_format(2, ',') }} &euro;</td>
+                    </tr>
+                </table>
+
+                {% if sportForecast.isEditable == true %}
+                    <div class="ui center aligned container">
+                        <a class="ui primary button" href="{{ path('forecast_sport_forecast_edit', {id: sportForecast.id}) }}">
+                            <i class="edit icon"></i>
+                            {{ 'button.edit'|trans }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="sixteen wide tablet ten wide computer column">
+            <div class="ui segment">
+            {% if sportForecast.sportBets|length == 0 %}
+
+                    <h3 class="ui header" style="margin-bottom: 1em">
+                        {{ 'title.add_sport_bet'|trans }}
+
+                    </h3>
+                    <div class="ui divider"></div>
+                    {% include '@Forecast/SportBet/fields.html.twig' with {form: form} %}
+
+            {% else %}
+                <h3 class="ui header" style="margin-bottom: 1em">
+                    {{ 'title.sport_bet_index'|trans }}
+
+                </h3>
+                <div class="ui divider"></div>
+                {% include '@Forecast/SportBet/table.html.twig' with {sportForecast: sportForecast} %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+<div class="ui segments">
+    {% for sportBet in sportForecast.getSportBets %}
+        <div class="ui segment">
+
+            {% if sportBet.sportForecast.isValidate %}
+                {% if sportBet.cancelled %}
+                    <a class="ui right ribbon label">{{ 'label.cancelled'|trans }}</a>
+                {% else %}
+                    {% if sportBet.isWon == true %}
+                        <a class="ui green right ribbon label">{{ 'label.won'|trans }}</a>
+                    {% else %}
+                        <a class="ui black right ribbon label">{{ 'label.lose'|trans }}</a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            <h4 class="ui header">
+                {% if sportBet.sport.icon %}
+                    <img class="ui small circular image"
+                         src="{{ asset(vich_uploader_asset(sportBet.sport, 'iconFile')) | imagine_filter('thumb50') }}"/>
+                {% else %}
+                    <img class="ui small circular image"
+                         src="{{ asset('image.png') | imagine_filter('thumb50') }}"/>
+                {% endif %}
+                {{ sportBet.winner }}
+            </h4>
+            <div class="ui list">
+                <div class="item">
+                    <i class="wait icon"></i>
+                    <div class="content">{{ 'label.playedAt'|trans }} {{ sportBet.playedAt|date('d/m/Y') }} à {{ sportBet.playedAt|date('H:i') }}</div>
+                </div>
+                <div class="item">
+                    <i class="calculator icon"></i>
+                    <div class="content">
+                        {{ 'label.rating'|trans }} :
+                        {{ sportBet.rating|number_format(2, ",", " ") }}
+                    </div>
+                </div>
+                <div class="item">
+                    <i class="trophy icon"></i>
+                    <div class="content">
+                        {{ sportBet.sport.name }}
+                        {% if sportBet.championship %}
+                            - {{ sportBet.championship.name }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ui star rating" data-rating="{{ sportBet.confidenceIndex }}"></div>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>

@@ -1,0 +1,60 @@
+<div class="ui segment">
+    <form class="ui form" action="{% if sport is defined %}{{ path('admin_sport_edit', {id: sport.id}) }}{% else %}{{ path('admin_sport_add') }}{% endif %}" method="post" novalidate
+          enctype="multipart/form-data">
+        {{ form_widget(form._token) }}
+
+        <div class="field required {{ form_errors(form.name) ? 'error' : '' }}">
+            {{ form_label(form.name) }}
+            <div class="ui input">
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        {% if form_errors(form.name) %}
+            <div class="ui negative message">
+                {{ form_errors(form.name) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.iconFile) ? 'error' : '' }}">
+            {{ form_label(form.iconFile) }}
+            <div class="ui input">
+                {{ form_widget(form.iconFile) }}
+            </div>
+        </div>
+        {% if form_errors(form.iconFile) %}
+            <div class="ui negative message">
+                {{ form_errors(form.iconFile) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.visible) ? 'error' : '' }}">
+            <div class="inline fields">
+                {{ form_label(form.visible) }}
+                {{ form_widget(form.visible) }}
+            </div>
+        </div>
+        {% if form_errors(form.visible) %}
+            <div class="ui negative message">
+                {{ form_errors(form.visible) }}
+            </div>
+        {% endif %}
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                {{ 'label.cancel'|trans }}
+            </a>
+            {% if sport is defined %}
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="edit icon"></i>
+                    {{ 'button.edit'|trans }}
+                </button>
+            {% else %}
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="add icon"></i>
+                    {{ 'button.add'|trans }}
+                </button>
+            {% endif %}
+        </div>
+
+    </form>
+</div>

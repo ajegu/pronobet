@@ -1,0 +1,53 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <h1 class="ui header">
+        {{ 'label.payout_setting'|trans }}
+    </h1>
+
+    <div class="ui container">
+        <div class="ui message">
+            <div class="header">{{ 'title.wallet_balance'|trans }}</div>
+            {{ 'text.wallet_balance'|trans }}{{ (wallet.Balance.Amount / 100) |number_format(2, ",", " ") }} &euro;
+        </div>
+
+        {% if wallet.Balance.Amount > 0 %}
+            <div class="ui center aligned container">
+                <a class="ui primary button" href="{{ path('forecast_create_payout') }}">
+                    {{ 'label.create_payout'|trans }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <h2 class="ui header">{{ 'label.payouts_history'|trans }}</h2>
+
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'label.created_at'|trans }}</th>
+            <th>{{ 'label.amount'|trans }}</th>
+            <th>{{ 'label.status'|trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for payout in payouts %}
+            <tr>
+                <td>{{ payout.Id }}</td>
+                <td>{{ payout.CreationDate|date('d/m/Y H:i') }}</td>
+                <td>{{ (payout.DebitedFunds.Amount / 100)|number_format(2, ",", " ") }} &euro;</td>
+                <td>
+                    {% if payout.Status == 'SUCCEEDED' or payout.Status == 'CREATED' %}
+                        <div class="ui green label">{{ payout.Status }}</div>
+                    {% else %}
+                        <div class="ui red label">{{ payout.Status }}</div>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

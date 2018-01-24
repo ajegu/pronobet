@@ -1,0 +1,86 @@
+<div class="ui segment">
+    <form class="ui form" action="{% if tipster is defined %}{{ path('admin_tipster_edit', {id: tipster.id}) }}{% else %}{{ path('admin_tipster_add', {id: user.id}) }}{% endif %}" method="post" novalidate enctype="multipart/form-data">
+        {{ form_widget(form._token) }}
+
+        <div class="field {{ form_errors(form.pictureFile) ? 'error' : '' }}">
+            {{ form_label(form.pictureFile) }}
+            <div class="ui left icon input">
+                <i class="photo icon"></i>
+                {{ form_widget(form.pictureFile) }}
+            </div>
+        </div>
+        {% if form_errors(form.pictureFile) %}
+            <div class="ui negative message">
+                {{ form_errors(form.pictureFile) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.coverFile) ? 'error' : '' }}">
+            {{ form_label(form.coverFile) }}
+            <div class="ui left icon input">
+                <i class="newspaper icon"></i>
+                {{ form_widget(form.coverFile) }}
+            </div>
+        </div>
+        {% if form_errors(form.coverFile) %}
+            <div class="ui negative message">
+                {{ form_errors(form.coverFile) }}
+            </div>
+        {% endif %}
+
+        <div class="field {{ form_errors(form.description) ? 'error' : '' }}">
+            {{ form_label(form.description) }}
+            <div class="ui left icon input">
+                {{ form_widget(form.description) }}
+            </div>
+        </div>
+        {% if form_errors(form.description) %}
+            <div class="ui negative message">
+                {{ form_errors(form.description) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.fee) ? 'error' : '' }}">
+            {{ form_label(form.fee) }}
+            <div class="ui left icon input">
+                <i class="euro icon"></i>
+                {{ form_widget(form.fee) }}
+            </div>
+        </div>
+        {% if form_errors(form.fee) %}
+            <div class="ui negative message">
+                {{ form_errors(form.fee) }}
+            </div>
+        {% endif %}
+
+        <div class="field required {{ form_errors(form.commission) ? 'error' : '' }}">
+            {{ form_label(form.commission) }}
+            <div class="ui left icon input">
+                <i class="percent icon"></i>
+                {{ form_widget(form.commission) }}
+            </div>
+        </div>
+        {% if form_errors(form.commission) %}
+            <div class="ui negative message">
+                {{ form_errors(form.commission) }}
+            </div>
+        {% endif %}
+
+        <div class="ui center aligned container">
+            <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                {{ 'label.cancel'|trans }}
+            </a>
+            {% if tipster is defined %}
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="edit icon"></i>
+                    {{ 'button.edit'|trans }}
+                </button>
+            {% else %}
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="add icon"></i>
+                    {{ 'button.add'|trans }}
+                </button>
+            {% endif %}
+        </div>
+    </form>
+</div>

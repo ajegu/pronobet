@@ -1,0 +1,34 @@
+{% extends '@App/User/base.html.twig' %}
+
+{% block user_body %}
+    <h1 class="ui header">
+        {{ 'label.newsletter_subscription'|trans }}
+    </h1>
+
+    <div class="ui text container">
+        {% if subscriber is null %}
+            <div class="ui message">
+                {{ "text.newsletter_no_subscription"|trans }}
+            </div>
+            <div class="ui center aligned container">
+                <a class="ui primary button" href="{{ path('subscriber_subscribe') }}">
+                    {{ "label.newsletter_subscribe"|trans }}
+                </a>
+            </div>
+
+        {% else %}
+            <div class="ui message">
+                <p>{{ "text.newsletter_subscription_confirm"|trans }}</p>
+                {% if subscriber.partners == true %}
+                    <p>{{ "text.newsletter_subscription_partners_confirm"|trans }}</p>
+                {% endif %}
+            </div>
+            <div class="ui center aligned container">
+                <a class="ui primary button" href="{{ path('subscriber_unsubscribe', {email: subscriber.email}) }}">
+                    {{ "label.newsletter_unsubscribe"|trans }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

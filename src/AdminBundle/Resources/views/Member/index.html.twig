@@ -1,0 +1,159 @@
+{% extends '@Admin/base.html.twig' %}
+
+{% block admin_content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="ui positive message">
+            <div class="header">{{ 'title.member_delete'|trans }}</div>
+            <i class="close icon"></i>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <h1 class="ui header">
+        <i class="user icon"></i>
+        {{ 'title.user_managment'|trans }}
+    </h1>
+
+    <div class="ui divider"></div>
+
+    <div class="ui one column grid">
+
+        <div class="column mobile only">
+
+            <a class="ui primary fluid button"
+               href="{{ path("admin_member_add") }}">
+                <i class="plus icon"></i>
+                {{ 'button.add'|trans }}
+            </a>
+
+            <form action="{{ path('admin_member_index') }}" method="get" class="ui segment form">
+                <div class="inline fields">
+                    <label>{{ 'label.status'|trans }}</label>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="status" id="member" value="ROLE_MEMBER" {% if app.request.get("status") == "ROLE_MEMBER" %}checked{% endif %}>
+                            <label for="member">{{ 'label.member'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="status" id="subscriber" value="ROLE_SUBSCRIBER" {% if app.request.get("status") == "ROLE_SUBSCRIBER" %}checked{% endif %}>
+                            <label for="subscriber">{{ 'label.subscriber'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="status" id="all" value="" {% if app.request.get("status") == "" %}checked{% endif %}>
+                            <label for="all">{{ 'label.all'|trans }}</label>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui icon input">
+                            <input type="text" name="search" placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                            <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                            <a class="ui secondary icon button" href="{{ path('admin_member_index') }}"><i class="remove icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="column computer tablet only">
+            <div class="ui stackable menu">
+                <div class="item">
+                    <a class="ui primary labeled icon button"
+                       href="{{ path("admin_member_add") }}">
+                        <i class="plus icon"></i>
+                        {{ 'button.add'|trans }}
+                    </a>
+                </div>
+                <div class="right item">
+                    <form action="{{ path('admin_member_index') }}" method="get" class="ui form">
+                        <div class="inline fields">
+                            <label>{{ 'label.status'|trans }}</label>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" id="member" value="ROLE_MEMBER" {% if app.request.get("status") == "ROLE_MEMBER" %}checked{% endif %}>
+                                    <label for="member">{{ 'label.member'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" id="subscriber" value="ROLE_SUBSCRIBER" {% if app.request.get("status") == "ROLE_SUBSCRIBER" %}checked{% endif %}>
+                                    <label for="subscriber">{{ 'label.subscriber'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="status" id="all" value="" {% if app.request.get("status") == "" %}checked{% endif %}>
+                                    <label for="all">{{ 'label.all'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui icon input">
+                                    <input type="text" name="search" placeholder={{ 'placeholder.search'|trans }} value={{ app.request.get("search") }}>
+                                    <button class="ui icon button" type="submit"><i class="search icon"></i></button>
+                                    <a class="ui secondary icon button" href="{{ path('admin_member_index') }}"><i class="remove icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <table class="ui celled padded table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>{{ 'label.email'|trans }}</th>
+            <th>{{ 'label.username'|trans }}</th>
+            <th>{{ 'label.role'|trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td>{{ member.id }}</td>
+                <td>{{ member.email }}</td>
+                <td>{{ member.nickname }}</td>
+                <td>{{ member.role|trans }}</td>
+                <td class="center aligned">
+                    <div class="ui blue buttons">
+                        <div class="ui button">Actions</div>
+                        <div class="ui floating dropdown icon button">
+                            <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="{{ path('admin_member_show', {id: member.id}) }}">
+                                    <i class="file outline icon"></i>
+                                    {{ 'button.show'|trans }}
+                                </a>
+                                <a class="item" href="{{ path('admin_member_edit', {id: member.id}) }}">
+                                    <i class="edit icon"></i>
+                                    {{ 'button.edit'|trans }}
+                                </a>
+                                <a class="item" href="{{ path('admin_member_delete', {id: member.id}) }}">
+                                    <i class="trash icon"></i>
+                                    {{ 'button.delete'|trans }}
+                                </a>
+                                <a class="item"
+                                   href="{{ path('member_to_tipster', {id: member.id}) }}">
+                                    <i class="cloud upload icon"></i>
+                                    {{ 'button.member_to_tipster'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% include '@Admin/pagination.html.twig' with {total: members.count, count: count, page: page, route: 'admin_member_index', id: 0} %}
+
+{% endblock %}

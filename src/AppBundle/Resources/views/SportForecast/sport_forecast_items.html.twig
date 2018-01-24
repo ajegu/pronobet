@@ -1,0 +1,65 @@
+<div class="ui divided items">
+    {% for sportForecast in sportForecasts %}
+        <div class="item">
+            <a class="image image-link" href="
+            {% if sportForecast.ticket %}
+            {{ medias_url }}{{ sportForecast.ticket }}
+            {% else %}
+            {{ medias_url }}image.png
+            {% endif %}
+            ">
+                {% if sportForecast.ticket %}
+                    <img src="{{ asset(sportForecast.ticket) | imagine_filter('thumb250') }}"/>
+                {% else %}
+                    <img src="{{ asset('image.png') | imagine_filter('thumb250') }}"/>
+                {% endif %}
+            </a>
+            <div class="content">
+                <h2 class="header">
+                    <a href="{{ path('sport_forecast_show', {id: sportForecast.id}) }}">
+                        {% if sportForecast.title %}
+                            {{ sportForecast.title }}
+                        {% else %}
+                            {{ 'label.sport_forecast_number'|trans }}{{ sportForecast.id }}
+                        {% endif %}
+                    </a>
+                </h2>
+                <div class="meta">
+                    <span>Par <b>{{ sportForecast.tipster.user.nickname }}</b></span>
+                    <span>le {{ sportForecast.publishedAt|date('d/m/Y') }}
+                        à {{ sportForecast.publishedAt|date('H:i') }}</span>
+                    <div class="right floated">
+                        {% if sportForecast.isVip %}
+                            <a class="ui yellow label">{{ 'label.VIP'|trans }}</a>
+                        {% else %}
+                            <a class="ui blue label">{{ 'label.free'|trans }}</a>
+                        {% endif %}
+                        {% if sportForecast.isValidate %}
+                            {% if sportForecast.cancelled %}
+                                <a class="ui black label">{{ 'label.cancelled'|trans }}</a>
+                            {% else %}
+                                {% if sportForecast.isWon %}
+                                    <a class="ui green label">{{ 'label.win'|trans }}</a>
+                                {% else %}
+                                    <a class="ui black label">{{ 'label.loose'|trans }}</a>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="description">
+                    {% include '@App/SportForecast/sport_bet_list.html.twig' %}
+                </div>
+                <div class="extra">
+                    <a class="ui right floated primary button"
+                       href="{{ path('sport_forecast_show', {id: sportForecast.id}) }}">
+                        {{ 'button.show_sport_forecast'|trans }}
+                        <i class="right chevron icon"></i>
+                    </a>
+                    {% include '@App/SportForecast/sport_forecast_extra.html.twig' %}
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+</div>

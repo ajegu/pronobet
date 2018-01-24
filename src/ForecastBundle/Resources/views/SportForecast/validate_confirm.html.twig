@@ -1,0 +1,87 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block javascripts %}
+    <script type="application/javascript">
+        $('.ui.checkbox')
+            .checkbox()
+        ;
+    </script>
+{% endblock %}
+
+{% block forecast_content %}
+
+    <div class="ui text container">
+        <h1 class="ui header">
+            <i class="checkmark icon"></i>
+            {{ 'title.sport_forecast_validate_confirm'|trans }} #{{ sportForecast.id }}
+        </h1>
+
+        <div class="ui divider"></div>
+
+        <form class="ui segment form" action="{{ path('forecast_sport_forecast_validate_confirm', {id: sportForecast.id}) }}" method="post">
+            {{ form_widget(form._token) }}
+
+            <table class="ui celled center aligned padded table">
+                <thead>
+                <tr>
+                    <th>{{ 'label.sport'|trans }}</th>
+                    <th>{{ 'label.winner'|trans }}</th>
+                    <th>{{ 'label.rating'|trans }}</th>
+                    <th>{{ 'label.playedAt'|trans }}</th>
+                    <th>{{ 'label.championship'|trans }}</th>
+                    <th>{{ 'label.result'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sportBet in sportForecast.sportBets %}
+                    <tr>
+                        <td>
+                            {% if sportBet.sport.icon != '' %}
+                                <img width="32px" src="{{ medias_url }}{{ sportBet.sport.icon }}"/>
+                            {% else %}
+                                {{ sportBet.sport.name }}
+                            {% endif %}
+                        </td>
+                        <td>{{ sportBet.winner }}</td>
+                        <td>{{ sportBet.rating }}</td>
+                        <td class="{{ sportBet.checkDate == false and sportBet.sportForecast.isEditable ? 'error' : '' }}">
+                            {{ sportBet.playedAt|date('d-m-Y - H:i') }}
+                        </td>
+                        <td>
+                            {% if sportBet.championship is not null %}
+                                {{ sportBet.championship.name }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if sportBet.cancelled %}
+                                <span class="ui black label">{{ 'label.cancelled'|trans }}</span>
+                                <input type="hidden" name="result_{{ sportBet.id }}" value="2">
+                            {% else %}
+                                {% if sportBet.isWon == true %}
+                                    <span class="ui green label">{{ 'label.won'|trans }}</span>
+                                    <input type="hidden" name="result_{{ sportBet.id }}" value="1">
+                                {% else %}
+                                    <span class="ui red label">{{ 'label.lose'|trans }}</span>
+                                    <input type="hidden" name="result_{{ sportBet.id }}" value="0">
+                                {% endif %}
+                            {% endif %}
+
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="ui center aligned container">
+                <a class="ui button" href="{{ app.request.headers.get('referer') }}">
+                    {{ 'label.cancel'|trans }}
+                </a>
+                <button class="ui primary labeled icon button" type="submit">
+                    <i class="checkmark icon"></i>
+                    {{ 'button.validate_confirm'|trans }}
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

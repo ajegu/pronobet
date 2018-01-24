@@ -1,0 +1,38 @@
+{% extends '@Forecast/base.html.twig' %}
+
+{% block forecast_content %}
+
+    <h1 class="ui header">
+        {{ 'label.create_payout'|trans }}
+    </h1>
+
+    <div class="ui container">
+        {% if payout.Status == 'SUCCEEDED' or payout.Status == 'CREATED' %}
+            <div class="ui message">
+                {{ 'text.payout_succeeded'|trans }}
+            </div>
+        {% else %}
+            {% if payout.ResultCode == '002998' or payout.ResultCode == '002999' %}
+                <div class="ui error message">
+                    {{ 'text.payout_kyc_required'|trans }}
+                </div>
+            {% else %}
+                <div class="ui error message">
+                    {{ 'text.payout_failed'|trans }}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        <div class="ui center aligned container">
+            {% if payout.ResultCode == '002998' or payout.ResultCode == '002999' %}
+                <a class="ui primary button" href="{{ path('forecast_upgrade_payment_account') }}">
+                    {{ 'label.upgrade_payment_account'|trans }}
+                </a>
+            {% endif %}
+            <a class="ui button" href="{{ path('forecast_payout_setting') }}">
+                {{ 'label.return_to_payout_setting'|trans }}
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
